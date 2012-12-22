@@ -1,5 +1,5 @@
 Hm::Application.routes.draw do
-  get "parents/new"
+  resources :parents
 
   root to: 'static_pages#home'
 
