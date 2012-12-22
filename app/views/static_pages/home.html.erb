@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>HealthMonster | Home</title>
-  </head>
-  <body>
-    <h1>HealthMonster</h1>
-    <p>
-      We welcome you to the home page for HealthMonster!
-    </p>
-  </body>
-</html>
+<div class="center hero-unit">
+	<%= link_to image_tag("banner.png", alt: "HealthMonsterBanner"), 'http://healthmonster.herokuapp.com' %>
+  <h1>Welcome to HealthMonster</h1>
+
+  <h3>
+    Once you register as a parent, you can register your child.
+  </h3>
+
+  <%= link_to "Register as a Parent", '#', class: "btn btn-large btn-primary" %>
+</div>
