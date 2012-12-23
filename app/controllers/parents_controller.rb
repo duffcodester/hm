@@ -10,6 +10,7 @@ class ParentsController < ApplicationController
   def create
     @parent = Parent.new(params[:parent])
     if @parent.save
+      sign_in @parent
       flash[:success] = "Welcome to HealthMonster! You have successfully created your account"
       redirect_to @parent
     else

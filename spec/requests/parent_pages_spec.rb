@@ -48,7 +48,8 @@ describe "Parent pages" do
         let(:parent) { Parent.find_by_email('parent@example.com') }
 
         it { should have_selector('title', text: parent.name) }
-        it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+        it { should have_selector('div.alert.alert-success', text: 'Welcome' ) }
+        it { should have_link('Sign out') }
       end
     end
   end
