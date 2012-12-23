@@ -42,6 +42,11 @@ describe "Parent pages" do
       it "should create a parent" do
         expect { click_button submit }.to change(Parent, :count).by(1)
       end
+
+      it "should flash success" do
+        click_button submit
+        page.should have_content('Welcome to HealthMonster! You have successfully created your account')
+      end
     end
   end
 end

@@ -20,9 +20,12 @@ describe "StaticPages" do
     
   it "should have the right links on the layout" do
     visit root_path
-    page.should have_link('Register as a Parent')
-    page.should have_link('HealthMonsterLogo')
     click_link "Register as a Parent"
     page.should have_content('Sign up')
+    click_link "Home"
+    page.should_not have_selector 'title', text: full_title('Sign up')
+    click_link "Register as a Parent"
+    click_link "HealthMonsterLogo"
+    page.should_not have_selector 'title', text: full_title('Sign up')
   end
 end
