@@ -3,35 +3,64 @@ HealthMonster Rails App
 Most recent deployment running at healthmonster.herokuapp.com
 Based on HealthMonster.net
 
-Authors ==========================================================
+Authors ================================================
   Kelton M.
   Josh D.
 
-Acceptance Criteria ==============================================
+Notes ==================================================
+12/22/12 - We may have to change sessions_helper.rb in 
+  the future.  Currently it has methods for current_user
+  that only look up a "Parent", but use "user" as a local
+  variable in the methods.
 
-Parent can create a challenge
-Parent assigns points to a challenge
-Parent assigns a challenge to one or more children
-Parent can search a community pool of challenges for a challenge
-Parent can add a challenge to the community pool
-Challenges can be assigned one or more age ranges (6-8, 8-10, 10-12+, All)
-Parent can create a reward
-Parent can add a reward to a community pool
-Parent can search a community pool for rewards
-Parent can validate a completed challenge from a child
-Child can accept a pending challenge assigned by a parent
-Child can mark a challenge completed
-Child can reject a challenge
-Child can select a reward with available points (reward must be enabled by parent)
-Content Provider can generate challenges
-Parent can subscribe a child to a content provider (premium)
-Parent will have a dashboard that they can select each child and see a dashboard of activity including a pie chart with type of challenges completed, points earned, etc
-Parent will have a queue where activities they need to do go. Such as notification to validate a challenge
-Parent can register
-Parent registers a child. Child and parent relationship is static
-Parent has a login (email address for user name)
-Child has a login
-Parent can reset a child's password
-System resets Parent's password upon request
-Maximum points that can be assigned to a challenge is 99 points. Max reward points 9999
-Child can search community pool for challenges (not rewards) and send it to parent as a challenge they would like to do
+Acceptance Criteria ====================================
+
+NYS  = not yet started
+TWIP = test writing in progress
+TWC  = test writing complete
+ITIP = implementation and testing in progress
+ITC  = implementation and testing complete
+
+Work Progress =========================================
+setup git
+setup dev env
+setup test env
+ITC  - add StaticPages controller
+ITC  - add static home page
+ITC  - add Parents controller
+ITC  - add Parent model
+ITC  - write Parent model tests
+ITC  - add Parent signup
+ITC  - write Parent signup tests
+TWIP - sign in and sign out pages (on chap 8.2.5 Signin upon signup)
+NYS  - add Challenges controller
+NYS  - add Challenge model
+NYS  - integrate Challenge into database
+
+Client Defined Acceptance Criteria ====================
+NYS  - Parent can create a challenge
+NYS  - Parent assigns points to a challenge
+NYS  - Parent assigns a challenge to one or more children
+NYS  - Parent can search a community pool of challenges for a challenge
+NYS  - Parent can add a challenge to the community pool
+NYS  - Challenges can be assigned one or more age ranges (6-8, 8-10, 10-12+, All)
+NYS  - Parent can create a reward
+NYS  - Parent can add a reward to a community pool
+NYS  - Parent can search a community pool for rewards
+NYS  - Parent can validate a completed challenge from a child
+NYS  - Child can accept a pending challenge assigned by a parent
+NYS  - Child can mark a challenge completed
+NYS  - Child can reject a challenge
+NYS  - Child can select a reward with available points (reward must be enabled by parent)
+NYS  - Content Provider can generate challenges
+NYS  - Parent can subscribe a child to a content provider (premium)
+NYS  - Parent will have a dashboard that they can select each child and see a dashboard of activity including a pie chart with type of challenges completed, points earned, etc
+NYS  - Parent will have a queue where activities they need to do go. Such as notification to validate a challenge
+NYS  - Parent can register
+NYS  - Parent registers a child. Child and parent relationship is static
+NYS  - Parent has a login (email address for user name)
+NYS  - Child has a login
+NYS  - Parent can reset a child's password
+NYS  - System resets Parent's password upon request
+NYS  - Maximum points that can be assigned to a challenge is 99 points. Max reward points 9999
+NYS  - Child can search community pool for challenges (not rewards) and send it to parent as a challenge they would like to do
