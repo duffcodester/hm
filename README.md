@@ -12,6 +12,7 @@ Notes ==================================================
   the future.  Currently it has methods for current_user
   that only look up a "Parent", but use "user" as a local
   variable in the methods.
+12/23/12 - Updated the parent controller to sign in upon sign up. Currently working on the sign out.
 
 Acceptance Criteria ====================================
 
