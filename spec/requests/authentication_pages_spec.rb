@@ -41,7 +41,7 @@ end
 
       describe "followed by signout" do
         before { click_link "Sign out" }
-        it { should have_link('Sign in') }
+        it { should_not have_link('Sign out'), href: signout_path }
       end
     end
   end
