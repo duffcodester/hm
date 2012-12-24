@@ -1,5 +1,4 @@
-![HealthMonster](http://d3nf22m6d68s6c.cloudfront.net/622637/958174/1341028381/50.png) 
-# HealthMonster Rails App #
+# HealthMonster Rails App ![HealthMonster](http://d3nf22m6d68s6c.cloudfront.net/622637/958174/1341028381/50.png)
 
 Most recent deployment running at [healthmonster.herokuapp.com](http://healthmonster.herokuapp.com "HealthMonster")  
 App based on [HealthMonster.net](http://healthmonster.net "HealthMonster.net")
