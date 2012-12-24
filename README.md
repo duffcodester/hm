@@ -1,28 +1,27 @@
-# HealthMonster Rails App #
+![HealthMonster](http://d3nf22m6d68s6c.cloudfront.net/622637/958174/1341028381/50.png) # HealthMonster Rails App #
 
-Most recent deployment running at healthmonster.herokuapp.com  
-Based on HealthMonster.net
+Most recent deployment running at [healthmonster.herokuapp.com](http://healthmonster.herokuapp.com "HealthMonster")
+Based on [HealthMonster.net](http://healthmonster.net "HealthMonster.net")
 
-## Authors ##
+### Authors ###
   Kelton M.  
   Josh D.
 
-## Notes ##
-12/22/12 - We may have to change sessions_helper.rb in 
+### Notes ###
+-12/22/12 - We may have to change sessions_helper.rb in 
   the future.  Currently it has methods for current_user
   that only look up a "Parent", but use "user" as a local
   variable in the methods.  
-12/23/12 - Updated the parent controller to sign in upon sign up. Currently working on the sign out.  
+- 12/23/12 - Updated the parent controller to sign in upon sign up. Currently working on the sign out.  
 
-## Acceptance Criteria ##  
-
+### Acceptance Criteria ###
 NYS  = not yet started  
 TWIP = test writing in progress  
 TWC  = test writing complete  
 ITIP = implementation and testing in progress  
 ITC  = implementation and testing complete  
 
-## Work Progress ##  
+### Work Progress ###
 setup git  
 setup dev env  
 setup test env  
@@ -38,7 +37,7 @@ NYS  - add Challenges controller
 NYS  - add Challenge model  
 NYS  - integrate Challenge into database  
 
-## Client Defined Acceptance Criteria ##  
+### Client Defined Acceptance Criteria ###
 NYS  - Parent can create a challenge  
 NYS  - Parent assigns points to a challenge  
 NYS  - Parent assigns a challenge to one or more children  
