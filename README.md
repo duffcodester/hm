@@ -1,8 +1,8 @@
-![HealthMonster](http://d3nf22m6d68s6c.cloudfront.net/622637/958174/1341028381/50.png) HealthMonster Rails App  
-                                                                                       =======================
+![HealthMonster](http://d3nf22m6d68s6c.cloudfront.net/622637/958174/1341028381/50.png) 
+# HealthMonster Rails App #  
 
 Most recent deployment running at [healthmonster.herokuapp.com](http://healthmonster.herokuapp.com "HealthMonster")  
-Based on [HealthMonster.net](http://healthmonster.net "HealthMonster.net")
+App based on [HealthMonster.net](http://healthmonster.net "HealthMonster.net")
 
 ### Authors ###
   Kelton M.  
@@ -14,7 +14,7 @@ Based on [HealthMonster.net](http://healthmonster.net "HealthMonster.net")
    that only look up a "Parent", but use "user" as a local
    variable in the methods.
 -  12/23/12 - Updated the parent controller to sign in upon sign up. Currently working on the sign out.
--  12/24/12 - Refer to [markdown](http://daringfireball.net/projects/markdown/syntax#p "markdown") for README.md styling.
+-  12/24/12 - Refer to [daringfireball](http://daringfireball.net/projects/markdown/syntax#p "markdown") markdown help for README.md styling.
 
 ### Acceptance Criteria ###
 NYS  = not yet started  
