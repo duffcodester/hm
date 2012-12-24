@@ -1,10 +1,10 @@
 HealthMonster Rails App
 
-Most recent deployment running at healthmonster.herokuapp.com
+Most recent deployment running at healthmonster.herokuapp.com  
 Based on HealthMonster.net
 
-Authors ================================================
-  Kelton M.
+Authors ================================================  
+  Kelton M.  
   Josh D.
 
 Notes ==================================================
