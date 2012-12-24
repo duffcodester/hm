@@ -14,6 +14,7 @@ App based on [HealthMonster.net](http://healthmonster.net "HealthMonster.net")
    variable in the methods.
 -  12/23/12 - Updated the parent controller to sign in upon sign up. Currently working on the sign out.
 -  12/24/12 - Refer to [daringfireball](http://daringfireball.net/projects/markdown/syntax#p "markdown") markdown help for README.md styling.
+-  12/24/12 - Signing in and out is working correctly.
 
 ## Acceptance Criteria ##
 NYS  = not yet started  
