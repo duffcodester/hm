@@ -11,8 +11,10 @@ Notes ==================================================
 12/22/12 - We may have to change sessions_helper.rb in 
   the future.  Currently it has methods for current_user
   that only look up a "Parent", but use "user" as a local
-  variable in the methods.
-12/23/12 - Updated the parent controller to sign in upon sign up. Currently working on the sign out. I cannot get the sign out to destroy the session since sign in link does not reappear after clicking sign out in browser but test for it passes?
+  variable in the methods. 
+12/23/12 - Updated the parent controller to sign in upon sign up. Currently working on the sign out.
+
+12/25/12 - I got the signout to work. You have to go into the rails console and type "Parent.all.each { |parent| parent.save(validate: false) }" which tells Active Record to skip the validations. (See Chapter 8 above Fig 8.9). I created the challenge model and controller. I have created a page when you can create a challenge at /create_callenge/. All tests are currently passing for what has been done so far. There is no link to the create_challenge page yet, only can get to it by typing in address. Then we will work it into the relations with parents, etc. 
 
 Acceptance Criteria ====================================
 
@@ -33,10 +35,10 @@ ITC  - add Parent model
 ITC  - write Parent model tests
 ITC  - add Parent signup
 ITC  - write Parent signup tests
-TWIP - sign in and sign out pages (on chap 8.2.5 Signin upon signup)
-NYS  - add Challenges controller
-NYS  - add Challenge model
-NYS  - integrate Challenge into database
+ITC - sign in and sign out pages (on chap 8.2.5 Signin upon signup)
+TWIP  - add Challenges controller
+TWIP  - add Challenge model
+TWIP  - integrate Challenge into database
 
 Client Defined Acceptance Criteria ====================
 NYS  - Parent can create a challenge
