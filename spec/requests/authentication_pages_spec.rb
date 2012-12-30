@@ -28,13 +28,11 @@ end
 
     describe "with valid information" do
       let(:parent) { FactoryGirl.create(:parent) }
-      before do
-        fill_in "Email",    with: parent.email
-        fill_in "Password", with: parent.password
-        click_button "Sign in"
-      end
+      before { valid_signin(parent) }
 
       it { should have_selector('title', text: parent.name) }
+      it { should have_link('Challenges', href: '#') } #challenge_path(parent)) }
+      it { should have_link('Parents', href: '#') } #parent_path(parent)) }
       it { should have_link('Profile', href: parent_path(parent)) }
       it { should have_link('Sign out', href: signout_path) }
       it { should_not have_link('Sign in', href: signin_path) }

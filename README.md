@@ -42,10 +42,16 @@ ITC  - sign in and sign out pages (on chap 8.2.5 Signin upon signup)
 TWIP - add Challenges controller
 TWIP - add Challenge model
 TWIP - integrate Challenge into database
+NYS  - change db to have point_value as fixnum
+NYS  - add indexes to challenge_name for db to ensure uniqueness
+NYS  - add Child controller
+NYS  - add Child model 
+NYS  - add Child signin
+NYS  - DB relational stuff
 
 ### Client Defined Acceptance Criteria ###
-NYS  - Parent can create a challenge  
-NYS  - Parent assigns points to a challenge  
+TWIP - Parent can create a challenge  
+TWIP - Parent assigns points to a challenge  
 NYS  - Parent assigns a challenge to one or more children  
 NYS  - Parent can search a community pool of challenges for a challenge  
 NYS  - Parent can add a challenge to the community pool  

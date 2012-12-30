@@ -39,5 +39,9 @@ describe "Challenge Creation" do
         it { should have_selector('title', text: challenge.challenge_name) }
       end
     end
+
+    describe "challenges link appears on signin" do
+      #before { valid_signin }
+    end
   end
 end
