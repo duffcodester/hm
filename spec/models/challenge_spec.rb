@@ -45,12 +45,12 @@ describe Challenge do
   end
 
   describe "when point value is too small" do
-#    before { @challenge.point_value = 8 }
+#    before { @challenge.point_value = 0 }
 #    it { should_not be_valid }
   end
 
   describe "when point value is too big" do
-#    before { @challenge.point_value = 1000 }
+#    before { @challenge.point_value = 10000 }
 #    it { should_not be_valid }
   end
 

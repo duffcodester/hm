@@ -21,9 +21,9 @@ describe "Authentication" do
       it { should have_selector('div.alert.alert-error', text: 'Invalid') }
 
       describe "after visiting another page" do
-      before { click_link "Home" }
-      it { should_not have_selector('div.alert.alert-error') }
-end
+        before { click_link "Home" }
+        it { should_not have_selector('div.alert.alert-error') }
+      end
     end
 
     describe "with valid information" do
@@ -31,8 +31,7 @@ end
       before { valid_signin(parent) }
 
       it { should have_selector('title', text: parent.name) }
-      it { should have_link('Challenges', href: '#') } #challenge_path(parent)) }
-      it { should have_link('Parents', href: '#') } #parent_path(parent)) }
+      it { should have_link('Parents', href: '#') } 
       it { should have_link('Profile', href: parent_path(parent)) }
       it { should have_link('Sign out', href: signout_path) }
       it { should_not have_link('Sign in', href: signin_path) }

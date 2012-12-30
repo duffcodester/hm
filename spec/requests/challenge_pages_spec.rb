@@ -37,11 +37,8 @@ describe "Challenge Creation" do
         let(:challenge) { Challenge.find_by_challenge_name('Example Challenge') }
 
         it { should have_selector('title', text: challenge.challenge_name) }
+        it { should have_selector('div.alert.alert-success', text: 'You')}
       end
-    end
-
-    describe "challenges link appears on signin" do
-      #before { valid_signin }
     end
   end
 end

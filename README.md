@@ -19,6 +19,7 @@ App based on [HealthMonster.net](http://healthmonster.net "HealthMonster.net")
 -  12/30/12 - Need to change schema for challenges to have point_value as an int datatype.  Right now it's a string so validations are testing for string length, not int value.  Also need to make sure challenges are unique (downcase all names and add an index, capitalize when printing)
 -  Why did we use --drb in .rspec for sample_app? It causes error for rspec tests when running spork.  Also, guard is still not working and spork appears not to have effect on test speed.
 -  Add schema info to challenge model files as in parent model files.  (Can't remember the command.)
+-  Could use some rspec test refactoring.
 
 ## Acceptance Criteria ##
 NYS  = not yet started  
@@ -50,8 +51,14 @@ NYS  - add Child signin
 NYS  - DB relational stuff
 
 ### Client Defined Acceptance Criteria ###
+ITC  - Parent can register  
+ITC  - Parent has a login (email address for user name)  
 TWIP - Parent can create a challenge  
 TWIP - Parent assigns points to a challenge  
+NYS  - Maximum points that can be assigned to a challenge is 99 points. Max reward points 9999  
+NYS  - Parent registers a child. Child and parent relationship is static  
+NYS  - Child has a login  
+NYS  - Parent can reset a child's password  
 NYS  - Parent assigns a challenge to one or more children  
 NYS  - Parent can search a community pool of challenges for a challenge  
 NYS  - Parent can add a challenge to the community pool  
@@ -68,11 +75,5 @@ NYS  - Content Provider can generate challenges
 NYS  - Parent can subscribe a child to a content provider (premium)  
 NYS  - Parent will have a dashboard that they can select each child and see a dashboard of activity including a pie chart with type of challenges completed, points earned, etc  
 NYS  - Parent will have a queue where activities they need to do go. Such as notification to validate a challenge  
-NYS  - Parent can register  
-NYS  - Parent registers a child. Child and parent relationship is static  
-NYS  - Parent has a login (email address for user name)  
-NYS  - Child has a login  
-NYS  - Parent can reset a child's password  
 NYS  - System resets Parent's password upon request  
-NYS  - Maximum points that can be assigned to a challenge is 99 points. Max reward points 9999  
 NYS  - Child can search community pool for challenges (not rewards) and send it to parent as a challenge they would like to do  
