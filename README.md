@@ -16,8 +16,9 @@ App based on [HealthMonster.net](http://healthmonster.net "HealthMonster.net")
 -  12/24/12 - Refer to [daringfireball](http://daringfireball.net/projects/markdown/syntax#p "markdown") markdown help for README.md styling.
 -  12/24/12 - Signing in and out is working correctly.
 -  12/25/12 - I got the signout to work. You have to go into the rails console and type "Parent.all.each { |parent| parent.save(validate: false) }" which tells Active Record to skip the validations. (See Chapter 8 above Fig 8.9). I created the challenge model and controller. I have created a page when you can create a challenge at /create_callenge/. All tests are currently passing for what has been done so far. There is no link to the create_challenge page yet, only can get to it by typing in address. Then we will work it into the relations with parents, etc. 
--  12/30/12 - Need to change schema for challenges to have point_value as an int datatype.
+-  12/30/12 - Need to change schema for challenges to have point_value as an int datatype.  Right now it's a string so validations are testing for string length, not int value.  Also need to make sure challenges are unique (downcase all names and add an index, capitalize when printing)
 -  Why did we use --drb in .rspec for sample_app? It causes error for rspec tests when running spork.  Also, guard is still not working and spork appears not to have effect on test speed.
+-  Add schema info to challenge model files as in parent model files.  (Can't remember the command.)
 
 ## Acceptance Criteria ##
 NYS  = not yet started  

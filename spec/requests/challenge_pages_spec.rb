@@ -25,7 +25,7 @@ describe "Challenge Creation" do
     describe "with valid information" do
       before do
         fill_in "Description",         with: "Example Challenge"
-        fill_in "Point Value (9-999)",        with: "100"
+        fill_in "Point Value (9-999)", with: "100"
       end
 
       it "should create a challenge" do
