@@ -50,6 +50,8 @@ describe "Parent pages" do
         it { should have_selector('title', text: parent.name) }
         it { should have_selector('div.alert.alert-success', text: 'Welcome' ) }
         it { should have_link('Sign out') }
+        it { should have_link('Challenges') }
+        it { should have_link('Account') }
       end
     end
   end

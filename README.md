@@ -20,6 +20,7 @@ App based on [HealthMonster.net](http://healthmonster.net "HealthMonster.net")
 -  Why did we use --drb in .rspec for sample_app? It causes error for rspec tests when running spork.  Also, guard is still not working and spork appears not to have effect on test speed.
 -  Add schema info to challenge model files as in parent model files.  (Can't remember the command.)
 -  Could use some rspec test refactoring.
+-  1/1/13 - Changed challenges point_value to int datatype and associated validations. Working on trying to display challenges from db. Changed create_challenge_path to new_challenge_path since route was redundant. Link to Browse challenges displays all challenges in db in ordered list.
 
 ## Acceptance Criteria ##
 NYS  = not yet started  

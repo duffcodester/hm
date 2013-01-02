@@ -5,14 +5,14 @@ describe "Challenge Creation" do
   subject { page }
 
   describe "challenge creation page" do 
-    before { visit create_challenge_path }
+    before { visit new_challenge_path }
 
     it { should have_selector('h1', text: 'Create a Challenge') }
     it { should have_selector('title', text: 'Create a Challenge') }
   end
 
   describe "creation" do
-    before { visit create_challenge_path }
+    before { visit new_challenge_path }
 
     let(:submit) { "Create Challenge" }
 
@@ -40,5 +40,17 @@ describe "Challenge Creation" do
         it { should have_selector('div.alert.alert-success', text: 'You')}
       end
     end
+  end
+end
+
+describe "Challenges view" do
+  
+  subject { page }
+
+  describe "Browse" do
+
+    before { visit challenges_path }
+
+    it { should have_selector('h1', text: 'All Challenges in Database') }
   end
 end
