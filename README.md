@@ -21,6 +21,7 @@ App based on [HealthMonster.net](http://healthmonster.net "HealthMonster.net")
 -  Add schema info to challenge model files as in parent model files.  (Can't remember the command.)
 -  Could use some rspec test refactoring.
 -  1/1/13 - Changed challenges point_value to int datatype and associated validations. Working on trying to display challenges from db. Changed create_challenge_path to new_challenge_path since route was redundant. Link to Browse challenges displays all challenges in db in ordered list.
+-  1/2/13 - One thing to consider is we will have two versions of the database, one local and one on heroku. We can pull and push but it overwrites the existing one on either end as far as I can tell right now.
 
 ## Acceptance Criteria ##
 NYS  = not yet started  
