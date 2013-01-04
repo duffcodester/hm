@@ -12,16 +12,14 @@ App based on [HealthMonster.net](http://healthmonster.net "HealthMonster.net")
    the future.  Currently it has methods for current_user
    that only look up a "Parent", but use "user" as a local
    variable in the methods.
--  12/23/12 - Updated the parent controller to sign in upon sign up. Currently working on the sign out.
 -  12/24/12 - Refer to [daringfireball](http://daringfireball.net/projects/markdown/syntax#p "markdown") markdown help for README.md styling.
--  12/24/12 - Signing in and out is working correctly.
 -  12/25/12 - I got the signout to work. You have to go into the rails console and type "Parent.all.each { |parent| parent.save(validate: false) }" which tells Active Record to skip the validations. (See Chapter 8 above Fig 8.9). I created the challenge model and controller. I have created a page when you can create a challenge at /create_callenge/. All tests are currently passing for what has been done so far. There is no link to the create_challenge page yet, only can get to it by typing in address. Then we will work it into the relations with parents, etc. 
--  12/30/12 - Need to change schema for challenges to have point_value as an int datatype.  Right now it's a string so validations are testing for string length, not int value.  Also need to make sure challenges are unique (downcase all names and add an index, capitalize when printing)
 -  Why did we use --drb in .rspec for sample_app? It causes error for rspec tests when running spork.  Also, guard is still not working and spork appears not to have effect on test speed.
 -  Add schema info to challenge model files as in parent model files.  (Can't remember the command.)
 -  Could use some rspec test refactoring.
 -  1/1/13 - Changed challenges point_value to int datatype and associated validations. Working on trying to display challenges from db. Changed create_challenge_path to new_challenge_path since route was redundant. Link to Browse challenges displays all challenges in db in ordered list.
 -  1/2/13 - One thing to consider is we will have two versions of the database, one local and one on heroku. We can pull and push but it overwrites the existing one on either end as far as I can tell right now.
+-  1/4/13 - DB relational stuff working well.  We need to figure out points stuff...does it make sense to assign points to every challenge?  How do rewards work into this?  This needs work...
 
 ## Acceptance Criteria ##
 NYS  = not yet started  
@@ -42,11 +40,12 @@ ITC  - write Parent model tests
 ITC  - add Parent signup  
 ITC  - write Parent signup tests  
 ITC  - sign in and sign out pages (on chap 8.2.5 Signin upon signup)
-TWIP - add Challenges controller
-TWIP - add Challenge model
-TWIP - integrate Challenge into database
-NYS  - change db to have point_value as fixnum
-NYS  - add indexes to challenge_name for db to ensure uniqueness
+ITC  - add Challenges controller
+ITC  - add Challenge model
+ITC  - integrate Challenge into database
+ITC  - change db to have point_value as fixnum
+ITC  - add indexes to challenge_name for db to ensure uniqueness
+NYS  - setup view for parent challenges ("Your" link)
 NYS  - add Child controller
 NYS  - add Child model 
 NYS  - add Child signin
@@ -55,9 +54,9 @@ NYS  - DB relational stuff
 ### Client Defined Acceptance Criteria ###
 ITC  - Parent can register  
 ITC  - Parent has a login (email address for user name)  
-TWIP - Parent can create a challenge  
-TWIP - Parent assigns points to a challenge  
-NYS  - Maximum points that can be assigned to a challenge is 99 points. Max reward points 9999  
+ITC  - Parent can create a challenge  
+ITC  - Parent assigns points to a challenge  
+ITC  - Maximum points that can be assigned to a challenge is 99 points. Max reward points 9999  
 NYS  - Parent registers a child. Child and parent relationship is static  
 NYS  - Child has a login  
 NYS  - Parent can reset a child's password  

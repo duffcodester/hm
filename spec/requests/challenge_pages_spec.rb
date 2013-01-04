@@ -12,7 +12,12 @@ describe "Challenge Creation" do
   end
 
   describe "creation" do
-    before { visit new_challenge_path }
+    let(:parent) { FactoryGirl.create(:parent) }
+    before do
+      visit signin_path 
+      valid_signin(parent)
+      visit new_challenge_path
+    end
 
     let(:submit) { "Create Challenge" }
 
@@ -34,9 +39,10 @@ describe "Challenge Creation" do
 
       describe "after saving the challenge" do
         before { click_button submit }
-        let(:challenge) { Challenge.find_by_challenge_name('Example Challenge') }
+        let(:challenge) { Challenge.find_by_challenge_name('example challenge') }
 
-        it { should have_selector('title', text: challenge.challenge_name) }
+        it { should have_selector('title', text: challenge.challenge_name.capitalize) }
+        it { should have_selector('h1', text: challenge.challenge_name.capitalize) }
         it { should have_selector('div.alert.alert-success', text: 'You')}
       end
     end
