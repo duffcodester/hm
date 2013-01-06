@@ -5,4 +5,11 @@ FactoryGirl.define do
     password "foobar"
     password_confirmation "foobar"
   end
+
+  factory :child do
+    name     "Michael Hartl"
+    email    "michael@example.com"
+    password "foobar"
+    password_confirmation "foobar"
+  end
 end

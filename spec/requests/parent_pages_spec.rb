@@ -43,7 +43,7 @@ describe "Parent pages" do
         expect { click_button submit }.to change(Parent, :count).by(1)
       end
 
-      describe "after saving the user" do
+      describe "after saving the parent" do
         before { click_button submit }
         let(:parent) { Parent.find_by_email('parent@example.com') }
 

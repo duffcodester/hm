@@ -11,3 +11,11 @@ RSpec::Matchers.define :have_error_message do |message|
     page.should have_selector('div.alert.alert-error', text: message)
   end
 end
+
+def parent_signin(parent)
+  visit sigin_path
+  fill_in "Email",    with: parent.email
+  fill_in "Password", with: parent.password
+  click_button "Sign in"
+  cookies[:remember_token] = parent.remember_token
+end
