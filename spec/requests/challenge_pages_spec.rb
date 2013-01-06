@@ -50,7 +50,7 @@ describe "Challenge Creation" do
 end
 
 describe "Challenges view" do
-  
+
   subject { page }
 
   describe "Browse" do
@@ -58,5 +58,19 @@ describe "Challenges view" do
     before { visit challenges_path }
 
     it { should have_selector('h1', text: 'All Challenges in Database') }
+  end
+
+  describe "Your" do
+    let(:parent) { FactoryGirl.create(:parent) }
+    before do
+      visit signin_path 
+      valid_signin(parent)
+      visit new_challenge_path
+    end
+    
+    before { visit challenges_your_path }
+
+    it { should have_selector('title',text: 'Your') }
+    it { should have_selector('h1',text: 'Your challenges') }
   end
 end

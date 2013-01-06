@@ -41,7 +41,7 @@ describe "StaticPages" do
       should have_link('Sign out', href: signout_path)
       should have_link('Challenges')
       should have_link('Create',   href: new_challenge_path)
-      should have_link('Your',     href: '#')
+      should have_link('Your',     href: challenges_your_path)
       should have_link('Browse',   href: challenges_path)
     end
   end

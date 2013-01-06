@@ -11,6 +11,10 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.find(params[:id])
   end
 
+  def your
+    @your_challenges = current_user.challenges
+  end
+
   def create
     @challenge = current_user.challenges.build(params[:challenge])
     if @challenge.save
