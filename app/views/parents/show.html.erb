@@ -1,2 +1,5 @@
 <% provide(:title, @parent.name) %>
-<h1><%= @parent.name %></h1>
+<h1>
+  <%= gravatar_for @parent %>
+  <%= @parent.name %>
+</h1>
