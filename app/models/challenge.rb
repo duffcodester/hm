@@ -4,6 +4,6 @@ class Challenge < ActiveRecord::Base
 
   before_save { |challenge| challenge.challenge_name = challenge_name.downcase }
   validates :parent_id, presence: true
-  validates :challenge_name, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
+  validates :challenge_name, presence: true, length: { maximum: 50 }
   validates :point_value, presence: true, :numericality => { :greater_than_or_equal_to => 9, :less_than_or_equal_to => 999 }
 end

@@ -43,19 +43,14 @@ describe Challenge do
     it { should_not be_valid }
   end
 
-  # tests to check for enforcing of challenge name uniqueness
-  describe "when challenge name already exists" do
+  describe "should not validate uniqueness" do
     before do
-      #let(:parent) { FactoryGirl.create(:parent) }
-      #visit signin_path 
-      #valid_signin(parent)
-      #visit new_challenge_path
       Challenge_with_same_name = @challenge.dup
       Challenge_with_same_name.challenge_name = @challenge.challenge_name.upcase
       Challenge_with_same_name.save
     end
 
-    it { should_not be_valid }
+    it { should be_valid }
   end
 
   describe "challenge name with mixed cased" do
