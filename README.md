@@ -21,7 +21,9 @@ App based on [HealthMonster.net](http://healthmonster.net "HealthMonster.net")
 -  1/2/13 - One thing to consider is we will have two versions of the database, one local and one on heroku. We can pull and push but it overwrites the existing one on either end as far as I can tell right now.
 -  1/4/13 - DB relational stuff working well.  We need to figure out points stuff...does it make sense to assign points to every challenge?  How do rewards work into this?  This needs work...
 -  1/6/13 - When migrating DB, make sure to restart the heroku server, "heroku restart".
--  For challenges, should have a name and a description.  Should not be created with points.  Also, do points come from 
+-  For challenges, should have a name and a description.  Should not be created with points.  Also, do points come from rewards or challenges?
+-  Should child have a unique email or username?
+-  Add questions for steve section
 
 ## Acceptance Criteria ##
 NYS  = not yet started  

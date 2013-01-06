@@ -1,4 +1,6 @@
 Hm::Application.routes.draw do
+  get "children/new"
+
   resources :parents
   resources :sessions, only: [:new, :create, :destroy]
   resources :challenges

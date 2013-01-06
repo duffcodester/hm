@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130106181802) do
+ActiveRecord::Schema.define(:version => 20130106192314) do
 
   create_table "challenges", :force => true do |t|
     t.string   "challenge_name"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(:version => 20130106181802) do
     t.datetime "updated_at",                    :null => false
     t.integer  "parent_id"
   end
+
+  create_table "children", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "password_digest"
+    t.string   "remember_token"
+  end
+
+  add_index "children", ["email"], :name => "index_children_on_email", :unique => true
+  add_index "children", ["remember_token"], :name => "index_children_on_remember_token"
 
   create_table "parents", :force => true do |t|
     t.string   "name"
