@@ -65,7 +65,6 @@ describe "Challenges view" do
     before do
       visit signin_path 
       valid_signin(parent)
-      visit new_challenge_path
     end
     
     before { visit challenges_your_path }

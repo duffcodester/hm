@@ -7,6 +7,9 @@ class ParentsController < ApplicationController
     @parent = Parent.find(params[:id])
   end
 
+  def edit
+  end
+
   def create
     @parent = Parent.new(params[:parent])
     if @parent.save
