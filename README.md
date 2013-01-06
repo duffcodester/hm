@@ -39,17 +39,17 @@ ITC  - add Parent model
 ITC  - write Parent model tests  
 ITC  - add Parent signup  
 ITC  - write Parent signup tests  
-ITC  - sign in and sign out pages (on chap 8.2.5 Signin upon signup)
-ITC  - add Challenges controller
-ITC  - add Challenge model
-ITC  - integrate Challenge into database
-ITC  - change db to have point_value as fixnum
-ITC  - add indexes to challenge_name for db to ensure uniqueness
-NYS  - setup view for parent challenges ("Your" link)
-NYS  - add Child controller
-NYS  - add Child model 
-NYS  - add Child signin
-NYS  - DB relational stuff
+ITC  - sign in and sign out pages (on chap 8.2.5 Signin upon signup)  
+ITC  - add Challenges controller  
+ITC  - add Challenge model  
+ITC  - integrate Challenge into database  
+ITC  - change db to have point_value as fixnum  
+ITC  - add indexes to challenge_name for db to ensure uniqueness  
+NYS  - setup view for parent challenges ("Your" link)  
+NYS  - add Child controller  
+NYS  - add Child model   
+NYS  - add Child signin  
+NYS  - DB relational stuff  
 
 ### Client Defined Acceptance Criteria ###
 ITC  - Parent can register  
