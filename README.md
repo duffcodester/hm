@@ -21,6 +21,7 @@ App based on [HealthMonster.net](http://healthmonster.net "HealthMonster.net")
 -  1/2/13 - One thing to consider is we will have two versions of the database, one local and one on heroku. We can pull and push but it overwrites the existing one on either end as far as I can tell right now.
 -  1/4/13 - DB relational stuff working well.  We need to figure out points stuff...does it make sense to assign points to every challenge?  How do rewards work into this?  This needs work...
 -  1/6/13 - When migrating DB, make sure to restart the heroku server, "heroku restart".
+-  For challenges, should have a name and a description.  Should not be created with points.  Also, do points come from 
 
 ## Acceptance Criteria ##
 NYS  = not yet started  
@@ -46,6 +47,7 @@ ITC  - add Challenge model
 ITC  - integrate Challenge into database  
 ITC  - change db to have point_value as fixnum  
 ITC  - add indexes to challenge_name for db to ensure uniqueness  
+NYS  - remove index for duplicate challenges
 NYS  - setup view for parent challenges ("Your" link)  
 NYS  - add Child controller  
 NYS  - add Child model   
