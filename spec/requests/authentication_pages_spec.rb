@@ -76,6 +76,11 @@ describe "Authentication" do
           before { put parent_path(parent) }
           specify { response.should redirect_to(signin_path) }
         end
+
+        describe "visiting the parent index" do
+          before { visit parents_path }
+          it { should ahve_selector('title', text: 'Sign in') }
+        end
       end
     end
 

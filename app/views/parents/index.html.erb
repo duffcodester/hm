@@ -1,0 +1,11 @@
+<% provide(:title, 'All parents') %>
+<h1>All parent</h1>
+
+<ul class="parents">
+  <% @parents.each do |parent| %>
+    <li>
+      <%= gravatar_for parent, size: 52 %>
+      <%= link_to parent.name, parent %>
+    </li>
+  <% end %>
+</ul>
