@@ -31,10 +31,11 @@ describe "Authentication" do
       before { sign_in parent }
 
       it { should have_selector('title', text: parent.name) }
-      it { should have_link('Parents', href: '#') } 
+      it { should have_link('Parents', href: parents_path) } 
       it { should have_link('Profile', href: parent_path(parent)) }
       it { should have_link('Settings', href: edit_parent_path(parent)) }
       it { should have_link('Sign out', href: signout_path) }
+
       it { should_not have_link('Sign in', href: signin_path) }
 
       describe "followed by signout" do
@@ -92,6 +93,11 @@ describe "Authentication" do
         describe "submitting to the update action" do
           before { put parent_path(parent) }
           specify { response.should redirect_to(signin_path) }
+        end
+
+        describe "visiting the parent index" do
+          before { visit parents_path }
+          it { should have_selector('title', text: 'Sign in') }
         end
       end
     end

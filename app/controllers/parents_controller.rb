@@ -1,5 +1,5 @@
 class ParentsController < ApplicationController
-  before_filter :signed_in_parent, only: [:edit, :update]
+  before_filter :signed_in_parent, only: [:index, :edit, :update]
   before_filter :correct_parent, only: [:edit, :update]
 
   def new
@@ -11,6 +11,10 @@ class ParentsController < ApplicationController
   end
 
   def edit
+  end
+
+  def index
+    @parents = Parent.paginate(page: params[:page])
   end
 
   def update

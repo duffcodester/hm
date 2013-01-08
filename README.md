@@ -25,6 +25,7 @@ App based on [HealthMonster.net](http://healthmonster.net "HealthMonster.net")
 -  Should child have a unique email or username?
 -  Add questions for steve section
 -  1/7/13 - need to separate out some stuff in the header shim
+-  Brought parent model up to date thru 9.3 (parents index complete)
 
 ## Acceptance Criteria ##
 NYS  = not yet started  
@@ -52,10 +53,10 @@ ITC  - change db to have point_value as fixnum
 ITC  - add indexes to challenge_name for db to ensure uniqueness  
 NYS  - remove index for duplicate challenges
 NYS  - setup view for parent challenges ("Your" link)  
-NYS  - add Child controller  
-NYS  - add Child model   
+ITIP  - add Child controller  
+ITIP  - add Child model   
 NYS  - add Child signin  
-NYS  - DB relational stuff  
+ITIP  - DB relational stuff  
 
 ### Client Defined Acceptance Criteria ###
 ITC  - Parent can register  
