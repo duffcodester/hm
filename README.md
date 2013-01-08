@@ -24,6 +24,7 @@ App based on [HealthMonster.net](http://healthmonster.net "HealthMonster.net")
 -  For challenges, should have a name and a description.  Should not be created with points.  Also, do points come from rewards or challenges?
 -  Should child have a unique email or username?
 -  Add questions for steve section
+-  1/7/13 - need to separate out some stuff in the header shim
 
 ## Acceptance Criteria ##
 NYS  = not yet started  

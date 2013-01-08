@@ -22,7 +22,7 @@ RSpec::Matchers.define :have_error_message do |message|
 end
 
 def parent_signin(parent)
-  visit sigin_path
+  visit signin_path
   fill_in "Email",    with: parent.email
   fill_in "Password", with: parent.password
   click_button "Sign in"

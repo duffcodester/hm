@@ -129,4 +129,10 @@ describe Parent do
     its(:remember_token) { should_not be_blank }
   end
 
+  describe "when email address is taken by a child" do
+    let(:child) { FactoryGirl.create(:child) }
+    before { @parent.email = child.email }
+
+    it { should_not be_valid}
+  end
 end

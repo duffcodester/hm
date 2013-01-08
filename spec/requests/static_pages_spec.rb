@@ -17,6 +17,14 @@ describe "StaticPages" do
     it_should_behave_like "all static pages"
     it { should_not have_selector 'title', text: '| Home' }
   end
+
+  describe "Signin page" do
+    before { visit signin_path }
+    let(:heading) { 'Sign in' }
+    let(:page_title) { 'Sign in' }
+
+    it_should_behave_like "all static pages"
+  end
     
   it "should have the right links on the layout" do
     visit root_path
@@ -35,14 +43,23 @@ describe "StaticPages" do
       visit signin_path 
       valid_signin(parent)
 
+      should have_link('Parents')
+      
       should have_link('Account')
       should have_link('Profile',  href: parent_path(parent))
       should have_link('Settings', href: edit_parent_path(parent))
       should have_link('Sign out', href: signout_path)
+
+      # challenges menu
       should have_link('Challenges')
       should have_link('Create',   href: new_challenge_path)
       should have_link('Your',     href: challenges_your_path)
       should have_link('Browse',   href: challenges_path)
+
+      # children menu
+      should have_link('Children')
+      should have_link('Create',   href: new_child_path)
+      should have_link('Your',     href: children_your_path)
     end
   end
 

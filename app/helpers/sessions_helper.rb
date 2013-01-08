@@ -13,7 +13,7 @@ module SessionsHelper
   end
 
   def current_user
-    @current_user ||= Parent.find_by_remember_token(cookies[:remember_token])
+    @current_user ||= (Parent.find_by_remember_token(cookies[:remember_token]) or Child.find_by_remember_token(cookies[:remember_token]))
   end
 
   def current_user?(parent)
@@ -32,5 +32,13 @@ module SessionsHelper
 
   def store_location
     session[:return_to] = request.url
+  end
+
+  def signed_in_as_parent?
+    signed_in? and current_user.class == Parent
+  end
+
+  def signed_in_as_child?
+    signed_in? and current_user.class == Child
   end
 end

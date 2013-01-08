@@ -3,10 +3,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    parent = Parent.find_by_email(params[:session][:email].downcase)
-    if parent && parent.authenticate(params[:session][:password])
-      sign_in parent
-      redirect_back_or parent
+    user = Parent.find_by_email(params[:session][:email].downcase) || Child.find_by_email(params[:session][:email].downcase)
+    if user && user.authenticate(params[:session][:password])
+      sign_in user
+      redirect_back_or user
     else
       flash.now[:error] = 'Invalid email/password combination' 
       render 'new'

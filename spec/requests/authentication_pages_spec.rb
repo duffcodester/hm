@@ -26,7 +26,7 @@ describe "Authentication" do
       end
     end
 
-    describe "with valid information" do
+    describe "with valid parent information" do
       let(:parent) { FactoryGirl.create(:parent) }
       before { sign_in parent }
 
@@ -34,6 +34,23 @@ describe "Authentication" do
       it { should have_link('Parents', href: '#') } 
       it { should have_link('Profile', href: parent_path(parent)) }
       it { should have_link('Settings', href: edit_parent_path(parent)) }
+      it { should have_link('Sign out', href: signout_path) }
+      it { should_not have_link('Sign in', href: signin_path) }
+
+      describe "followed by signout" do
+        before { click_link "Sign out" }
+        it { should_not have_link('Sign out'), href: signout_path }
+      end
+    end
+
+    describe "with valid child information" do
+      let(:child) { FactoryGirl.create(:child) }
+      before { sign_in child }
+
+      it { should have_selector('title', text: child.name) }
+      it { should have_link('Children', href: '#') } 
+      it { should have_link('Profile', href: child_path(child)) }
+      it { should have_link('Settings', href: '#') }
       it { should have_link('Sign out', href: signout_path) }
       it { should_not have_link('Sign in', href: signin_path) }
 

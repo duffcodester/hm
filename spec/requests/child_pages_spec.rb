@@ -5,13 +5,13 @@ describe "Child pages" do
   subject { page }
 
   describe "create child page" do
-    let(:parent) { FactoryGirl.create(:child) }
+    let(:parent) { FactoryGirl.create(:parent) }
     before do 
-      parent_signin(parent)
+      sign_in(parent)
       visit new_child_path 
     end
 
-    it { should have_selector('h1',    text: 'Sign up a Child') }
+    it { should have_selector('h1',    text: 'Sign up a child') }
     it { should have_selector('title', text: full_title('Child Signup')) }
   end
 
@@ -30,7 +30,7 @@ describe "Child pages" do
       visit new_child_path 
     end
 
-    let(:submit) { "Create my account" }
+    let(:submit) { "Create child account" }
 
     describe "with invalid information" do
       it "should not create a child" do
@@ -55,7 +55,7 @@ describe "Child pages" do
         let(:child) { Child.find_by_email('child@example.com') }
 
         it { should have_selector('title', text: child.name) }
-        it { should have_selector('div.alert.alert-success', text: 'Welcome' ) }
+        it { should have_selector('div.alert.alert-success', text: 'You' ) }
         it { should have_link('Sign out') }
       end
     end

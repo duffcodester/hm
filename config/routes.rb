@@ -4,6 +4,7 @@ Hm::Application.routes.draw do
   resources :parents
   resources :sessions, only: [:new, :create, :destroy]
   resources :challenges
+  resources :children
 
   root to: 'static_pages#home'
 
@@ -11,6 +12,7 @@ Hm::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   match '/challenges_your', to: 'challenges#your'
+  match '/children_your', to: 'children#your'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
