@@ -52,10 +52,10 @@ ITC  - change db to have point_value as fixnum
 ITC  - add indexes to challenge_name for db to ensure uniqueness  
 NYS  - remove index for duplicate challenges
 NYS  - setup view for parent challenges ("Your" link)  
-NYS  - add Child controller  
-NYS  - add Child model   
+ITIP  - add Child controller  
+ITIP  - add Child model   
 NYS  - add Child signin  
-NYS  - DB relational stuff  
+ITIP  - DB relational stuff  
 
 ### Client Defined Acceptance Criteria ###
 ITC  - Parent can register  
