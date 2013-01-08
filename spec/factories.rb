@@ -11,5 +11,6 @@ FactoryGirl.define do
     email    "michael@example.com"
     password "foobar"
     password_confirmation "foobar"
+    parent_id 1
   end
 end

@@ -8,7 +8,7 @@ class ChildrenController < ApplicationController
   end
 
   def create
-    @child = Child.new(params[:child])
+    @child = current_user.children.build(params[:child])
     if @child.save
       flash[:success] = "You have successfully created your child's account!"
       redirect_to @child

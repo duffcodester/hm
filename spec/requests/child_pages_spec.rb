@@ -24,7 +24,7 @@ describe "Child pages" do
   end
 
   describe "signup" do
-    let(:parent) { FactoryGirl.create(:child) }
+    let(:parent) { FactoryGirl.create(:parent) }
     before do 
       parent_signin(parent)
       visit new_child_path 

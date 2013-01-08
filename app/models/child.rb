@@ -12,6 +12,7 @@
 class Child < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
+  belongs_to :parent
 
   before_save { |child| child.email = email.downcase }
   before_save :create_remember_token
@@ -20,6 +21,7 @@ class Child < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }, email_child_parent_unique: true
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+  validates :parent_id, presence: true
 
   private
 

@@ -76,7 +76,7 @@ describe Challenge do
   end
 
   describe "accessible attributes" do
-    it "should not allow access to user_id" do
+    it "should not allow access to parent_id" do
       expect do
         Challenge.new(parent_id: parent.id)
       end.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
