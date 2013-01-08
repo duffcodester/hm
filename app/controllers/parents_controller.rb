@@ -14,7 +14,7 @@ class ParentsController < ApplicationController
   end
 
   def index
-    @parents = Parent.all
+    @parents = Parent.paginate(page: params[:page])
   end
 
   def update

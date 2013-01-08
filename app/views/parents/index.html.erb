@@ -1,11 +1,12 @@
 <% provide(:title, 'All parents') %>
-<h1>All parent</h1>
+<h1>All parents</h1>
+
+<%= will_paginate %>
 
 <ul class="parents">
   <% @parents.each do |parent| %>
-    <li>
-      <%= gravatar_for parent, size: 52 %>
-      <%= link_to parent.name, parent %>
-    </li>
+    <%= render @parents %>
   <% end %>
 </ul>
+
+<%= will_paginate %>

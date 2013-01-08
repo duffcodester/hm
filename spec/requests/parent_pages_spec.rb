@@ -5,23 +5,32 @@ describe "Parent pages" do
   subject { page }
 
   describe "index" do
-    before do
-      sign_in FactoryGirl.create(:parent)
-      FactoryGirl.create(:parent, name: "Bob", email: "bob@example.com")
-      FactoryGirl.create(:parent, name: "Ben", email: "ben@example.com")
+
+    let(:parent) { FactoryGirl.create(:parent) }
+
+    before(:each) do
+      sign_in parent
       visit parents_path
     end
 
     it { should have_selector('title', text: 'All parents') }
     it { should have_selector('h1',    text: 'All parents') }
 
-    it "should list each parent" do
-      Parent.all.each do |parent|
-        page.should have_selector('li', text: parent.name)
+    describe "pagination" do
+
+      before(:all) { 30.times { FactoryGirl.create(:parent) } }
+      after(:all)  { Parent.delete_all }
+
+      it { should have_selector('div.pagination') }
+
+      it "should list each parent" do
+        Parent.paginate(page: 1).each do |parent|
+          page.should have_selector('li', text: parent.name)
+        end
       end
     end
   end
-
+  
   describe "signup page" do
     before { visit signup_path }
 
