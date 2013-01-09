@@ -11,6 +11,19 @@ class ChildrenController < ApplicationController
     @child = Child.find(params[:id])
   end
 
+  def edit
+    @child = Child.find(params[:id])
+  end
+
+  def update
+    @child = Child.find(params[:id])
+    if @child.update_attributes(params[:child])
+      # Handle a successful update.
+    else
+      render 'edit'
+    end
+  end
+
   def create
     @child = current_user.children.build(params[:child])
     if @child.save

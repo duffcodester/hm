@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(:version => 20130108223353) do
 
   create_table "challenges", :force => true do |t|
     t.string   "challenge_name"
-    t.integer  "point_value",    :limit => 255
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.integer  "point_value"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.integer  "parent_id"
   end
 
