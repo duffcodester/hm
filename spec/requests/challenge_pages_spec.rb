@@ -50,26 +50,25 @@ describe "Challenge Creation" do
 end
 
 describe "Challenges view" do
-
   subject { page }
 
-  describe "Browse" do
+  let(:parent) { FactoryGirl.create(:parent) }
+  let(:challenge) { FactoryGirl.create(:challenge, parent_id: parent.id) }
+  before { challenge.save }
 
+  describe "Browse" do
     before { visit challenges_path }
 
     it { should have_selector('h1', text: 'All Challenges in Database') }
+    it { should have_content(challenge.challenge_name) }
   end
 
   describe "Your" do
-    let(:parent) { FactoryGirl.create(:parent) }
-    before do
-      visit signin_path 
-      valid_signin(parent)
-    end
-    
+    before { sign_in parent }
     before { visit challenges_your_path }
 
     it { should have_selector('title',text: 'Your') }
     it { should have_selector('h1',text: 'Your challenges') }
+    it { should have_content(challenge.challenge_name) }
   end
 end

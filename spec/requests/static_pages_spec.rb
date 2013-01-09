@@ -64,7 +64,21 @@ describe "StaticPages" do
   end
 
   describe "child layout links" do
-    #it "should have the correct links" do
-    #end
+    it "should have the correct links" do
+      child = FactoryGirl.create(:child)
+      visit signin_path 
+      valid_signin(child)
+
+      should have_link('Children')
+      
+      should have_link('Account')
+      should have_link('Profile',  href: child_path(child))
+      should have_link('Settings', href: '#')
+      should have_link('Sign out', href: signout_path)
+
+      # challenges menu
+      should have_link('Challenges')
+      should have_link('Browse',   href: challenges_path)
+    end
   end
 end

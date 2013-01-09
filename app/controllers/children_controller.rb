@@ -3,6 +3,10 @@ class ChildrenController < ApplicationController
     @child = Child.new
   end
 
+  def your
+    @your_children = current_user.children
+  end
+
   def show
     @child = Child.find(params[:id])
   end

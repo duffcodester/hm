@@ -1,7 +1,7 @@
 <% provide(:title, "Browse") %>
 <h1>All Challenges in Database</h1>
 <ol>
-  <% for challenge in @challenge %>
+  <% @challenge.each do |challenge| %>
     <li><%= challenge.challenge_name %></li>
   <% end %>
 </ol>

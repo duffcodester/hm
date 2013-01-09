@@ -26,6 +26,8 @@ App based on [HealthMonster.net](http://healthmonster.net "HealthMonster.net")
 -  Add questions for steve section
 -  1/7/13 - need to separate out some stuff in the header shim
 -  Brought parent model up to date thru 9.3 (parents index complete)
+-  Need tests for index views (challenge and child)
+-  Any list items of parents/children/challenges should link to the show path
 
 ## Acceptance Criteria ##
 NYS  = not yet started  

@@ -1,0 +1,7 @@
+<% provide(:title, "Your") %>
+<h1>Your children</h1>
+<ol>
+  <% @your_children.each do |child| %>
+    <li><%= child.name %></li>
+  <% end %>
+</ol>
