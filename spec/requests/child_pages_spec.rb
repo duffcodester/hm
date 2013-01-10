@@ -4,6 +4,33 @@ describe "Child pages" do
 
   subject { page }
 
+  describe "index" do
+
+    let(:child) { FactoryGirl.create(:child) }
+
+    before(:each) do
+      sign_in child
+      visit children_path
+    end
+
+    it { should have_selector('title', text: 'All children') }
+    it { should have_selector('h1',    text: 'All children') }
+
+    describe "pagination" do
+
+      before(:all) { 30.times { FactoryGirl.create(:child) } }
+      after(:all)  { Child.delete_all }
+
+      it { should have_selector('div.pagination') }
+
+      it "should list each children" do
+        Child.paginate(page: 1).each do |children|
+          page.should have_selector('li', text: children.name)
+        end
+      end
+    end
+  end
+
   describe "create child page" do
     let(:parent) { FactoryGirl.create(:parent) }
     before do 
@@ -63,7 +90,14 @@ describe "Child pages" do
 
   describe "edit" do
     let(:child) { FactoryGirl.create(:child) }
+<<<<<<< HEAD
     before { visit edit_child_path(child) }
+=======
+    before do
+      sign_in child
+      visit edit_child_path(child)
+    end
+>>>>>>> updating-children
 
     describe "page" do
       it { should have_selector('h1',    text: "Update your profile") }
@@ -76,5 +110,26 @@ describe "Child pages" do
 
       it { should have_content('error') }
     end
+<<<<<<< HEAD
+=======
+
+    describe "with valid information" do
+      let(:new_name)  { "New Name" }
+      let(:new_email) { "new@example.com" }
+      before do
+        fill_in "Name",             with: new_name
+        fill_in "Email",            with: new_email
+        fill_in "Password",         with: child.password
+        fill_in "Confirm Password", with: child.password
+        click_button "Save changes"
+      end
+
+      it { should have_selector('title', text: new_name) }
+      it { should have_selector('div.alert.alert-success') }
+      it { should have_link('Sign out', href: signout_path) }
+      specify { child.reload.name.should  == new_name }
+      specify { child.reload.email.should == new_email }
+    end
+>>>>>>> updating-children
   end
 end

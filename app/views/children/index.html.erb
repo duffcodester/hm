@@ -1,0 +1,10 @@
+<% provide(:title, 'All children') %>
+<h1>All children</h1>
+
+<%= will_paginate %>
+
+<ul class="children">
+  <%= render @children %>
+</ul>
+
+<%= will_paginate %>

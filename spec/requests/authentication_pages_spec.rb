@@ -49,7 +49,7 @@ describe "Authentication" do
       before { sign_in child }
 
       it { should have_selector('title', text: child.name) }
-      it { should have_link('Children', href: '#') } 
+      it { should have_link('Children', href: children_path) } 
       it { should have_link('Profile', href: child_path(child)) }
       it { should have_link('Settings', href: edit_child_path(child)) }
       it { should have_link('Sign out', href: signout_path) }
@@ -78,7 +78,7 @@ describe "Authentication" do
         describe "after signing in" do
 
           it "should render the desired protected page" do
-            page.should have_selector('title', text: 'Edit user')
+            page.should have_selector('title', text: 'Edit parent')
           end
         end
       end
@@ -100,20 +100,75 @@ describe "Authentication" do
           it { should have_selector('title', text: 'Sign in') }
         end
       end
+
+      describe "as wrong parent" do
+        let(:parent) { FactoryGirl.create(:parent) }
+        let(:wrong_parent) { FactoryGirl.create(:parent, email: "wrong_parent@example.com") }
+        before { sign_in parent }
+
+        describe "visiting Parents#edit page" do
+          before { visit edit_parent_path(wrong_parent) }
+          it { should_not have_selector('title', text: full_title('Edit parent')) }
+        end
+
+        describe "submitting a PUT request to the Parents#update action" do
+          before { put parent_path(wrong_parent) }
+          specify { response.should redirect_to(root_path) }
+        end
+      end
     end
 
-    describe "as wrong user" do
-      let(:parent) { FactoryGirl.create(:parent) }
-      let(:wrong_parent) { FactoryGirl.create(:parent, email: "wrong@example.com") }
-      before { sign_in parent }
+    describe "for non-signed-in children" do
+      let(:child) { FactoryGirl.create(:child) }
 
-      describe "visiting Parents#edit page" do
-        before { visit edit_parent_path(wrong_parent) }
-        it { should_not have_selector('title', text: full_title('Edit user')) }
+      describe "when attempting to visit a protected page" do
+        before do
+          visit edit_child_path(child)
+          fill_in "Email", with: child.email
+          fill_in "Password", with: child.password
+          click_button "Sign in"
+        end
+
+        describe "after signing in" do
+
+          it "should render the desired protected page" do
+            page.should have_selector('title', text: 'Edit child')
+          end
+        end
+      end
+
+      describe "in the Children controller" do
+
+        describe "visiting the edit page" do
+          before { visit edit_child_path(child) }
+          it { should have_selector('title', text: 'Sign in') }
+        end
+
+        describe "submitting to the update action" do
+          before { put child_path(child) }
+          specify { response.should redirect_to(signin_path) }
+        end
+
+        describe "visiting the children index" do
+          before { visit children_path }
+          #Must be admin to view children index
+          it { should have_selector('title', text: 'Sign in') }
+        end
+      end
+    end
+
+    describe "as wrong child" do
+      let(:child) { FactoryGirl.create(:child) }
+      let(:wrong_child) { FactoryGirl.create(:wrong_child, email: "wrong_child@example.com") }
+      before { sign_in child }
+
+      describe "visiting Children#edit page" do
+        before { visit edit_child_path(wrong_child) }
+        it { should_not have_selector('title', text: full_title('Edit child')) }
       end
 
       describe "submitting a PUT request to the Parents#update action" do
-        before { put parent_path(wrong_parent) }
+        before { put child_path(wrong_child) }
         specify { response.should redirect_to(root_path) }
       end
     end

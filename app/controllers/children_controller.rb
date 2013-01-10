@@ -1,4 +1,8 @@
 class ChildrenController < ApplicationController
+before_filter :signed_in_child, only: [:index, :edit, :update]
+before_filter :correct_child, only: [:edit, :update]
+#before_filter :admin, [:index]
+
   def new
     @child = Child.new
   end
@@ -12,6 +16,7 @@ class ChildrenController < ApplicationController
   end
 
   def edit
+<<<<<<< HEAD
     @child = Child.find(params[:id])
   end
 
@@ -19,6 +24,19 @@ class ChildrenController < ApplicationController
     @child = Child.find(params[:id])
     if @child.update_attributes(params[:child])
       # Handle a successful update.
+=======
+  end
+
+  def index
+    @children = Child.paginate(page: params[:page])
+  end
+
+  def update
+    if @child.update_attributes(params[:child])
+      flash[:success] = "Profile updated"
+      sign_in @child
+      redirect_to @child
+>>>>>>> updating-children
     else
       render 'edit'
     end
@@ -33,4 +51,18 @@ class ChildrenController < ApplicationController
       render 'new'
     end
   end
+
+  private
+
+    def signed_in_child
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "Please sign in."
+      end
+    end
+
+    def correct_child
+      @child = Child.find(params[:id])
+      redirect_to(root_path) unless current_user?(@child)
+    end
 end

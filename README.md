@@ -28,6 +28,7 @@ App based on [HealthMonster.net](http://healthmonster.net "HealthMonster.net")
 -  Brought parent model up to date thru 9.3 (parents index complete)
 -  Need tests for index views (challenge and child)
 -  Any list items of parents/children/challenges should link to the show path
+-  1/9/2013 - Got both parents and children exactly up thru 9.3 for index, edit, and update. Getting two errors on factory not registered for wrong_child, can't figure out why.
 
 ## Acceptance Criteria ##
 NYS  = not yet started  

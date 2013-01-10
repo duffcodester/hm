@@ -16,8 +16,8 @@ module SessionsHelper
     @current_user ||= (Parent.find_by_remember_token(cookies[:remember_token]) or Child.find_by_remember_token(cookies[:remember_token]))
   end
 
-  def current_user?(parent)
-    parent == current_user
+  def current_user?(user)
+    user == current_user
   end
 
   def sign_out

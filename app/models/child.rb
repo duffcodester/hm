@@ -11,6 +11,7 @@
 
 class Child < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
+  #add parent_id to attr_accessible to populate db with fake children
   has_secure_password
   belongs_to :parent
 

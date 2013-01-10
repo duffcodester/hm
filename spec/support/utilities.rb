@@ -15,6 +15,15 @@ def sign_in(parent)
   cookies[:remember_token] = parent.remember_token
 end
 
+def sign_in(child)
+  visit signin_path
+  fill_in "Email",    with: child.email
+  fill_in "Password", with: child.password
+  click_button "Sign in"
+  # Sign in when not using Capybara as well.
+  cookies[:remember_token] = child.remember_token
+end
+
 RSpec::Matchers.define :have_error_message do |message|
   match do |page|
     page.should have_selector('div.alert.alert-error', text: message)
