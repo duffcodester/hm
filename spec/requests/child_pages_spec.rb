@@ -18,7 +18,7 @@ describe "Child pages" do
 
     describe "pagination" do
 
-      before(:all) { 30.times { git pushFactoryGirl.create(:child) } }
+      before(:all) { 30.times { FactoryGirl.create(:child) } }
       after(:all)  { Child.delete_all }
 
       it { should have_selector('div.pagination') }
