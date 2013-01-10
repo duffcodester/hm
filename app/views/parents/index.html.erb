@@ -1,10 +1,10 @@
 <% provide(:title, 'All parents') %>
 <h1>All parents</h1>
 
+<%= will_paginate %>
+
 <ul class="parents">
-  <% @parents.each do |parent| %>
-    <%= render @parents %>
-  <% end %>
+  <%= render @parents %>
 </ul>
 
-<%= will_paginate @parents %>
+<%= will_paginate %>

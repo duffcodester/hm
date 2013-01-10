@@ -1,9 +1,9 @@
-<% provide(:title, "Edit parent") %> 
+<% provide(:title, "Edit child") %> 
 <h1>Update your profile</h1>
 
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@parent) do |f| %>
+    <%= form_for(@child) do |f| %>
       <%= render 'shared/error_messages' %>
 
       <%= f.label :name %>
@@ -21,7 +21,7 @@
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
 
-    <%= gravatar_for @parent %>
+    <%= gravatar_for @child %>
     <a href="http://gravatar.com/emails">change</a>
   </div>
 </div>

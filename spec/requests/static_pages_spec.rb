@@ -73,7 +73,7 @@ describe "StaticPages" do
       
       should have_link('Account')
       should have_link('Profile',  href: child_path(child))
-      should have_link('Settings', href: '#')
+      should have_link('Settings', href: edit_child_path(child))
       should have_link('Sign out', href: signout_path)
 
       # challenges menu
