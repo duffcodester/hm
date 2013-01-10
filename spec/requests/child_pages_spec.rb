@@ -90,14 +90,11 @@ describe "Child pages" do
 
   describe "edit" do
     let(:child) { FactoryGirl.create(:child) }
-<<<<<<< HEAD
-    before { visit edit_child_path(child) }
-=======
+
     before do
       sign_in child
       visit edit_child_path(child)
     end
->>>>>>> updating-children
 
     describe "page" do
       it { should have_selector('h1',    text: "Update your profile") }
@@ -110,8 +107,6 @@ describe "Child pages" do
 
       it { should have_content('error') }
     end
-<<<<<<< HEAD
-=======
 
     describe "with valid information" do
       let(:new_name)  { "New Name" }
@@ -130,6 +125,5 @@ describe "Child pages" do
       specify { child.reload.name.should  == new_name }
       specify { child.reload.email.should == new_email }
     end
->>>>>>> updating-children
   end
 end
