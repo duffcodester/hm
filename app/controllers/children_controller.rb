@@ -16,15 +16,6 @@ before_filter :correct_child, only: [:edit, :update]
   end
 
   def edit
-<<<<<<< HEAD
-    @child = Child.find(params[:id])
-  end
-
-  def update
-    @child = Child.find(params[:id])
-    if @child.update_attributes(params[:child])
-      # Handle a successful update.
-=======
   end
 
   def index
@@ -36,7 +27,6 @@ before_filter :correct_child, only: [:edit, :update]
       flash[:success] = "Profile updated"
       sign_in @child
       redirect_to @child
->>>>>>> updating-children
     else
       render 'edit'
     end
