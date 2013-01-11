@@ -48,7 +48,7 @@ describe "Authentication" do
       let(:child) { FactoryGirl.create(:child) }
       before { sign_in child }
 
-      it { should have_selector('title', text: child.name) }
+      it { should have_selector('title', text: child.username) }
       it { should have_link('Children', href: children_path) } 
       it { should have_link('Profile', href: child_path(child)) }
       it { should have_link('Settings', href: edit_child_path(child)) }
@@ -124,7 +124,7 @@ describe "Authentication" do
       describe "when attempting to visit a protected page" do
         before do
           visit edit_child_path(child)
-          fill_in "Email", with: child.email
+          fill_in "Username", with: child.username
           fill_in "Password", with: child.password
           click_button "Sign in"
         end
@@ -159,7 +159,7 @@ describe "Authentication" do
 
     describe "as wrong child" do
       let(:child) { FactoryGirl.create(:child) }
-      let(:wrong_child) { FactoryGirl.create(:wrong_child, email: "wrong_child@example.com") }
+      let(:wrong_child) { FactoryGirl.create(:child, username: "wrong_username") }
       before { sign_in child }
 
       describe "visiting Children#edit page" do

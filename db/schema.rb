@@ -11,34 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130108223353) do
+ActiveRecord::Schema.define(:version => 20130111195212) do
 
   create_table "challenges", :force => true do |t|
     t.string   "challenge_name"
-<<<<<<< HEAD
-    t.integer  "point_value"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-=======
     t.integer  "point_value",    :limit => 255
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
->>>>>>> updating-children
     t.integer  "parent_id"
   end
 
   create_table "children", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "password_digest"
     t.string   "remember_token"
     t.integer  "parent_id"
+    t.string   "username"
   end
 
-  add_index "children", ["email"], :name => "index_children_on_email", :unique => true
   add_index "children", ["remember_token"], :name => "index_children_on_remember_token"
+  add_index "children", ["username"], :name => "index_children_on_username", :unique => true
 
   create_table "parents", :force => true do |t|
     t.string   "name"

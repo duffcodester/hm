@@ -13,15 +13,16 @@ require 'spec_helper'
 
 describe Child do
   let(:parent) { FactoryGirl.create(:parent) }
-  before{ @child = parent.children.build(name: "Example Child",
-                             email: "child@example.com",
+  before{ @child = parent.children.build(
+                             username: "Example_child",
                              password:              "foobar",
                              password_confirmation: "foobar") }
 
   subject { @child }
 
-  it { should respond_to(:name) }
-  it { should respond_to(:email) }
+  it { should_not respond_to(:name) }
+  it { should_not respond_to(:email) }
+  it { should respond_to(:username) }
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
@@ -34,59 +35,59 @@ describe Child do
 
   it { should be_valid }
 
-  describe "when name is not present" do
-    before { @child.name = " " }
+  describe "when username is not present" do
+    before { @child.username = " " }
     it { should_not be_valid }
   end
 
-  describe "when email is not present" do
-    before { @child.email = " " }
+  describe "when username is too short" do
+    before { @child.username = "a" * 2 }
     it { should_not be_valid }
   end
 
-  describe "when name is too long" do
-    before { @child.name = "a" * 51 }
+  describe "when username is too long" do
+    before { @child.username = "a" * 17 }
     it { should_not be_valid }
   end
 
-  describe "when email format is invalid" do
+  describe "when username format is invalid" do
     it "should be invalid" do
-      addresses = %w[child@foo,com Child_at_foo.org example.Child@foo.
-        foo@bar_baz.com foo@bar+baz.com]
-      addresses.each do |invalid_address|
-        @child.email = invalid_address
+      usernames = %w[child%foo example-child child@example.com]
+      usernames.each do |invalid_username|
+        @child.username = invalid_username
         @child.should_not be_valid
       end      
     end
   end
 
-  describe "when email format is valid" do
+  describe "when username format is valid" do
     it "should be valid" do
-      addresses = %w[Child@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
-      addresses.each do |valid_address|
-        @child.email = valid_address
+      #only accept usernames with letters, underscores, and numbers
+      usernames = %w[Example_child child_92 ex_am_ple]
+      usernames.each do |valid_username|
+        @child.username = valid_username
         @child.should be_valid
       end      
     end
   end
 
-  describe "when email address is already taken" do
+  describe "when username address is already taken" do
     before do
-      Child_with_same_email = @child.dup
-      Child_with_same_email.email = @child.email.upcase
-      Child_with_same_email.save
+      Child_with_same_username = @child.dup
+      Child_with_same_username.username = @child.username.upcase
+      Child_with_same_username.save
     end
 
     it { should_not be_valid }
   end
 
-  describe "email address with mixed case" do
-    let(:mixed_case_email) { "Foo@ExAMPle.CoM" }
+  describe "username address with mixed case" do
+    let(:mixed_case_username) { "UsErNaMe" }
 
     it "should be saved as all lower-case" do
-      @child.email = mixed_case_email
+      @child.username = mixed_case_username
       @child.save
-      @child.reload.email.should == mixed_case_email.downcase
+      @child.reload.username.should == mixed_case_username.downcase
     end
   end
 
@@ -112,7 +113,7 @@ describe Child do
 
   describe "return value of authenticate method" do
       before { @child.save }
-      let(:found_child) { Child.find_by_email(@child.email) }
+      let(:found_child) { Child.find_by_username(@child.username) }
 
       describe "with valid password" do
         it { should == found_child.authenticate(@child.password) }
@@ -129,13 +130,6 @@ describe Child do
   describe "remember token" do
     before { @child.save }
     its(:remember_token) { should_not be_blank }
-  end
-
-  describe "when email address is taken by a parent" do
-    let(:parent) { FactoryGirl.create(:parent) }
-    before { @child.email = parent.email }
-
-    it { should_not be_valid}
   end
 
   describe "accessible attributes" do

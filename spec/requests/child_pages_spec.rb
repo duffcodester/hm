@@ -24,8 +24,8 @@ describe "Child pages" do
       it { should have_selector('div.pagination') }
 
       it "should list each children" do
-        Child.paginate(page: 1).each do |children|
-          page.should have_selector('li', text: children.name)
+        Child.paginate(page: 1).each do |child|
+          page.should have_selector('li', text: child.username)
         end
       end
     end
@@ -46,14 +46,14 @@ describe "Child pages" do
     let(:child) { FactoryGirl.create(:child) }
     before { visit child_path(child) }
 
-    it { should have_selector('h1',    text: child.name) }
-    it { should have_selector('title', text: child.name) }
+    it { should have_selector('h1',    text: child.username) }
+    it { should have_selector('title', text: child.username) }
   end
 
   describe "signup" do
     let(:parent) { FactoryGirl.create(:parent) }
     before do 
-      parent_signin(parent)
+      sign_in(parent)
       visit new_child_path 
     end
 
@@ -67,8 +67,7 @@ describe "Child pages" do
 
     describe "with valid information" do
       before do
-        fill_in "Name",         with: "Example Child"
-        fill_in "Email",        with: "child@example.com"
+        fill_in "Username",     with: "example_child12"
         fill_in "Password",     with: "foobar"
         fill_in "Confirmation", with: "foobar"
       end
@@ -79,9 +78,9 @@ describe "Child pages" do
 
       describe "after saving the child" do
         before { click_button submit }
-        let(:child) { Child.find_by_email('child@example.com') }
+        let(:child) { Child.find_by_username('example_child12') }
 
-        it { should have_selector('title', text: child.name) }
+        it { should have_selector('title', text: child.username) }
         it { should have_selector('div.alert.alert-success', text: 'You' ) }
         it { should have_link('Sign out') }
       end
@@ -99,7 +98,6 @@ describe "Child pages" do
     describe "page" do
       it { should have_selector('h1',    text: "Update your profile") }
       it { should have_selector('title', text: "Edit child") }
-      it { should have_link('change', href: 'http://gravatar.com/emails') }
     end
 
     describe "with invalid information" do
@@ -109,21 +107,18 @@ describe "Child pages" do
     end
 
     describe "with valid information" do
-      let(:new_name)  { "New Name" }
-      let(:new_email) { "new@example.com" }
+      let(:new_username)  { "new_name12" }
       before do
-        fill_in "Name",             with: new_name
-        fill_in "Email",            with: new_email
+        fill_in "Username",         with: new_username
         fill_in "Password",         with: child.password
         fill_in "Confirm Password", with: child.password
         click_button "Save changes"
       end
 
-      it { should have_selector('title', text: new_name) }
+      it { should have_selector('title', text: new_username) }
       it { should have_selector('div.alert.alert-success') }
       it { should have_link('Sign out', href: signout_path) }
-      specify { child.reload.name.should  == new_name }
-      specify { child.reload.email.should == new_email }
+      specify { child.reload.username.should  == new_username }
     end
   end
 end

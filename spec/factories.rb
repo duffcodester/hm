@@ -7,8 +7,7 @@ FactoryGirl.define do
   end
 
   factory :child do
-    sequence(:name)  { |n| "Child #{n}" }
-    sequence(:email) { |n| "child_#{n}@example.com"}   
+    sequence(:username) { |n| "Child_#{n}" }
     password "foobar"
     password_confirmation "foobar"
     parent_id 1

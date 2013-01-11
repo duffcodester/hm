@@ -38,10 +38,10 @@ describe "StaticPages" do
   end
 
   describe "parent layout links" do
+    let(:parent) { FactoryGirl.create(:parent) }
+    before { sign_in(parent) }
+
     it "should have the correct links" do
-      parent = FactoryGirl.create(:parent)
-      visit signin_path 
-      valid_signin(parent)
 
       should have_link('Parents')
       
@@ -64,10 +64,10 @@ describe "StaticPages" do
   end
 
   describe "child layout links" do
+    let(:child) { FactoryGirl.create(:child) }
+    before { sign_in(child) }
+
     it "should have the correct links" do
-      child = FactoryGirl.create(:child)
-      visit signin_path 
-      valid_signin(child)
 
       should have_link('Children')
       
