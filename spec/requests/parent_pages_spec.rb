@@ -21,7 +21,7 @@ describe "Parent pages" do
       before(:all) { 30.times { FactoryGirl.create(:parent) } }
       after(:all)  { Parent.delete_all }
 
-      it { should have_selector('div.pagination') }
+      it { should have_pagination }
 
       it "should list each parent" do
         Parent.paginate(page: 1).each do |parent|
@@ -96,7 +96,7 @@ describe "Parent pages" do
         let(:parent) { Parent.find_by_email('parent@example.com') }
 
         it { should have_selector('title', text: parent.name) }
-        it { should have_selector('div.alert.alert-success', text: 'Welcome' ) }
+        it { should have_success_message('Welcome') }
         it { should have_link('Sign out') }
       end
     end
@@ -133,7 +133,7 @@ describe "Parent pages" do
       end
 
       it { should have_selector('title', text: new_name) }
-      it { should have_selector('div.alert.alert-success') }
+      it { should have_success_message) }
       it { should have_link('Sign out', href: signout_path) }
       specify { parent.reload.name.should  == new_name }
       specify { parent.reload.email.should == new_email }

@@ -8,6 +8,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  parent_id      :integer
+#  public         :boolean
 #
 
 require 'spec_helper'

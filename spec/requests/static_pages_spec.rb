@@ -54,7 +54,7 @@ describe "StaticPages" do
       should have_link('Challenges')
       should have_link('Create',   href: new_challenge_path)
       should have_link('Your',     href: challenges_your_path)
-      should have_link('Browse',   href: challenges_path)
+      should have_link('Browse',   href: community_pool_path)
 
       # children menu
       should have_link('Children')
@@ -78,7 +78,7 @@ describe "StaticPages" do
 
       # challenges menu
       should have_link('Challenges')
-      should have_link('Browse',   href: challenges_path)
+      should have_link('Browse',   href: community_pool_path)
     end
   end
 end

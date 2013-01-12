@@ -1,11 +1,9 @@
 require 'spec_helper'
 
 describe "Child pages" do
-
   subject { page }
 
   describe "index" do
-
     let(:child) { FactoryGirl.create(:child) }
 
     before(:each) do
@@ -13,25 +11,23 @@ describe "Child pages" do
       visit children_path
     end
 
-    it { should have_selector('title', text: 'All children') }
-    it { should have_selector('h1',    text: 'All children') }
+    it { should have_title('All children') }
+    it { should have_h1('All children') }
 
     describe "pagination" do
-
       before(:all) { 30.times { FactoryGirl.create(:child) } }
       after(:all)  { Child.delete_all }
 
-      it { should have_selector('div.pagination') }
+      it { should have_pagination }
 
       it "should list each children" do
         Child.paginate(page: 1).each do |child|
-          page.should have_selector('li', text: child.username)
+          page.should have_li(child.username)
         end
       end
     end
 
     describe "delete links" do
-
       it { should_not have_link('delete') }
 
       describe "as an admin parent" do
@@ -42,33 +38,34 @@ describe "Child pages" do
         end
 
         it { should have_link('delete', href: child_path(Child.first)) }
+
         it "should be able to delete child" do
           expect { click_link('delete') }.to change(Child, :count).by(-1)
         end
-        it "should not be able to delete himself" do
-          page.should_not have_link('delete', href: parent_path(admin))
-        end
+
+        specify { page.should_not have_link('delete', href: parent_path(admin)) }
       end
     end
   end
 
   describe "create child page" do
     let(:parent) { FactoryGirl.create(:parent) }
+
     before do 
       sign_in(parent)
       visit new_child_path 
     end
 
-    it { should have_selector('h1',    text: 'Sign up a child') }
-    it { should have_selector('title', text: full_title('Child Signup')) }
+    it { should have_h1('Sign up a child') }
+    it { should have_title(full_title('Child Signup')) }
   end
 
   describe "child profile page" do
     let(:child) { FactoryGirl.create(:child) }
     before { visit child_path(child) }
 
-    it { should have_selector('h1',    text: child.username) }
-    it { should have_selector('title', text: child.username) }
+    it { should have_h1(child.username) }
+    it { should have_title(child.username) }
   end
 
   describe "signup" do
@@ -101,8 +98,8 @@ describe "Child pages" do
         before { click_button submit }
         let(:child) { Child.find_by_username('example_child12') }
 
-        it { should have_selector('title', text: child.username) }
-        it { should have_selector('div.alert.alert-success', text: 'You' ) }
+        it { should have_title(child.username) }
+        it { should have_success_message('You') }
         it { should have_link('Sign out') }
       end
     end
@@ -117,14 +114,13 @@ describe "Child pages" do
     end
 
     describe "page" do
-      it { should have_selector('h1',    text: "Update your profile") }
-      it { should have_selector('title', text: "Edit child") }
+      it { should have_h1("Update your profile") }
+      it { should have_title("Edit child") }
     end
 
     describe "with invalid information" do
       before { click_button "Save changes" }
-
-      it { should have_content('error') }
+      it { should have_error_message }
     end
 
     describe "with valid information" do
@@ -136,8 +132,8 @@ describe "Child pages" do
         click_button "Save changes"
       end
 
-      it { should have_selector('title', text: new_username) }
-      it { should have_selector('div.alert.alert-success') }
+      it { should have_title(new_username) }
+      it { should have_success_message }
       it { should have_link('Sign out', href: signout_path) }
       specify { child.reload.username.should  == new_username }
     end

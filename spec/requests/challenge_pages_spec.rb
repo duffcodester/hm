@@ -7,19 +7,17 @@ describe "Challenge Creation" do
   describe "challenge creation page" do 
     before { visit new_challenge_path }
 
-    it { should have_selector('h1', text: 'Create a Challenge') }
-    it { should have_selector('title', text: 'Create a Challenge') }
-    it { should have_selector('label', text: "Description") }
-    it { should have_selector('label', text: "Point Value (9-999)") }
-    it { should have_selector('label', text: "Public?") }
-
+    it { should have_h1('Create a Challenge') }
+    it { should have_title('Create a Challenge') }
+    it { should have_label("Description") }
+    it { should have_label("Point Value (9-999)") }
+    it { should have_label("Public?") }
   end
 
   describe "creation" do
     let(:parent) { FactoryGirl.create(:parent) }
     before do
-      visit signin_path 
-      valid_signin(parent)
+      sign_in(parent)
       visit new_challenge_path
     end
 
@@ -45,9 +43,9 @@ describe "Challenge Creation" do
         before { click_button submit }
         let(:challenge) { Challenge.find_by_challenge_name('example challenge') }
 
-        it { should have_selector('title', text: challenge.challenge_name.capitalize) }
-        it { should have_selector('h1', text: challenge.challenge_name.capitalize) }
-        it { should have_selector('div.alert.alert-success', text: 'You')}
+        it { should have_title(challenge.challenge_name.capitalize) }
+        it { should have_h1(challenge.challenge_name.capitalize) }
+        it { should have_success_message('You')}
       end
     end
   end
@@ -56,18 +54,17 @@ end
 describe "Challenges view" do
   subject { page }
 
-  # refactor out parent info and add sequence to differentiate challenge names
   let(:parent) { FactoryGirl.create(:parent) }
-  let(:public_challenge) { FactoryGirl.create(:challenge, challenge_name: "Public Challenge", parent_id: parent.id, public: true) }
-  let(:private_challenge) { FactoryGirl.create(:challenge, challenge_name: "Private Challenge", parent_id: parent.id, public: false) }
+  let(:public_challenge) { FactoryGirl.create(:challenge, parent_id: parent.id, public: true) }
+  let(:private_challenge) { FactoryGirl.create(:challenge, parent_id: parent.id, public: false) }
   before { public_challenge.save }
   before { private_challenge.save }
 
   describe "Community Pool" do
     before { visit community_pool_path }
 
-    it { should have_selector('h1', text: 'Community Pool') }
-    it { should have_selector('title', text: 'Community Pool') }
+    it { should have_h1('Community Pool') }
+    it { should have_title('Community Pool') }
     it { should have_content(public_challenge.challenge_name) }
     it { should_not have_content(private_challenge.challenge_name) }
   end
@@ -76,8 +73,8 @@ describe "Challenges view" do
     before { sign_in parent }
     before { visit challenges_your_path }
 
-    it { should have_selector('title',text: 'Your') }
-    it { should have_selector('h1',text: 'Your challenges') }
+    it { should have_title('Your') }
+    it { should have_h1('Your challenges') }
     it { should have_content(private_challenge.challenge_name) }
     it { should have_content(public_challenge.challenge_name) }
   end
