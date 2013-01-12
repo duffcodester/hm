@@ -1,6 +1,7 @@
 class ChildrenController < ApplicationController
-before_filter :signed_in_child, only: [:index, :edit, :update]
+before_filter :signed_in_child, only: [:index, :edit, :update, :destroy]
 before_filter :correct_child, only: [:edit, :update]
+before_filter :admin_parent, only: :destroy
 #before_filter :admin, [:index]
 
   def new
@@ -42,6 +43,12 @@ before_filter :correct_child, only: [:edit, :update]
     end
   end
 
+  def destroy
+    Child.find(params[:id]).destroy
+    flash[:success] = "Child destroyed"
+    redirect_to children_url
+  end
+
   private
 
     def signed_in_child
@@ -54,5 +61,9 @@ before_filter :correct_child, only: [:edit, :update]
     def correct_child
       @child = Child.find(params[:id])
       redirect_to(root_path) unless current_user?(@child)
+    end
+
+    def admin_parent
+      redirect_to(root_path) unless current_user.admin?
     end
 end

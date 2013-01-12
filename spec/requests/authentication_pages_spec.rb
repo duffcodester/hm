@@ -172,5 +172,22 @@ describe "Authentication" do
         specify { response.should redirect_to(root_path) }
       end
     end
+
+    describe "as non-admin parent" do
+      let(:parent) { FactoryGirl.create(:parent) }
+      let(:non_admin) { FactoryGirl.create(:parent) }
+
+      before { sign_in non_admin }
+
+      describe "submitting a DELETE request to the Parents#destroy action" do
+        before { delete parent_path(non_admin) }
+        specify { response.should redirect_to(root_path) }        
+      end
+
+      describe "submitting a DELETE request to the Children#destroy action" do
+        before { delete child_path(non_admin) }
+        specify { response.should redirect_to(root_path) }        
+      end
+    end
   end
 end

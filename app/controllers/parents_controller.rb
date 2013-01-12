@@ -1,6 +1,7 @@
 class ParentsController < ApplicationController
-  before_filter :signed_in_parent, only: [:index, :edit, :update]
+  before_filter :signed_in_parent, only: [:index, :edit, :update, :destroy]
   before_filter :correct_parent, only: [:edit, :update]
+  before_filter :admin_parent, only: :destroy
 
   def new
     @parent = Parent.new
@@ -38,6 +39,12 @@ class ParentsController < ApplicationController
     end
   end
 
+  def destroy
+    Parent.find(params[:id]).destroy
+    flash[:success] = "Parent destroyed"
+    redirect_to parents_url
+  end
+
   private
 
     def signed_in_parent
@@ -50,5 +57,9 @@ class ParentsController < ApplicationController
     def correct_parent
       @parent = Parent.find(params[:id])
       redirect_to(root_path) unless current_user?(@parent)
+    end
+
+    def admin_parent
+      redirect_to(root_path) unless current_user.admin?
     end
 end

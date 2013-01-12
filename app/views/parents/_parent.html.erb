@@ -1,4 +1,8 @@
 <li>
   <%= gravatar_for parent, size: 52 %>
   <%= link_to parent.name, parent %>
+    <% if current_user.admin? && !current_user?(parent) %>
+    | <%= link_to "delete parent", parent, method: :delete,
+                                  data: { confirm: "You sure you want to delete parent?" } %>
+  <% end %>
 </li>

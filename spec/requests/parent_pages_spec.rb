@@ -29,6 +29,27 @@ describe "Parent pages" do
         end
       end
     end
+
+    describe "delete links" do
+
+      it { should_not have_link('delete') }
+
+      describe "as an admin parent" do
+        let(:admin) { FactoryGirl.create(:admin) }
+        before do
+          sign_in admin
+          visit parents_path
+        end
+
+        it { should have_link('delete', href: parent_path(Parent.first)) }
+        it "should be able to delete another user" do
+          expect { click_link('delete') }.to change(Parent, :count).by(-1)
+        end
+        it "should not be able to delete himself" do
+          page.should_not have_link('delete', href: parent_path(admin))
+        end
+      end
+    end
   end
   
   describe "signup page" do

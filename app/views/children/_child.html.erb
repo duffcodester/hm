@@ -1,3 +1,8 @@
 <li>
   <%= link_to child.username, child %>
+
+  <% if !current_user.instance_of?(Child) && current_user.admin? %>
+    | <%= link_to "delete child", child, method: :delete,
+                                 data: { confirm: "You sure you want to delete child?" } %>
+  <% end %>
 </li>
