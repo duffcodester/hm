@@ -7,6 +7,12 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.all
   end
 
+  def community_pool
+    @community_pool = Array.new
+    Challenge.all.each { |challenge| @community_pool.push(challenge) if challenge.public? }
+    @community_pool
+  end
+
   def show
     @challenge = Challenge.find(params[:id])
   end

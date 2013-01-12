@@ -12,6 +12,7 @@ Hm::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   match '/challenges_your', to: 'challenges#your'
+  match '/community_pool', to: 'challenges#community_pool'
   match '/children_your', to: 'children#your'
 
   # The priority is based upon order of creation:

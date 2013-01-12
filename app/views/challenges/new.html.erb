@@ -11,6 +11,9 @@
       <%= f.label :point_value, "Point Value (9-999)" %>
       <%= f.text_field :point_value %>
 
+      <%= f.label :public, "Public?" %>
+      <%= f.check_box :public %>
+
       <%= f.submit "Create Challenge", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>

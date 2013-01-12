@@ -22,6 +22,7 @@ describe Challenge do
   it { should respond_to(:point_value) }
   it { should respond_to(:parent_id) }
   it { should respond_to(:parent) }
+  it { should respond_to(:public) }
   its(:parent) { should == parent }
 
   it { should be_valid }
@@ -86,5 +87,8 @@ describe Challenge do
   describe "when parent_id is not present" do
     before { @challenge.parent_id = nil }
     it { should_not be_valid }
+  end
+
+  describe "that is public" do
   end
 end

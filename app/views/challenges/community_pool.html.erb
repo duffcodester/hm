@@ -1,0 +1,7 @@
+<% provide(:title, "Community Pool") %>
+<h1>Community Pool</h1>
+<ol>
+  <% @community_pool.each do |challenge| %>
+    <li><%= challenge.challenge_name %></li>
+  <% end %>
+</ol>

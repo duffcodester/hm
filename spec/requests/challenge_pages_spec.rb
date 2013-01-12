@@ -9,6 +9,10 @@ describe "Challenge Creation" do
 
     it { should have_selector('h1', text: 'Create a Challenge') }
     it { should have_selector('title', text: 'Create a Challenge') }
+    it { should have_selector('label', text: "Description") }
+    it { should have_selector('label', text: "Point Value (9-999)") }
+    it { should have_selector('label', text: "Public?") }
+
   end
 
   describe "creation" do
@@ -52,15 +56,20 @@ end
 describe "Challenges view" do
   subject { page }
 
+  # refactor out parent info and add sequence to differentiate challenge names
   let(:parent) { FactoryGirl.create(:parent) }
-  let(:challenge) { FactoryGirl.create(:challenge, parent_id: parent.id) }
-  before { challenge.save }
+  let(:public_challenge) { FactoryGirl.create(:challenge, challenge_name: "Public Challenge", parent_id: parent.id, public: true) }
+  let(:private_challenge) { FactoryGirl.create(:challenge, challenge_name: "Private Challenge", parent_id: parent.id, public: false) }
+  before { public_challenge.save }
+  before { private_challenge.save }
 
-  describe "Browse" do
-    before { visit challenges_path }
+  describe "Community Pool" do
+    before { visit community_pool_path }
 
-    it { should have_selector('h1', text: 'All Challenges in Database') }
-    it { should have_content(challenge.challenge_name) }
+    it { should have_selector('h1', text: 'Community Pool') }
+    it { should have_selector('title', text: 'Community Pool') }
+    it { should have_content(public_challenge.challenge_name) }
+    it { should_not have_content(private_challenge.challenge_name) }
   end
 
   describe "Your" do
@@ -69,6 +78,7 @@ describe "Challenges view" do
 
     it { should have_selector('title',text: 'Your') }
     it { should have_selector('h1',text: 'Your challenges') }
-    it { should have_content(challenge.challenge_name) }
+    it { should have_content(private_challenge.challenge_name) }
+    it { should have_content(public_challenge.challenge_name) }
   end
 end
