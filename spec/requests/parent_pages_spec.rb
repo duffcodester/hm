@@ -133,7 +133,7 @@ describe "Parent pages" do
       end
 
       it { should have_selector('title', text: new_name) }
-      it { should have_success_message) }
+      it { should have_success_message }
       it { should have_link('Sign out', href: signout_path) }
       specify { parent.reload.name.should  == new_name }
       specify { parent.reload.email.should == new_email }
