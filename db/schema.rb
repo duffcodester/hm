@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130113211628) do
+ActiveRecord::Schema.define(:version => 20130113221037) do
+
+  create_table "assigned_challenges", :force => true do |t|
+    t.integer  "parent_id"
+    t.integer  "challenge_id"
+    t.integer  "points"
+    t.boolean  "accepted"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "challenges", :force => true do |t|
     t.datetime "created_at",  :null => false
