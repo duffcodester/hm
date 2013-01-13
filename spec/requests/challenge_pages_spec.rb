@@ -9,8 +9,8 @@ describe "Challenge Creation" do
 
     it { should have_h1('Create a Challenge') }
     it { should have_title('Create a Challenge') }
+    it { should have_label("Name") }
     it { should have_label("Description") }
-    it { should have_label("Point Value (9-999)") }
     it { should have_label("Public?") }
   end
 
@@ -31,8 +31,8 @@ describe "Challenge Creation" do
 
     describe "with valid information" do
       before do
-        fill_in "Description",         with: "Example Challenge"
-        fill_in "Point Value (9-999)", with: "100"
+        fill_in "Name",         with: "Example Challenge"
+        fill_in "Description",  with: "Example Challenge Description"
       end
 
       it "should create a challenge" do
@@ -41,10 +41,10 @@ describe "Challenge Creation" do
 
       describe "after saving the challenge" do
         before { click_button submit }
-        let(:challenge) { Challenge.find_by_challenge_name('example challenge') }
+        let(:challenge) { Challenge.find_by_name('Example Challenge') }
 
-        it { should have_title(challenge.challenge_name.capitalize) }
-        it { should have_h1(challenge.challenge_name.capitalize) }
+        it { should have_title(challenge.name) }
+        it { should have_h1(challenge.name) }
         it { should have_success_message('You')}
       end
     end
@@ -65,8 +65,8 @@ describe "Challenges view" do
 
     it { should have_h1('Community Pool') }
     it { should have_title('Community Pool') }
-    it { should have_content(public_challenge.challenge_name) }
-    it { should_not have_content(private_challenge.challenge_name) }
+    it { should have_content(public_challenge.name) }
+    it { should_not have_content(private_challenge.name) }
   end
 
   describe "Your" do
@@ -75,7 +75,7 @@ describe "Challenges view" do
 
     it { should have_title('Your') }
     it { should have_h1('Your challenges') }
-    it { should have_content(private_challenge.challenge_name) }
-    it { should have_content(public_challenge.challenge_name) }
+    it { should have_content(private_challenge.name) }
+    it { should have_content(public_challenge.name) }
   end
 end

@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130112060700) do
+ActiveRecord::Schema.define(:version => 20130113211628) do
 
   create_table "challenges", :force => true do |t|
-    t.string   "challenge_name"
-    t.integer  "point_value",    :limit => 255
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "parent_id"
     t.boolean  "public"
+    t.string   "name"
+    t.text     "description"
   end
 
   create_table "children", :force => true do |t|

@@ -2,25 +2,25 @@
 #
 # Table name: challenges
 #
-#  id             :integer          not null, primary key
-#  challenge_name :string(255)
-#  point_value    :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  parent_id      :integer
-#  public         :boolean
+#  id          :integer          not null, primary key
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  parent_id   :integer
+#  public      :boolean
+#  name        :string(255)
+#  description :text
 #
 
 require 'spec_helper'
 
 describe Challenge do  
   let(:parent) { FactoryGirl.create(:parent) }
-  before { @challenge = parent.challenges.build(challenge_name: "Example Challenge", point_value: "10") }
+  before { @challenge = parent.challenges.build(name: "Example Challenge", description: "This provides a very in depth description of the Example Challenge") }
 
   subject { @challenge }
 
-  it { should respond_to(:challenge_name) }
-  it { should respond_to(:point_value) }
+  it { should respond_to(:name) }
+  it { should respond_to(:description) }
   it { should respond_to(:parent_id) }
   it { should respond_to(:parent) }
   it { should respond_to(:public) }
@@ -28,39 +28,42 @@ describe Challenge do
 
   it { should be_valid }
 
+  #validate_presence(@challenge, :name)
+
   describe "when challenge name is not present" do
-    before { @challenge.challenge_name = " " }
+    before { @challenge.name = " " }
     it { should_not be_valid }
   end
 
-  describe "when point value is not present" do
-    before { @challenge.point_value = nil } 
+  describe "when challenge description is not present" do
+    before { @challenge.description = " " } 
     it { should_not be_valid }
   end
 
   describe "when challenge name is too long" do
-    before { @challenge.challenge_name = "a" * 51 }
+    before { @challenge.name = "a" * 51 }
     it { should_not be_valid }
   end
 
-  describe "point value is an int" do
-    it { @challenge.point_value.should be_an_instance_of(Fixnum) }
-  end
-
-  describe "when point value is too small" do
-    before { @challenge.point_value = 0 }
-    it { should_not be_valid }
-  end
-
-  describe "when point value is too big" do
-    before { @challenge.point_value = 1000 }
-    it { should_not be_valid }
-  end
+  #Move to assigned_challenges_spec
+    #describe "point value is an int" do
+    #  it { @challenge.point_value.should be_an_instance_of(Fixnum) }
+    #end
+  #
+    #describe "when point value is too small" do
+    #  before { @challenge.point_value = 0 }
+    #  it { should_not be_valid }
+    #end
+  #
+    #describe "when point value is too big" do
+    #  before { @challenge.point_value = 1000 }
+    #  it { should_not be_valid }
+    #end
 
   describe "should not validate uniqueness" do
     before do
       Challenge_with_same_name = @challenge.dup
-      Challenge_with_same_name.challenge_name = @challenge.challenge_name.upcase
+      Challenge_with_same_name.name = @challenge.name.upcase
       Challenge_with_same_name.save
     end
 
@@ -68,12 +71,12 @@ describe Challenge do
   end
 
   describe "challenge name with mixed cased" do
-    let(:mixed_case_challenge_name) { "eXampLe cHallenGe" }
+    let(:mixed_case_name) { "eXampLe cHallenGe" }
 
-    it "should be saved as all lower-case" do
-      @challenge.challenge_name = mixed_case_challenge_name
+    it "should be saved as lower cased" do
+      @challenge.name = mixed_case_name
       @challenge.save
-      @challenge.reload.challenge_name.should == mixed_case_challenge_name.downcase
+      @challenge.reload.name.should == mixed_case_name.downcase
     end
   end
 

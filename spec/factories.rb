@@ -18,8 +18,8 @@ FactoryGirl.define do
   end
 
   factory :challenge do
-    sequence(:challenge_name) { |n| "Challenge #{n}" }
-    point_value    100
+    sequence(:name)        { |n| "Challenge #{n}" }
+    sequence(:description) { |n| "Challenge Description #{n}" }
     parent_id      1
   end
 end

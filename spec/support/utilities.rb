@@ -1,6 +1,6 @@
 include ApplicationHelper
 
-def valid_signin(parent)
+def valid_signin(parent) # need to get rid of this in rspec tests
   fill_in "Email",    with: parent.email
   fill_in "Password", with: parent.password
   click_button "Sign in"
@@ -15,6 +15,13 @@ def sign_in(user)
   # Sign in when not using Capybara as well.
   cookies[:remember_token] = user.remember_token
 end
+
+#def validate_presence(object, attribute)
+ # describe "when #{attribute.to_s} is not present" do
+  #  before { object.send(attribute) = " " } # or = nil
+   # specify { object.should be_valid }
+  #end
+#end
 
 RSpec::Matchers.define :have_error_message do |message|
   match do |page|
