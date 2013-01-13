@@ -8,9 +8,7 @@ class ChallengesController < ApplicationController
   end
 
   def community_pool
-    @community_pool = Array.new
-    Challenge.all.each { |challenge| @community_pool.push(challenge) if challenge.public? }
-    @community_pool
+    @community_pool = Challenge.where("public = ?", true)
   end
 
   def show
