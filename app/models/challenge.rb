@@ -2,13 +2,13 @@
 #
 # Table name: challenges
 #
-#  id             :integer          not null, primary key
-#  challenge_name :string(255)
-#  point_value    :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  parent_id      :integer
-#  public         :boolean
+#  id          :integer          not null, primary key
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  parent_id   :integer
+#  public      :boolean
+#  name        :string(255)
+#  description :text
 #
 
 class Challenge < ActiveRecord::Base
