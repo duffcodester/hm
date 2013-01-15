@@ -30,7 +30,7 @@ describe "Challenge Creation" do
     end
 
     describe "with valid information" do
-      before do
+      before(:each) do
         fill_in "Name",         with: "Example Challenge"
         fill_in "Description",  with: "Example Challenge Description"
         check "Public?"
@@ -42,7 +42,7 @@ describe "Challenge Creation" do
 
       describe "after saving the challenge" do
         before { click_button submit }
-        let(:challenge) { Challenge.find_by_name('Example Challenge') }
+        let(:challenge) { Challenge.find_by_name('example challenge') }
 
         it { should have_title(challenge.name) }
         it { should have_h1(challenge.name) }
