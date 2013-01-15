@@ -33,6 +33,7 @@ describe "Challenge Creation" do
       before do
         fill_in "Name",         with: "Example Challenge"
         fill_in "Description",  with: "Example Challenge Description"
+        check "Public?"
       end
 
       it "should create a challenge" do

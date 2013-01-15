@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe AssignedChallenge do
-  let(:parent)    = FactoryGirl.create(:parent)
-  let(:child)     = FactoryGirl.create(:child, parent_id: parent.id)
-  let(:challenge) = FactoryGirl.create(:challenge, parent_id: parent.id)
+  let(:parent)    { FactoryGirl.create(:parent) }
+  let(:child)     { FactoryGirl.create(:child, parent_id: parent.id) }
+  let(:challenge) { FactoryGirl.create(:challenge, parent_id: parent.id) }
   before { @assigned_challenge = parent.assigned_challenges.build(child_id: child.id, challenge_id: challenge.id, points: 100) }
 
   subject { @assigned_challenge }
@@ -42,17 +42,17 @@ describe AssignedChallenge do
   end
 
   describe "when parent_id is not present" do
-    before { @challenge.parent_id = nil } 
+    before { @assigned_challenge.parent_id = nil } 
     it { should_not be_valid }
   end
 
   describe "when child_id is not present" do
-    before { @challenge.child_id = nil } 
+    before { @assigned_challenge.child_id = nil } 
     it { should_not be_valid }
   end
   
   describe "when challenge_id is not present" do
-    before { @challenge.challenge_id = nil } 
+    before { @assigned_challenge.challenge_id = nil } 
     it { should_not be_valid }
   end
 
@@ -76,7 +76,7 @@ describe AssignedChallenge do
 
   describe "AssignedChallenge factory" do
     it "should make a valid AssignedChallenge" do
-      FactoryGirl.new(:assigned_challenge).should be_valid
+      FactoryGirl.build(:assigned_challenge).should be_valid
     end
   end
 end

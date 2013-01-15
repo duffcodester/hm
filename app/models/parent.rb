@@ -17,6 +17,7 @@ class Parent < ActiveRecord::Base
   has_secure_password
   has_many :challenges
   has_many :children
+  has_many :assigned_challenges
 
   before_save { |parent| parent.email = email.downcase }
   before_save :create_remember_token
