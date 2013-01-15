@@ -20,6 +20,14 @@ FactoryGirl.define do
   factory :challenge do
     sequence(:name)        { |n| "Challenge #{n}" }
     sequence(:description) { |n| "Challenge Description #{n}" }
-    parent_id      1
+    parent_id 1
+  end
+
+  factory :assigned_challenge do
+    points       100
+    accepted     false
+    parent_id    1
+    child_id     1
+    challenge_id 1
   end
 end
