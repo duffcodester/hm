@@ -45,21 +45,6 @@ describe Challenge do
     it { should_not be_valid }
   end
 
-  #Move to assigned_challenges_spec
-    #describe "point value is an int" do
-    #  it { @challenge.point_value.should be_an_instance_of(Fixnum) }
-    #end
-  #
-    #describe "when point value is too small" do
-    #  before { @challenge.point_value = 0 }
-    #  it { should_not be_valid }
-    #end
-  #
-    #describe "when point value is too big" do
-    #  before { @challenge.point_value = 1000 }
-    #  it { should_not be_valid }
-    #end
-
   describe "should not validate uniqueness" do
     before do
       Challenge_with_same_name = @challenge.dup
