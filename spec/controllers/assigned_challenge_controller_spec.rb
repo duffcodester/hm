@@ -1,5 +1,4 @@
 require 'spec_helper'
 
-describe AssignedChallengeController do
-
-end
+#describe AssignedChallengeController do
+#end

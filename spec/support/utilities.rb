@@ -43,6 +43,10 @@ RSpec::Matchers.define :have_h1 do |message|
   match { |page| page.should have_selector('h1', text: message) }
 end
 
+RSpec::Matchers.define :have_h3 do |message|
+  match { |page| page.should have_selector('h3', text: message) }
+end
+
 RSpec::Matchers.define :have_label do |message|
   match { |page| page.should have_selector('label', text: message) }
 end
