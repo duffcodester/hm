@@ -5,19 +5,19 @@
   <div class="span6 offset3">
     <%= form_for(@assigned_challenge) do |f| %>
 
-      <h1>Select a challenges</h1>
+      <h4>Select a challenge</h4>
       <% for challenge in @challenges do %>
         <%= f.radio_button :challenge_id, challenge.id %>
         <%= f.label :challenge_id, challenge.name %>
       <% end %>
 
-      <h3>Select children</h3>
+      <h4>Select children</h4>
       <% for child in @children do %>
         <%= f.radio_button :child_id, child.id %>
         <%= f.label :child_id, child.username %>
       <% end %>
 
-      <h3>Points (9-999)</h3>
+      <h4>Assign Points (9-999)</h4>
       <%= f.label :points %>
       <%= f.text_field :points %>
 
