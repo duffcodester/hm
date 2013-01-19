@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe "Assigned Challenge Creation" do
+describe "Assigned Challenges" do
   
   subject { page }
 
-  describe "assigned_challenge creation page" do
+  describe "assign challenge page" do
     let(:parent) { FactoryGirl.create(:parent) }
     let(:challenge) { FactoryGirl.create(:challenge, parent_id: parent.id) }
     let(:child) { FactoryGirl.create(:child, parent_id: parent.id) }
@@ -32,4 +32,15 @@ describe "Assigned Challenge Creation" do
       it { should have_selector('label', text: child.username)  }
     end
   end
+
+  describe "creation" do
+    before do
+      check challenge.name
+      check child.username
+      fill_in "Assign Points (9-999)", with: '100'
+    end
+
+    it "should assign a challenge" do
+      expect { click_button "Assign Challenge" }.to change (assigned_challenges:count.by(1))
+    end
 end

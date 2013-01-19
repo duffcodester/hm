@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Challenge Creation" do
+describe "Challenges" do
 
   subject { page }
 
