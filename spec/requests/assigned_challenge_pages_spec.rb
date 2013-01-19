@@ -31,16 +31,17 @@ describe "Assigned Challenges" do
       it { should have_selector('label', text: challenge.name)  }
       it { should have_selector('label', text: child.username)  }
     end
+
+    describe "assignment" do
+      before do
+        #choose challenge.name
+        choose child.username
+        fill_in "Assign Points (9-999)", with: '100'
+      end
+  
+      it "should assign a challenge" do
+        expect { click_button "Assign Challenge" }.to change( AssignedChallenge, :count).by(1)
+      end
+    end
   end
-
-  describe "creation" do
-    before do
-      check challenge.name
-      check child.username
-      fill_in "Assign Points (9-999)", with: '100'
-    end
-
-    it "should assign a challenge" do
-      expect { click_button "Assign Challenge" }.to change (assigned_challenges:count.by(1))
-    end
 end
