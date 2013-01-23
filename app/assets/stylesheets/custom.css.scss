@@ -103,6 +103,10 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
+.input label {
+  width: 100%;
+}
+
 input {
   height: auto !important;
 }
@@ -159,3 +163,4 @@ input {
     }
   }
 }
+

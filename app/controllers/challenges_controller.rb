@@ -8,7 +8,7 @@ class ChallengesController < ApplicationController
   end
 
   def community_pool
-    @community_pool = Challenge.where("public = ?", true)
+    @community_pool = Challenge.search(params[:search])
   end
 
   def show

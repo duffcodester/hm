@@ -68,6 +68,27 @@ describe "Challenges view" do
     it { should have_title('Community Pool') }
     it { should have_content(public_challenge.name) }
     it { should_not have_content(private_challenge.name) }
+
+    describe "search" do
+
+      describe "for public challenge" do
+        before do
+        fill_in "search", with: public_challenge.name
+        click_button 'Search'
+        end
+  
+        it { should have_content(public_challenge.name) }
+      end
+
+      describe "for private challenge" do
+        before do
+          fill_in "search", with: private_challenge.name
+          click_button 'Search'
+        end
+
+        it { should_not have_content(private_challenge.name) }
+      end
+    end
   end
 
   describe "Your" do

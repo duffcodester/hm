@@ -20,4 +20,12 @@ class Challenge < ActiveRecord::Base
   validates :parent_id, presence: true
   validates :name, presence: true, length: { maximum: 50 }
   validates :description, presence: true
+
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['name LIKE ?', "%#{search}%"] && ["public = ?", true])
+    else
+      Challenge.where("public = ?", true)
+    end
+  end
 end

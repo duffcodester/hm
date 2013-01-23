@@ -1,17 +1,18 @@
 require 'spec_helper'
 
-describe "Assigned Challenges" do
-  
+describe "Assigning a Challenge" do
+  let(:parent) { FactoryGirl.create(:parent) }
+  let(:challenge) { FactoryGirl.create(:challenge, name: 'test challenge', parent_id: parent.id) }
+  let(:child) { FactoryGirl.create(:child, parent_id: parent.id) }
+
+  before do
+    sign_in(parent)
+    visit new_assigned_challenge_path
+  end
+
   subject { page }
 
   describe "assign challenge page" do
-    let(:parent) { FactoryGirl.create(:parent) }
-  
-    before do
-      sign_in parent
-      visit new_assigned_challenge_path
-    end
-
     let(:submit) { "Assign Challenge" }
 
     describe "should have the right title and page heading" do
@@ -26,17 +27,10 @@ describe "Assigned Challenges" do
     end
 
     describe "should have the right choices" do
-      let(:challenge) { FactoryGirl.create(:challenge, parent_id: parent.id, name: "Test Challenge") }
-      let(:child) { FactoryGirl.create(:child, parent_id: parent.id) }
-      before do
-        challenge.save
-        child.save
-      end
-
-      it { should have_selector(challenge.name)  }
-      it { should have_selector('label', text: child.username)  }
       it { has_field?(challenge.name) }
+      #it { should have_label(challenge.name)  }
       it { has_field?(child.username) }
+      #it { should have_label(child.username)  }
     end
 
     describe "assignment" do
@@ -49,9 +43,9 @@ describe "Assigned Challenges" do
 
       describe "with valid information" do
         before do
-          #choose(challenge.name)
+          #choose challenge.name
           #choose child.username
-          #fill_in "Assign Points (9-999)", with: '100'
+          fill_in 'assigned_challenge_points', with: '100'
         end
   
         it "should create a challenge" do

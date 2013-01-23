@@ -43,6 +43,8 @@ describe "StaticPages" do
 
     it "should have the correct links" do
 
+      should have_link('Assign a challenge', href: new_assigned_challenge_path)
+
       should have_link('Parents')
       
       should have_link('Account')
@@ -52,6 +54,7 @@ describe "StaticPages" do
 
       # challenges menu
       should have_link('Challenges')
+      should have_link('Assign', href: new_assigned_challenge_path)
       should have_link('Create',   href: new_challenge_path)
       should have_link('Your',     href: challenges_your_path)
       should have_link('Browse',   href: community_pool_path)
