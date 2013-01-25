@@ -13,7 +13,7 @@
 #
 
 class Parent < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :admin
   has_secure_password
   has_many :challenges
   has_many :children
