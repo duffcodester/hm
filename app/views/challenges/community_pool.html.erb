@@ -1,7 +1,7 @@
-<% provide(:title, "Community Pool") %>
-<h1>Community Pool</h1>
+<% provide(:title, "Challenges Community Pool") %>
+<h1>Challenges Community Pool</h1>
 
-<%= form_tag community_pool_path, :method => 'get' do %>
+<%= form_tag challenges_community_pool_path, :method => 'get' do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>

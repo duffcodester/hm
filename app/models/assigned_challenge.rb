@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: assigned_challenges
+#
+#  id           :integer          not null, primary key
+#  parent_id    :integer
+#  challenge_id :integer
+#  points       :integer
+#  accepted     :boolean
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  child_id     :integer
+#
+
 class AssignedChallenge < ActiveRecord::Base
   attr_accessible :challenge_id, :points, :accepted, :child_id
   belongs_to :challenge

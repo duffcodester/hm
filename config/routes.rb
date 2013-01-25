@@ -2,6 +2,7 @@ Hm::Application.routes.draw do
   resources :parents
   resources :sessions, only: [:new, :create, :destroy]
   resources :challenges
+  resources :rewards
   resources :children
   resources :assigned_challenges
 
@@ -10,9 +11,12 @@ Hm::Application.routes.draw do
   match '/signup', to: 'parents#new'
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
-  match '/challenges_your', to: 'challenges#your'
-  match '/community_pool', to: 'challenges#community_pool'
-  match '/children_your', to: 'children#your'
+  
+  match '/challenges_your',           to: 'challenges#your'
+  match '/challenges_community_pool', to: 'challenges#community_pool'
+  match '/rewards_your',              to: 'rewards#your'
+  match '/rewards_community_pool',    to: 'rewards#community_pool'
+  match '/children_your',             to: 'children#your'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

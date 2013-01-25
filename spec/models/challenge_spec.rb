@@ -78,6 +78,5 @@ describe Challenge do
     it { should_not be_valid }
   end
 
-  describe "that is public" do
-  end
+  describe "that is public"
 end

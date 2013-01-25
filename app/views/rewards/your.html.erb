@@ -1,0 +1,7 @@
+<% provide(:title, "Your") %>
+<h1>Your rewards</h1>
+<ol>
+  <% @your_rewards.each do |reward| %>
+    <li><%= reward.name %></li>
+  <% end %>
+</ol>

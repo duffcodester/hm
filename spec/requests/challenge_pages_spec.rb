@@ -62,10 +62,10 @@ describe "Challenges view" do
   before { private_challenge.save }
 
   describe "Community Pool" do
-    before { visit community_pool_path }
+    before { visit challenges_community_pool_path }
 
-    it { should have_h1('Community Pool') }
-    it { should have_title('Community Pool') }
+    it { should have_h1('Challenges Community Pool') }
+    it { should have_title('Challenges Community Pool') }
     it { should have_content(public_challenge.name) }
     it { should_not have_content(private_challenge.name) }
 

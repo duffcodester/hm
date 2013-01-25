@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: assigned_challenges
+#
+#  id           :integer          not null, primary key
+#  parent_id    :integer
+#  challenge_id :integer
+#  points       :integer
+#  accepted     :boolean
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  child_id     :integer
+#
+
 require 'spec_helper'
 
 describe AssignedChallenge do
