@@ -24,6 +24,13 @@ FactoryGirl.define do
     public false
   end
 
+  factory :reward do
+    sequence(:name)        { |n| "Reward #{n}" }
+    sequence(:description) { |n| "Reward Description #{n}" }
+    parent_id 1
+    public false
+  end
+
   factory :assigned_challenge do
     points       100
     accepted     false

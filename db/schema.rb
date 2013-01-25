@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130115143715) do
+ActiveRecord::Schema.define(:version => 20130125051413) do
 
   create_table "assigned_challenges", :force => true do |t|
     t.integer  "parent_id"
@@ -56,5 +56,14 @@ ActiveRecord::Schema.define(:version => 20130115143715) do
 
   add_index "parents", ["email"], :name => "index_parents_on_email", :unique => true
   add_index "parents", ["remember_token"], :name => "index_parents_on_remember_token"
+
+  create_table "rewards", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "public"
+    t.integer  "parent_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
 end
