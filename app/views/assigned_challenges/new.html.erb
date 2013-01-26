@@ -6,16 +6,14 @@
     <%= form_for(@assigned_challenge) do |f| %>
 
       <h4>Select a challenge</h4>
-      <% for challenge in @challenges do %>
-        <%= f.label(:challenge_id, challenge.name) %>
-        <%= f.radio_button(:challenge_id, challenge.id) %>
-      <% end %>
 
-      <h4>Select children</h4>
-      <% for child in @children do %>
-        <%= f.label(:child_id, child.username) %>
-        <%= f.radio_button(:child_id, child.id) %>
-      <% end %>
+      <%= options_from_collection_for_select(@challenges, :id, :name) %>
+      <%= collection_select(:assigned_challenge, :challenge_id, @challenges, :id, :name) %>
+
+      <h4>Select child</h4>
+
+      <%= options_from_collection_for_select(@children, :id, :username) %>
+      <%= collection_select(:assigned_challenge, :child_id, @children, :id, :username) %>
 
       <h4>Assign Points (9-999)</h4>
       
@@ -23,5 +21,7 @@
 
       <%= f.submit "Assign Challenge", class: "btn btn-large btn-primary" %>
     <% end %>
+
+
   </div>
 </div>

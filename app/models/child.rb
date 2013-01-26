@@ -16,7 +16,8 @@ class Child < ActiveRecord::Base
   #add parent_id to attr_accessible to populate db with fake children
   has_secure_password
   belongs_to :parent
-  has_many :assigned_challenges
+  has_many :assigned_challenges, foreign_key: "child_id", class_name: "AssignedChallenge", dependent: :destroy
+  has_many :challenges, through: :assigned_challenges, source: :challenge
 
   before_save :create_remember_token
   before_save { |child| child.username = username.downcase }

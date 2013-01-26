@@ -12,6 +12,10 @@ before_filter :admin_parent, only: :destroy
     @your_children = current_user.children
   end
 
+  def assigned_challenges
+    @assigned_challenges = current_user.assigned_challenges
+  end
+
   def show
     @child = Child.find(params[:id])
   end

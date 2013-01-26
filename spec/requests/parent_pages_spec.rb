@@ -45,6 +45,7 @@ describe "Parent pages" do
         it "should be able to delete another user" do
           expect { click_link('delete') }.to change(Parent, :count).by(-1)
         end
+        
         it "should not be able to delete himself" do
           page.should_not have_link('delete', href: parent_path(admin))
         end

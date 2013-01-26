@@ -42,8 +42,6 @@ describe "Child pages" do
         it "should be able to delete child" do
           expect { click_link('delete') }.to change(Child, :count).by(-1)
         end
-
-        specify { page.should_not have_link('delete', href: parent_path(admin)) }
       end
     end
   end
@@ -61,11 +59,27 @@ describe "Child pages" do
   end
 
   describe "child profile page" do
-    let(:child) { FactoryGirl.create(:child) }
+    let!(:child) { FactoryGirl.create(:child) }
+    let!(:challenge) { FactoryGirl.create(:challenge) }
+    let!(:assigned_challenge) { FactoryGirl.create(:assigned_challenge, child_id: child.id, challenge_id: challenge.id) }
+
     before { visit child_path(child) }
 
     it { should have_h1(child.username) }
     it { should have_title(child.username) }
+
+    describe "should display assigned challenges" do
+      it { should have_selector('h4', text: "Assigned Challenges") }
+      
+        it { should have_li(challenge.name) }
+    end
+
+    describe "should display validated rewards" do
+      
+
+      it { should have_selector('h4', text: "Validated Rewards") }
+      #it { should have_li("Test Validated Reward") }
+    end
   end
 
   describe "signup" do
@@ -87,7 +101,7 @@ describe "Child pages" do
       before do
         fill_in "Username",     with: "example_child12"
         fill_in "Password",     with: "foobar"
-        fill_in "Confirmation", with: "foobar"
+        fill_in "Password Confirmation", with: "foobar"
       end
 
       it "should create a child" do

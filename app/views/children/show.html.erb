@@ -2,3 +2,13 @@
 <h1>
   <%= @child.username %>
 </h1>
+
+<h4>Assigned Challenges</h4>
+<ol>
+  <% @child.challenges.each do |challenge| %>
+    <li><%= challenge.name %></li>
+  <% end %>
+</ol>
+<h4>Validated Rewards</h4>
+
+

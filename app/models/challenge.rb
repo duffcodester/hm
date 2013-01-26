@@ -14,6 +14,7 @@
 class Challenge < ActiveRecord::Base
   attr_accessible :name, :description, :public
   belongs_to :parent
+  belongs_to :child
   has_many :assigned_challenges
 
   before_save { |challenge| challenge.name = name.downcase }
