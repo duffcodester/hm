@@ -59,19 +59,34 @@ describe "Child pages" do
   end
 
   describe "child profile page" do
-    let!(:child) { FactoryGirl.create(:child) }
+    let!(:child) { FactoryGirl.create(:child, points: "99") }
     let!(:challenge) { FactoryGirl.create(:challenge) }
     let!(:assigned_challenge) { FactoryGirl.create(:assigned_challenge, child_id: child.id, challenge_id: challenge.id) }
+    let!(:accepted_challenge) { FactoryGirl.create(:assigned_challenge, child_id: child.id, challenge_id: challenge.id, accepted: true) }
 
     before { visit child_path(child) }
 
     it { should have_h1(child.username) }
     it { should have_title(child.username) }
 
+    describe "should display points" do
+      it { should have_selector('h3', text: "Current Points:") }
+      it { should have_selector('h3', text: "99") }
+    end
+
     describe "should display assigned challenges" do
       it { should have_selector('h4', text: "Assigned Challenges") }
       
-        it { should have_li(challenge.name) }
+      it { should have_li(assigned_challenge.challenge.name) }
+
+        describe "with accept link" do
+          it { should have_selector('input', :value => "Accept") }
+        end
+    end
+
+    describe "should display accepted challenges" do
+      it { should have_selector('h4', text: "Accepted Challenges") }
+      it { should have_li(accepted_challenge.challenge.name) }
     end
 
     describe "should display validated rewards" do
@@ -151,5 +166,20 @@ describe "Child pages" do
       it { should have_link('Sign out', href: signout_path) }
       specify { child.reload.username.should  == new_username }
     end
+  end
+
+  describe "accepting challenge" do
+    let(:parent) { FactoryGirl.create(:parent) }
+    let(:child) { FactoryGirl.create(:child, parent_id: parent.id) }
+    let(:challenge) { FactoryGirl.create(:challenge) }
+    let!(:assigned_challenge) { FactoryGirl.create(:assigned_challenge, parent_id: parent.id, child_id: child.id, challenge_id: challenge.id) }
+    before do
+      sign_in child
+      visit child_path(child)
+      click_button "Accept"
+    end
+
+    let(:accepted_challenge) { AssignedChallenge.find_by_id(challenge.id) }
+    specify { accepted_challenge.accepted? }
   end
 end

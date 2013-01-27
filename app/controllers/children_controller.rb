@@ -12,12 +12,10 @@ before_filter :admin_parent, only: :destroy
     @your_children = current_user.children
   end
 
-  def assigned_challenges
-    @assigned_challenges = current_user.assigned_challenges
-  end
-
   def show
     @child = Child.find(params[:id])
+    @assigned_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("accepted =?", false)
+    @accepted_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("accepted =?", true)
   end
 
   def edit

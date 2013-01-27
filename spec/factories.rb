@@ -15,6 +15,7 @@ FactoryGirl.define do
     password "foobar"
     password_confirmation "foobar"
     parent_id 1
+    points 100
   end
 
   factory :challenge do

@@ -30,6 +30,9 @@ describe Child do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:assigned_challenges) }
+  it { should respond_to(:challenges) }
+  it { should respond_to(:points) }
 
   it { should respond_to(:parent_id) }
   it { should respond_to(:parent) }

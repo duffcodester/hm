@@ -22,6 +22,17 @@ class AssignedChallengesController < ApplicationController
     end
   end
 
+  def update
+    @assigned_challenge = AssignedChallenge.find(params[:id])
+    if @assigned_challenge.update_attributes(params[:assigned_challenge])
+      flash[:sucess] = "Challenge Accepted"
+      render 'show'
+    else
+      flash[:error] = "Error accepting challenge"
+      render 'show'
+    end
+  end
+
   #Unassigns a challenge to a child
   def destroy
     AssignedChallenge.find(params[:id]).destroy

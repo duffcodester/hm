@@ -3,12 +3,28 @@
   <%= @child.username %>
 </h1>
 
+<h3>Current Points: <%= @child.points %> points.</h3>
+<br>
 <h4>Assigned Challenges</h4>
 <ol>
-  <% @child.challenges.each do |challenge| %>
-    <li><%= challenge.name %></li>
+  <% @assigned_challenges.each do |assigned_challenge| %>
+    <li><%= assigned_challenge.challenge.name %>
+      <%= form_for assigned_challenge, :method => "put" do |f| %>
+      <%= f.hidden_field :accepted, :value => true %>
+      <%= f.submit "Accept" %>
+      <% end %>
+    </li>
   <% end %>
 </ol>
+
+<h4>Accepted Challenges</h4>
+<ol>
+  <% @accepted_challenges.each do |accepted_challenge| %>
+    <li><%= accepted_challenge.challenge.name %>
+    </li>
+  <% end %>
+</ol>
+<br>
 <h4>Validated Rewards</h4>
 
 

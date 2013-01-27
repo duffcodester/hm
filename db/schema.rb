@@ -11,16 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130125051413) do
+ActiveRecord::Schema.define(:version => 20130127064527) do
 
   create_table "assigned_challenges", :force => true do |t|
     t.integer  "parent_id"
     t.integer  "challenge_id"
     t.integer  "points"
-    t.boolean  "accepted"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.integer  "child_id"
+    t.boolean  "accepted",     :default => false
   end
 
   create_table "challenges", :force => true do |t|
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20130125051413) do
     t.string   "remember_token"
     t.integer  "parent_id"
     t.string   "username"
+    t.integer  "points"
   end
 
   add_index "children", ["remember_token"], :name => "index_children_on_remember_token"

@@ -15,7 +15,8 @@ class Challenge < ActiveRecord::Base
   attr_accessible :name, :description, :public
   belongs_to :parent
   belongs_to :child
-  has_many :assigned_challenges
+
+  has_many :assigned_challenges, foreign_key: "challenge_id"
 
   before_save { |challenge| challenge.name = name.downcase }
   validates :parent_id, presence: true
