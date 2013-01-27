@@ -13,5 +13,5 @@
 #
 
 class Challenge < Resource
-  has_many :assigned_challenges, foreign_key: "challenge_id"
+  has_many :assigned_challenges
 end
