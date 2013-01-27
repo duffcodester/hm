@@ -1,0 +1,7 @@
+<% provide(:title, "#{@resources.first.type.capitalize} Index") %>
+<h1><%= "#{@resources.first.type.capitalize}s Index" %></h1>
+<ol>
+  <% @resources.each do |resource| %>
+    <li><%= resource.name %></li>
+  <% end %>
+</ol>

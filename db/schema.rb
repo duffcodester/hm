@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127064303) do
+ActiveRecord::Schema.define(:version => 20130127091211) do
 
   create_table "assigned_challenges", :force => true do |t|
     t.integer  "parent_id"
@@ -21,15 +21,6 @@ ActiveRecord::Schema.define(:version => 20130127064303) do
     t.datetime "updated_at",                      :null => false
     t.integer  "child_id"
     t.boolean  "accepted",     :default => false
-  end
-
-  create_table "challenges", :force => true do |t|
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "parent_id"
-    t.boolean  "public"
-    t.string   "name"
-    t.text     "description"
   end
 
   create_table "children", :force => true do |t|
@@ -58,11 +49,12 @@ ActiveRecord::Schema.define(:version => 20130127064303) do
   add_index "parents", ["email"], :name => "index_parents_on_email", :unique => true
   add_index "parents", ["remember_token"], :name => "index_parents_on_remember_token"
 
-  create_table "rewards", :force => true do |t|
+  create_table "resources", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.boolean  "public"
     t.integer  "parent_id"
+    t.string   "type"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

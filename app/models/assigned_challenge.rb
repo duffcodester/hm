@@ -6,10 +6,10 @@
 #  parent_id    :integer
 #  challenge_id :integer
 #  points       :integer
-#  accepted     :boolean
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  child_id     :integer
+#  accepted     :boolean          default(FALSE)
 #
 
 class AssignedChallenge < ActiveRecord::Base

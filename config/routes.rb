@@ -1,8 +1,8 @@
 Hm::Application.routes.draw do
   resources :parents
   resources :sessions, only: [:new, :create, :destroy]
-  resources :challenges
-  resources :rewards
+  resources :challenges, controller: "resources", type: "Challenge"
+  resources :rewards, controller: "resources", type: "Reward"
   resources :children
   resources :assigned_challenges
 

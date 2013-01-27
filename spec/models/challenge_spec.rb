@@ -1,14 +1,15 @@
 # == Schema Information
 #
-# Table name: challenges
+# Table name: resources
 #
 #  id          :integer          not null, primary key
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  parent_id   :integer
-#  public      :boolean
 #  name        :string(255)
 #  description :text
+#  public      :boolean
+#  parent_id   :integer
+#  type        :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 require 'spec_helper'

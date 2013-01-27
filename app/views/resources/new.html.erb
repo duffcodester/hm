@@ -1,9 +1,9 @@
-<% provide(:title, 'Create a Reward') %>
-<h1>Create a Reward</h1>
+<% provide(:title, "Create a #{@resource.type.capitalize}") %>
+<h1><%= "Create a #{@resource.type.capitalize}" %></h1>
 
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@reward) do |f| %>
+    <%= form_for(@resource) do |f| %>
 
       <%= f.label :name %>
       <%= f.text_field :name %>
@@ -14,7 +14,7 @@
       <%= f.label :public, "Public?" %>
       <%= f.check_box :public %>
 
-      <%= f.submit "Create Reward", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Create #{@resource.type.capitalize}", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 </div>

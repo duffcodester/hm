@@ -9,6 +9,7 @@
 #  remember_token  :string(255)
 #  parent_id       :integer
 #  username        :string(255)
+#  points          :integer
 #
 
 class Child < ActiveRecord::Base
