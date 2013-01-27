@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127064527) do
+ActiveRecord::Schema.define(:version => 20130127064303) do
 
   create_table "assigned_challenges", :force => true do |t|
     t.integer  "parent_id"

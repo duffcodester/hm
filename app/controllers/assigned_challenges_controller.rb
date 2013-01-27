@@ -6,7 +6,7 @@ class AssignedChallengesController < ApplicationController
   end
 
   def your
-    @your_assigned_challenges = current_user.challenges
+    @your_assigned_challenges = current_user.assigned_challenges
   end
 
   #Assigns a challenge to a child
@@ -25,10 +25,10 @@ class AssignedChallengesController < ApplicationController
   def update
     @assigned_challenge = AssignedChallenge.find(params[:id])
     if @assigned_challenge.update_attributes(params[:assigned_challenge])
-      flash[:sucess] = "Challenge Accepted"
+      flash.now[:sucess] = "Challenge Accepted"
       render 'show'
     else
-      flash[:error] = "Error accepting challenge"
+      flash.now[:error] = "Error accepting challenge"
       render 'show'
     end
   end

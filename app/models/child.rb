@@ -17,7 +17,6 @@ class Child < ActiveRecord::Base
   has_secure_password
   belongs_to :parent
   has_many :assigned_challenges, foreign_key: "child_id", dependent: :destroy
-  has_many :challenges, through: :assigned_challenges, source: :challenge
 
   before_save :create_remember_token
   before_save { |child| child.username = username.downcase }

@@ -14,7 +14,6 @@
 class Challenge < ActiveRecord::Base
   attr_accessible :name, :description, :public
   belongs_to :parent
-  belongs_to :child
 
   has_many :assigned_challenges, foreign_key: "challenge_id"
 
