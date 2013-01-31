@@ -62,10 +62,32 @@ describe "Parent pages" do
 
   describe "profile page" do
     let(:parent) { FactoryGirl.create(:parent) }
+
+    let!(:challenge) { FactoryGirl.create(:challenge) }
+    let!(:assigned_challenge) { FactoryGirl.create(:assigned_challenge, parent_id: parent.id, challenge_id: challenge.id) }
+    let!(:accepted_challenge) { FactoryGirl.create(:assigned_challenge, parent_id: parent.id, challenge_id: challenge.id, accepted: true) }
+    let!(:rejected_challenge) { FactoryGirl.create(:assigned_challenge, parent_id: parent.id, challenge_id: challenge.id, rejected: true) }
+
     before { visit parent_path(parent) }
 
     it { should have_selector('h1',    text: parent.name) }
     it { should have_selector('title', text: parent.name) }
+
+    describe "should display assigned challenges" do
+      it { should have_selector('h4', text: "Assigned Challenges") }
+      
+      it { should have_li(assigned_challenge.challenge.name) }
+    end
+
+    describe "should display accepted challenges" do
+      it { should have_selector('h4', text: "Accepted Challenges") }
+      it { should have_li(accepted_challenge.challenge.name) }
+    end
+
+    describe "should display rejected challenges" do
+      it { should have_selector('h4', text: "Rejected Challenges") }
+      it { should have_li(rejected_challenge.challenge.name) }
+    end
   end
 
   describe "signup" do

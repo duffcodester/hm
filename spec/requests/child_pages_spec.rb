@@ -63,6 +63,7 @@ describe "Child pages" do
     let!(:challenge) { FactoryGirl.create(:challenge) }
     let!(:assigned_challenge) { FactoryGirl.create(:assigned_challenge, child_id: child.id, challenge_id: challenge.id) }
     let!(:accepted_challenge) { FactoryGirl.create(:assigned_challenge, child_id: child.id, challenge_id: challenge.id, accepted: true) }
+    let!(:rejected_challenge) { FactoryGirl.create(:assigned_challenge, child_id: child.id, challenge_id: challenge.id, rejected: true) }
 
     before { visit child_path(child) }
 
@@ -80,7 +81,11 @@ describe "Child pages" do
       it { should have_li(assigned_challenge.challenge.name) }
 
         describe "with accept link" do
-          it { should have_selector('input', :value => "Accept") }
+          it { should have_button("Accept") }
+        end
+
+        describe "with reject link" do
+          it { should have_button("Reject") }
         end
     end
 
@@ -89,11 +94,9 @@ describe "Child pages" do
       it { should have_li(accepted_challenge.challenge.name) }
     end
 
-    describe "should display validated rewards" do
-      
-
-      it { should have_selector('h4', text: "Validated Rewards") }
-      #it { should have_li("Test Validated Reward") }
+    describe "should display rejected challenges" do
+      it { should have_selector('h4', text: "Rejected Challenges") }
+      it { should have_li(rejected_challenge.challenge.name) }
     end
   end
 
@@ -168,7 +171,7 @@ describe "Child pages" do
     end
   end
 
-  describe "accepting challenge" do
+  describe "assigned challenge actions" do
     let(:parent) { FactoryGirl.create(:parent) }
     let(:child) { FactoryGirl.create(:child, parent_id: parent.id) }
     let(:challenge) { FactoryGirl.create(:challenge) }
@@ -176,10 +179,28 @@ describe "Child pages" do
     before do
       sign_in child
       visit child_path(child)
-      click_button "Accept"
     end
 
-    let(:accepted_challenge) { AssignedChallenge.find_by_id(challenge.id) }
-    specify { accepted_challenge.accepted? }
+    describe "accepting challenge" do
+      before { click_button "Accept" }
+
+      let(:accepted_challenge) { AssignedChallenge.find_by_id(challenge.id) }
+
+      specify { accepted_challenge.accepted?.should be_true }
+      specify { accepted_challenge.rejected?.should_not be_true }
+
+      it { should have_success_message('Accepted') }
+    end
+
+    describe "rejecting challenge" do
+      before { click_button "Reject" }
+
+      let(:rejected_challenge) { AssignedChallenge.find_by_id(challenge.id) }
+
+      specify { rejected_challenge.rejected?.should be_true }
+      specify { rejected_challenge.accepted?.should_not be_true }
+
+      it { should have_success_message('Rejected') }
+    end
   end
 end

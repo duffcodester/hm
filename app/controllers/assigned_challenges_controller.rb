@@ -25,8 +25,13 @@ class AssignedChallengesController < ApplicationController
   def update
     @assigned_challenge = AssignedChallenge.find(params[:id])
     if @assigned_challenge.update_attributes(params[:assigned_challenge])
-      flash.now[:sucess] = "Challenge Accepted"
-      render 'show'
+      if @assigned_challenge.accepted
+        flash.now[:success] = "Challenge Accepted"
+        render 'show'
+      elsif @assigned_challenge.rejected
+        flash.now[:success] = "Challenge Rejected"
+        render 'show'
+      end          
     else
       flash.now[:error] = "Error accepting challenge"
       render 'show'
@@ -37,7 +42,7 @@ class AssignedChallengesController < ApplicationController
   def destroy
     AssignedChallenge.find(params[:id]).destroy
     flash[:success] = "Challenge unassigned"
-    redirect_to 'new'
+    redirect_to assigned_challenges
   end
 
   def show

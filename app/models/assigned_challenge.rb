@@ -13,7 +13,7 @@
 #
 
 class AssignedChallenge < ActiveRecord::Base
-  attr_accessible :challenge_id, :points, :accepted, :child_id
+  attr_accessible :challenge_id, :points, :accepted, :child_id, :rejected
   belongs_to :challenge
   belongs_to :child
   belongs_to :parent

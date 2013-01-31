@@ -13,6 +13,11 @@
       <%= f.hidden_field :accepted, :value => true %>
       <%= f.submit "Accept" %>
       <% end %>
+
+      <%= form_for assigned_challenge, :method => "put" do |f| %>
+      <%= f.hidden_field :rejected, :value => true %>
+      <%= f.submit "Reject" %>
+      <% end %>
     </li>
   <% end %>
 </ol>
@@ -25,6 +30,16 @@
   <% end %>
 </ol>
 <br>
-<h4>Validated Rewards</h4>
+<h4>Validated Challenges</h4>
+<br>
+<h4>Rejected Challenges</h4>
+<ol>
+  <% @rejected_challenges.each do |rejected_challenge| %>
+    <li><%= rejected_challenge.challenge.name %>
+    </li>
+  <% end %>
+</ol>
+
+
 
 

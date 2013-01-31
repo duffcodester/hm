@@ -4,4 +4,28 @@
   <%= @parent.name %>
 </h1>
 
-<%= link_to "Assign a challenge", new_assigned_challenge_path %>
+<h4>Assigned Challenges</h4>
+<ol>
+  <% @assigned_challenges.each do |assigned_challenge| %>
+    <li><%= assigned_challenge.challenge.name %>
+    </li>
+  <% end %>
+</ol>
+<br>
+<h4>Accepted Challenges</h4>
+<ol>
+  <% @accepted_challenges.each do |accepted_challenge| %>
+    <li><%= accepted_challenge.challenge.name %>
+    </li>
+  <% end %>
+</ol>
+<br>
+<h4>Validated Challenges</h4>
+<br>
+<h4>Rejected Challenges</h4>
+<ol>
+  <% @rejected_challenges.each do |rejected_challenge| %>
+    <li><%= rejected_challenge.challenge.name %>
+    </li>
+  <% end %>
+</ol>
