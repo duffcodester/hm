@@ -1,0 +1,7 @@
+<% provide(:title, "Challenges Index") %>
+<h1>Challenges Index</h1>
+<ol>
+  <% @challenge.each do |challenge| %>
+    <li><%= challenge.name %></li>
+  <% end %>
+</ol>

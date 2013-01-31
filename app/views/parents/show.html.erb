@@ -20,7 +20,19 @@
   <% end %>
 </ol>
 <br>
-<h4>Validated Challenges</h4>
+<h4>Completed Challenges</h4>
+<ol>
+  <% @completed_challenges.each do |completed_challenge| %>
+    <li><%= completed_challenge.challenge.name %>
+      <%= form_for completed_challenge, :method => "put" do |f| %>
+      <%= f.hidden_field :validated, :value => true %>
+      <%= f.hidden_field :completed, :value => false %>
+      <%= f.hidden_field :accepted, :value => false %>
+      <%= f.submit "Validate" %>
+      <% end %>
+    </li>
+  <% end %>
+</ol>
 <br>
 <h4>Rejected Challenges</h4>
 <ol>

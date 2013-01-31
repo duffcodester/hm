@@ -26,11 +26,22 @@
 <ol>
   <% @accepted_challenges.each do |accepted_challenge| %>
     <li><%= accepted_challenge.challenge.name %>
+      <%= form_for accepted_challenge, :method => "put" do |f| %>
+      <%= f.hidden_field :completed, :value => true %>
+      <%= f.hidden_field :accepted, :value => false %>
+      <%= f.submit "Complete" %>
+      <% end %>
     </li>
   <% end %>
 </ol>
 <br>
-<h4>Validated Challenges</h4>
+<h4>Completed Challenges</h4>
+<ol>
+  <% @completed_challenges.each do |completed_challenge| %>
+    <li><%= completed_challenge.challenge.name %>
+    </li>
+  <% end %>
+</ol>
 <br>
 <h4>Rejected Challenges</h4>
 <ol>

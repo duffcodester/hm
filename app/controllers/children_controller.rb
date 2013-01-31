@@ -14,9 +14,10 @@ before_filter :admin_parent, only: :destroy
 
   def show
     @child = Child.find(params[:id])
-    @assigned_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("accepted =?", false).where("rejected =?", false)
+    @assigned_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("accepted =?", false).where("rejected =?", false).where("completed =?", false)
     @accepted_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("accepted =?", true)
     @rejected_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("rejected =?", true)
+    @completed_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("completed =?", true)
   end
 
   def edit

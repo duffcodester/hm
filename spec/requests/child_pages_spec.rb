@@ -64,6 +64,7 @@ describe "Child pages" do
     let!(:assigned_challenge) { FactoryGirl.create(:assigned_challenge, child_id: child.id, challenge_id: challenge.id) }
     let!(:accepted_challenge) { FactoryGirl.create(:assigned_challenge, child_id: child.id, challenge_id: challenge.id, accepted: true) }
     let!(:rejected_challenge) { FactoryGirl.create(:assigned_challenge, child_id: child.id, challenge_id: challenge.id, rejected: true) }
+    let!(:completed_challenge) { FactoryGirl.create(:assigned_challenge, child_id: child.id, challenge_id: challenge.id, completed: true) }
 
     before { visit child_path(child) }
 
@@ -92,6 +93,15 @@ describe "Child pages" do
     describe "should display accepted challenges" do
       it { should have_selector('h4', text: "Accepted Challenges") }
       it { should have_li(accepted_challenge.challenge.name) }
+
+        describe "with complete link" do
+          it { should have_button("Complete") }
+        end
+    end
+
+    describe "should display completed challenges" do
+      it { should have_selector('h4', text: "Completed Challenges") }
+      it { should have_li(completed_challenge.challenge.name) }
     end
 
     describe "should display rejected challenges" do
@@ -201,6 +211,22 @@ describe "Child pages" do
       specify { rejected_challenge.accepted?.should_not be_true }
 
       it { should have_success_message('Rejected') }
+    end
+
+    describe "completing challenge" do
+      before do
+        click_button "Accept"
+        visit child_path(child)
+        click_button "Complete"
+      end
+
+      let(:completed_challenge) { AssignedChallenge.find_by_id(challenge.id) }
+
+      specify { completed_challenge.rejected?.should_not be_true }
+      specify { completed_challenge.accepted?.should_not be_true }
+      specify { completed_challenge.completed?.should be_true }
+
+      it { should have_success_message('Completed') }
     end
   end
 end

@@ -31,6 +31,12 @@ class AssignedChallengesController < ApplicationController
       elsif @assigned_challenge.rejected
         flash.now[:success] = "Challenge Rejected"
         render 'show'
+      elsif @assigned_challenge.completed
+        flash.now[:success] = "Challenge Completed"
+        render 'show'
+      elsif @assigned_challenge.validated
+        flash.now[:success] = "Challenge Validated"
+        render 'show'
       end          
     else
       flash.now[:error] = "Error accepting challenge"
