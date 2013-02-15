@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: enabled_rewards
+#
+#  id         :integer          not null, primary key
+#  parent_id  :integer
+#  reward_id  :integer
+#  points     :integer
+#  redeemed   :boolean          default(FALSE)
+#  child_id   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'spec_helper'
 
 describe EnabledReward do
