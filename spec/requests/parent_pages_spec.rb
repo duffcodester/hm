@@ -120,22 +120,23 @@ describe "Parent pages" do
     end
 
     describe "validating challenge" do
-
       before do
         click_button "Validate" 
         assigned_challenge.reload
         child.reload
       end
 
-      specify { assigned_challenge.validated?.should be_true }
-      specify { assigned_challenge.completed?.should_not be_true }
-      specify { assigned_challenge.rejected?.should_not be_true }
-      specify { assigned_challenge.accepted?.should_not be_true }
+      subject { assigned_challenge }
 
-      it { should have_success_message('Validated') }
+      it { should be_validated }
+      it { should_not be_completed }
+      it { should_not be_rejected }
+      it { should_not be_accepted }
 
-      describe "should redirect to parent page" do
-        it { should have_selector('h1', text: parent.name) }
+      specify { page.should have_success_message('Validated') }
+
+      it "should redirect to parent page" do
+        page.should have_h1(parent.name)
       end
 
       it "should assign the correct points to child" do

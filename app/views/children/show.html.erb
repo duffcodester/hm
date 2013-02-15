@@ -39,6 +39,12 @@
 <ol>
   <% @enabled_rewards.each do |enabled_reward| %>
     <li><%= enabled_reward.reward.name %>
+      <%= form_for enabled_reward, :method => "put" do |f| %>
+
+        <%= f.hidden_field :redeemed, value: true %>
+
+        <%= f.submit "Redeem" %>
+      <% end %>
     </li>
   <% end %>
 </ol>

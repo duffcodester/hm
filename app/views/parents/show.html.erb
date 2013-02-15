@@ -26,11 +26,11 @@
     <li><%= completed_challenge.challenge.name %>
       <%= form_for completed_challenge, :method => "put" do |f| %>
 
-      <%= f.hidden_field :validated, :value => true %>
-      <%= f.hidden_field :completed, :value => false %>
-      <%= f.hidden_field :accepted, :value => false %>
+        <%= f.hidden_field :validated, value: true %>
+        <%= f.hidden_field :completed, value: false %>
+        <%= f.hidden_field :accepted, value: false %>
 
-      <%= f.submit "Validate" %>
+        <%= f.submit "Validate" %>
       <% end %>
     </li>
   <% end %>

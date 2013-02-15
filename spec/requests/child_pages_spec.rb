@@ -254,23 +254,35 @@ describe "Child pages" do
     let(:child) { FactoryGirl.create(:child, parent_id: parent.id) }
     let(:reward) { FactoryGirl.create(:reward) }
     let!(:enabled_reward) { FactoryGirl.create(:enabled_reward, parent_id: parent.id, child_id: child.id, reward_id: reward.id) }
-    before do
+    let!(:orig_points) { child.points }
+
+    before(:each) do
       sign_in child
       visit child_path(child)
     end
 
     describe "redeeming reward" do
-      before { click_button "Redeem" }
-
-      let(:enabled_reward) { EnabledReward.find_by_id(reward.id) }
-
-      specify { enabled_reward.redeemed?.should be_true }
-
-      describe "should redirect back to child page" do
-        it { should have_selector('h3', text: 'Current Points') }
+      before do
+        click_button "Redeem"
+        enabled_reward.reload
+        child.reload
       end
 
+      specify { enabled_reward.should be_redeemed }
+
       it { should have_success_message('Redeemed') }
+
+      it "should redirect back to child page" do
+        should have_h1(child.username)
+      end
+
+      it "should assign the correct points to child" do
+        child.points.should eq(orig_points - enabled_reward.points)
+      end
+
+      it "should still have the child signed in" do
+        should_not have_link('Sign in')
+      end
     end
   end
 end

@@ -4,10 +4,10 @@ class SessionsController < ApplicationController
 
   def create
     user = if params[:session][:email_username] =~ /@/
-      Parent.find_by_email(params[:session][:email_username].downcase)
-    else
-      Child.find_by_username(params[:session][:email_username].downcase)
-    end
+             Parent.find_by_email(params[:session][:email_username].downcase)
+           else
+              Child.find_by_username(params[:session][:email_username].downcase)
+           end
 
     if user && user.authenticate(params[:session][:password])
       sign_in user

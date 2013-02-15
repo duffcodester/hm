@@ -36,7 +36,8 @@ class AssignedChallengesController < ApplicationController
         redirect_to @assigned_challenge.child
       elsif @assigned_challenge.validated
         flash[:success] = "Challenge Validated"
-        @assigned_challenge.child.update_attribute(:points, @assigned_challenge.child.points + @assigned_challenge.points)
+        @assigned_challenge.child.update_attribute(:points, 
+          @assigned_challenge.child.points + @assigned_challenge.points)
         redirect_to @assigned_challenge.parent
       end          
     else
