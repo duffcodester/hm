@@ -16,7 +16,7 @@ class AssignedChallengesController < ApplicationController
     @assigned_challenge = current_user.assigned_challenges.build(params[:assigned_challenge])
     if @assigned_challenge.save
       flash[:success] = "You have successfully assigned challenge!"
-      redirect_to @assigned_challenge
+      redirect_to @assigned_challenge.parent
     else
       render 'new'
     end
@@ -26,17 +26,17 @@ class AssignedChallengesController < ApplicationController
     @assigned_challenge = AssignedChallenge.find(params[:id])
     if @assigned_challenge.update_attributes(params[:assigned_challenge])
       if @assigned_challenge.accepted
-        flash.now[:success] = "Challenge Accepted"
-        render 'show'
+        flash[:success] = "Challenge Accepted"
+        redirect_to @assigned_challenge.child
       elsif @assigned_challenge.rejected
-        flash.now[:success] = "Challenge Rejected"
-        render 'show'
+        flash[:success] = "Challenge Rejected"
+        redirect_to @assigned_challenge.child
       elsif @assigned_challenge.completed
-        flash.now[:success] = "Challenge Completed"
-        render 'show'
+        flash[:success] = "Challenge Completed"
+        redirect_to @assigned_challenge.child
       elsif @assigned_challenge.validated
-        flash.now[:success] = "Challenge Validated"
-        render 'show'
+        flash[:success] = "Challenge Validated"
+        redirect_to @assigned_challenge.parent
       end          
     else
       flash.now[:error] = "Error accepting challenge"

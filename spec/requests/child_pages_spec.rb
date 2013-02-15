@@ -206,6 +206,10 @@ describe "Child pages" do
       specify { accepted_challenge.accepted?.should be_true }
       specify { accepted_challenge.rejected?.should_not be_true }
 
+      describe "should redirect back to child page" do
+        it { should have_selector('h3', text: 'Current Points') }
+      end
+
       it { should have_success_message('Accepted') }
     end
 
@@ -216,6 +220,10 @@ describe "Child pages" do
 
       specify { rejected_challenge.rejected?.should be_true }
       specify { rejected_challenge.accepted?.should_not be_true }
+
+      describe "should redirect back to child page" do
+        it { should have_selector('h3', text: 'Current Points') }
+      end
 
       it { should have_success_message('Rejected') }
     end
@@ -232,6 +240,10 @@ describe "Child pages" do
       specify { completed_challenge.rejected?.should_not be_true }
       specify { completed_challenge.accepted?.should_not be_true }
       specify { completed_challenge.completed?.should be_true }
+
+      describe "should redirect back to child page" do
+        it { should have_selector('h3', text: 'Current Points') }
+      end
 
       it { should have_success_message('Completed') }
     end
