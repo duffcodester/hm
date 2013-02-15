@@ -248,4 +248,29 @@ describe "Child pages" do
       it { should have_success_message('Completed') }
     end
   end
+
+  describe "reward actions" do
+    let(:parent) { FactoryGirl.create(:parent) }
+    let(:child) { FactoryGirl.create(:child, parent_id: parent.id) }
+    let(:reward) { FactoryGirl.create(:reward) }
+    let!(:enabled_reward) { FactoryGirl.create(:enabled_reward, parent_id: parent.id, child_id: child.id, reward_id: reward.id) }
+    before do
+      sign_in child
+      visit child_path(child)
+    end
+
+    describe "redeeming reward" do
+      before { click_button "Redeem" }
+
+      let(:enabled_reward) { EnabledReward.find_by_id(reward.id) }
+
+      specify { enabled_reward.redeemed?.should be_true }
+
+      describe "should redirect back to child page" do
+        it { should have_selector('h3', text: 'Current Points') }
+      end
+
+      it { should have_success_message('Redeemed') }
+    end
+  end
 end
