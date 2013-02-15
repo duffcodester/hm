@@ -60,6 +60,7 @@ describe "StaticPages" do
       # rewards menu
       should have_link('Rewards')
       should have_link('Create',   href: new_reward_path)
+      should have_link('Enable',   href: new_enabled_reward_path)
       should have_link('Your',     href: rewards_your_path)
       should have_link('Browse',   href: rewards_community_pool_path)
 

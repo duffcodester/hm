@@ -61,10 +61,12 @@ describe "Child pages" do
   describe "child profile page" do
     let!(:child) { FactoryGirl.create(:child, points: "99") }
     let!(:challenge) { FactoryGirl.create(:challenge) }
+    let!(:reward) { FactoryGirl.create(:reward) }
     let!(:assigned_challenge) { FactoryGirl.create(:assigned_challenge, child_id: child.id, challenge_id: challenge.id) }
     let!(:accepted_challenge) { FactoryGirl.create(:assigned_challenge, child_id: child.id, challenge_id: challenge.id, accepted: true) }
     let!(:rejected_challenge) { FactoryGirl.create(:assigned_challenge, child_id: child.id, challenge_id: challenge.id, rejected: true) }
     let!(:completed_challenge) { FactoryGirl.create(:assigned_challenge, child_id: child.id, challenge_id: challenge.id, completed: true) }
+    let!(:enabled_reward) { FactoryGirl.create(:enabled_reward, child_id: child.id, reward_id: reward.id) }
 
     before { visit child_path(child) }
 
@@ -107,6 +109,11 @@ describe "Child pages" do
     describe "should display rejected challenges" do
       it { should have_selector('h4', text: "Rejected Challenges") }
       it { should have_li(rejected_challenge.challenge.name) }
+    end
+
+    describe "should display enabled rewards" do
+      it { should have_selector('h4', text: "Enabled Rewards") }
+      it { should have_li(enabled_reward.reward.name) }
     end
   end
 

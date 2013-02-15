@@ -25,11 +25,26 @@
   <% @completed_challenges.each do |completed_challenge| %>
     <li><%= completed_challenge.challenge.name %>
       <%= form_for completed_challenge, :method => "put" do |f| %>
+
       <%= f.hidden_field :validated, :value => true %>
       <%= f.hidden_field :completed, :value => false %>
       <%= f.hidden_field :accepted, :value => false %>
+
+      <%= f.fields_for :child, :method => "put" do |n| %>
+
+        <%= n.hidden_field :points, :value => completed_challenge.points %>
+      <% end %>
+
       <%= f.submit "Validate" %>
       <% end %>
+    </li>
+  <% end %>
+</ol>
+<br>
+<h4>Validated Challenges</h4>
+<ol>
+  <% @validated_challenges.each do |validated_challenge| %>
+    <li><%= validated_challenge.challenge.name %>
     </li>
   <% end %>
 </ol>
@@ -38,6 +53,14 @@
 <ol>
   <% @rejected_challenges.each do |rejected_challenge| %>
     <li><%= rejected_challenge.challenge.name %>
+    </li>
+  <% end %>
+</ol>
+<br>
+<h4>Enabled Rewards</h4>
+<ol>
+  <% @enabled_rewards.each do |enabled_reward| %>
+    <li><%= enabled_reward.reward.name %>
     </li>
   <% end %>
 </ol>

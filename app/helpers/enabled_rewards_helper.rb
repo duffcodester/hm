@@ -1,0 +1,2 @@
+module EnabledRewardsHelper
+end

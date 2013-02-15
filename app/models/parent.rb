@@ -19,6 +19,7 @@ class Parent < ActiveRecord::Base
   has_many :rewards
   has_many :children
   has_many :assigned_challenges
+  has_many :enabled_rewards
 
 
   before_save { |parent| parent.email = email.downcase }

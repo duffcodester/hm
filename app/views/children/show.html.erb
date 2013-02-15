@@ -21,7 +21,7 @@
     </li>
   <% end %>
 </ol>
-
+<br>
 <h4>Accepted Challenges</h4>
 <ol>
   <% @accepted_challenges.each do |accepted_challenge| %>
@@ -35,10 +35,26 @@
   <% end %>
 </ol>
 <br>
+<h4>Enabled Rewards</h4>
+<ol>
+  <% @enabled_rewards.each do |enabled_reward| %>
+    <li><%= enabled_reward.reward.name %>
+    </li>
+  <% end %>
+</ol>
+<br>
 <h4>Completed Challenges</h4>
 <ol>
   <% @completed_challenges.each do |completed_challenge| %>
     <li><%= completed_challenge.challenge.name %>
+    </li>
+  <% end %>
+</ol>
+<br>
+<h4>Validated Challenges</h4>
+<ol>
+  <% @validated_challenges.each do |validated_challenge| %>
+    <li><%= validated_challenge.challenge.name %>
     </li>
   <% end %>
 </ol>

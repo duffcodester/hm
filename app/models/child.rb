@@ -14,10 +14,12 @@
 
 class Child < ActiveRecord::Base
   attr_accessible :username, :password, :password_confirmation, :points
-  #add parent_id to attr_accessible to populate db with fake children
+
   has_secure_password
   belongs_to :parent
   has_many :assigned_challenges, dependent: :destroy
+  accepts_nested_attributes_for :assigned_challenges
+  has_many :enabled_rewards, dependent: :destroy
 
   before_save :create_remember_token
   before_save { |child| child.username = username.downcase }
@@ -27,6 +29,8 @@ class Child < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
   validates :parent_id, presence: true
+  validates :points, presence: true
+
 
   private
 

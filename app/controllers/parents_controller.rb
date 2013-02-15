@@ -9,10 +9,12 @@ class ParentsController < ApplicationController
 
   def show
     @parent = Parent.find(params[:id])
-    @assigned_challenges = @parent.assigned_challenges.where("parent_id =?", @parent.id).where("accepted =?", false).where("rejected =?", false).where("completed =?", false)
+    @assigned_challenges = @parent.assigned_challenges.where("parent_id =?", @parent.id).where("accepted =?", false).where("rejected =?", false).where("completed =?", false).where("validated =?", false)
     @accepted_challenges = @parent.assigned_challenges.where("parent_id =?", @parent.id).where("accepted =?", true)
     @rejected_challenges = @parent.assigned_challenges.where("parent_id =?", @parent.id).where("rejected =?", true)
     @completed_challenges = @parent.assigned_challenges.where("parent_id =?", @parent.id).where("completed =?", true)
+    @validated_challenges = @parent.assigned_challenges.where("parent_id =?", @parent.id).where("validated =?", true)
+    @enabled_rewards = @parent.enabled_rewards.where("parent_id =?", @parent.id)
   end
 
   def edit

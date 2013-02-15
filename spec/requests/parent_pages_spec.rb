@@ -63,11 +63,13 @@ describe "Parent pages" do
   describe "profile page" do
     let(:parent) { FactoryGirl.create(:parent) }
 
-    let!(:challenge) { FactoryGirl.create(:challenge) }
+    let(:challenge) { FactoryGirl.create(:challenge) }
+    let(:reward) { FactoryGirl.create(:reward) }
     let!(:assigned_challenge) { FactoryGirl.create(:assigned_challenge, parent_id: parent.id, challenge_id: challenge.id) }
     let!(:accepted_challenge) { FactoryGirl.create(:assigned_challenge, parent_id: parent.id, challenge_id: challenge.id, accepted: true) }
     let!(:rejected_challenge) { FactoryGirl.create(:assigned_challenge, parent_id: parent.id, challenge_id: challenge.id, rejected: true) }
     let!(:completed_challenge) { FactoryGirl.create(:assigned_challenge, parent_id: parent.id, challenge_id: challenge.id, completed: true) }
+    let!(:enabled_reward) { FactoryGirl.create(:enabled_reward, parent_id: parent.id, reward_id: reward.id) }
 
     before { visit parent_path(parent) }
 
@@ -98,30 +100,44 @@ describe "Parent pages" do
       it { should have_selector('h4', text: "Rejected Challenges") }
       it { should have_li(rejected_challenge.challenge.name) }
     end
+
+    describe "should display enabled rewards" do
+      it { should have_selector('h4', text: "Enabled Rewards") }
+      it { should have_li(enabled_reward.reward.name) }
+    end
   end
 
   describe "assigned challenge actions" do
     let(:parent) { FactoryGirl.create(:parent) }
-    let(:child) { FactoryGirl.create(:child, parent_id: parent.id) }
+    let(:child) { FactoryGirl.create(:child, parent_id: parent.id, points: 0) }
     let(:challenge) { FactoryGirl.create(:challenge) }
     let!(:assigned_challenge) { FactoryGirl.create(:assigned_challenge, parent_id: parent.id, child_id: child.id, challenge_id: challenge.id, completed: true) }
+    let!(:orig_points) { child.points }
 
-    before do
+    before(:each) do
       sign_in parent
       visit parent_path(parent)
     end
 
+    
+
     describe "validating challenge" do
-      before { click_button "Validate" }
 
-      let(:validated_challenge) { AssignedChallenge.find_by_id(challenge.id) }
+      before do
+        click_button "Validate" 
+        assigned_challenge.reload
+      end
 
-      specify { validated_challenge.validated?.should be_true }
-      specify { validated_challenge.completed?.should_not be_true }
-      specify { validated_challenge.rejected?.should_not be_true }
-      specify { validated_challenge.accepted?.should_not be_true }
+      specify { assigned_challenge.validated?.should be_true }
+      specify { assigned_challenge.completed?.should_not be_true }
+      specify { assigned_challenge.rejected?.should_not be_true }
+      specify { assigned_challenge.accepted?.should_not be_true }
 
       it { should have_success_message('Validated') }
+
+      it "should assign the correct points to child" do
+        child.points.should eq(orig_points + assigned_challenge.points)
+      end
     end
   end
 

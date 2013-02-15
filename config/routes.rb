@@ -5,6 +5,7 @@ Hm::Application.routes.draw do
   resources :rewards, controller: "resources", type: "Reward"
   resources :children
   resources :assigned_challenges
+  resources :enabled_rewards
 
   root to: 'static_pages#home'
 

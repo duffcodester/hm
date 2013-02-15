@@ -36,6 +36,7 @@ describe Child do
   it { should respond_to(:parent_id) }
   it { should respond_to(:parent) }
   its(:parent) { should == parent } 
+  its(:points) { should == 0 }
 
   it { should be_valid }
 
@@ -146,6 +147,11 @@ describe Child do
 
   describe "when parent_id is not present" do
     before { @child.parent_id = nil }
+    it { should_not be_valid }
+  end
+
+  describe "when points is not present" do
+    before { @child.points = nil }
     it { should_not be_valid }
   end
 end
