@@ -2,6 +2,7 @@
 <h1>Your children</h1>
 <ol>
   <% @your_children.each do |child| %>
-    <li><%= child.username %></li>
+    <li><%= child.username %> Points: <%= child.points %></li>
   <% end %>
 </ol>
+

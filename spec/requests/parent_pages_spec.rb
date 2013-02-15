@@ -134,6 +134,10 @@ describe "Parent pages" do
 
       it { should have_success_message('Validated') }
 
+      describe "should redirect to parent page" do
+        it { should have_selector('h1', text: parent.name) }
+      end
+
       it "should assign the correct points to child" do
         child.points.should eq(orig_points + assigned_challenge.points)
       end

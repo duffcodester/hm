@@ -56,10 +56,7 @@ describe "Assigning a Challenge" do
           before { click_button submit }
           let(:assigned_challenge) { AssignedChallenge.find_by_challenge_id(challenge.id) }
   
-          it { should have_title(challenge.name) }
-          it { should have_selector('h4', text: challenge.name) }
-          it { should have_selector('h4', int: assigned_challenge.points) }
-          it { should have_selector('h4', text: "points.") }
+          it { should have_selector('h1', text: parent.name) }
           it { should have_success_message('You')}
         end
       end 
