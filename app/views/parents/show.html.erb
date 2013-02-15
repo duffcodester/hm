@@ -30,11 +30,6 @@
       <%= f.hidden_field :completed, :value => false %>
       <%= f.hidden_field :accepted, :value => false %>
 
-      <%= f.fields_for :child, :method => "put" do |n| %>
-
-        <%= n.hidden_field :points, :value => completed_challenge.points %>
-      <% end %>
-
       <%= f.submit "Validate" %>
       <% end %>
     </li>

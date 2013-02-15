@@ -36,6 +36,9 @@ class AssignedChallengesController < ApplicationController
         render 'show'
       elsif @assigned_challenge.validated
         flash.now[:success] = "Challenge Validated"
+        #@assigned_challenge.child.points += @assigned_challenge.points
+        #@assigned_challenge.child.save!
+        @assigned_challenge.child.update_attribute(:points, @assigned_challenge.child.points + @assigned_challenge.points)
         render 'show'
       end          
     else

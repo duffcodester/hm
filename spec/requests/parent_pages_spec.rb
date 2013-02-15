@@ -109,7 +109,7 @@ describe "Parent pages" do
 
   describe "assigned challenge actions" do
     let(:parent) { FactoryGirl.create(:parent) }
-    let(:child) { FactoryGirl.create(:child, parent_id: parent.id, points: 0) }
+    let(:child) { FactoryGirl.create(:child, parent_id: parent.id, points: 100) }
     let(:challenge) { FactoryGirl.create(:challenge) }
     let!(:assigned_challenge) { FactoryGirl.create(:assigned_challenge, parent_id: parent.id, child_id: child.id, challenge_id: challenge.id, completed: true) }
     let!(:orig_points) { child.points }
@@ -119,13 +119,12 @@ describe "Parent pages" do
       visit parent_path(parent)
     end
 
-    
-
     describe "validating challenge" do
 
       before do
         click_button "Validate" 
         assigned_challenge.reload
+        child.reload
       end
 
       specify { assigned_challenge.validated?.should be_true }
