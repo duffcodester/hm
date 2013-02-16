@@ -7,7 +7,7 @@
 <h4>Assigned Challenges</h4>
 <ol>
   <% @assigned_challenges.each do |assigned_challenge| %>
-    <li><%= assigned_challenge.challenge.name %>
+    <li><b>Challenge: </b><%= assigned_challenge.challenge.name %><b> Child: </b> <%= assigned_challenge.child.username %>
     </li>
   <% end %>
 </ol>

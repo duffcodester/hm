@@ -36,7 +36,7 @@ class ResourcesController < ApplicationController
 
     if @resource.save
       flash[:success] = "You successfully created a resource!"
-      redirect_to @resource
+      redirect_to @resource.parent
     else
       render 'new'
     end
