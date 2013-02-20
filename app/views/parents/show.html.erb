@@ -15,7 +15,7 @@
 <h4>Accepted Challenges</h4>
 <ol>
   <% @accepted_challenges.each do |accepted_challenge| %>
-    <li><%= accepted_challenge.challenge.name %>
+    <li><b>Challenge: </b><%= accepted_challenge.challenge.name %><b> Child: </b> <%= accepted_challenge.child.username %>
     </li>
   <% end %>
 </ol>
@@ -23,7 +23,7 @@
 <h4>Completed Challenges</h4>
 <ol>
   <% @completed_challenges.each do |completed_challenge| %>
-    <li><%= completed_challenge.challenge.name %>
+    <li><b>Challenge: </b><%= completed_challenge.challenge.name %><b> Child: </b> <%= completed_challenge.child.username %>
       <%= form_for completed_challenge, :method => "put" do |f| %>
 
         <%= f.hidden_field :validated, value: true %>
@@ -39,7 +39,7 @@
 <h4>Validated Challenges</h4>
 <ol>
   <% @validated_challenges.each do |validated_challenge| %>
-    <li><%= validated_challenge.challenge.name %>
+    <li><b>Challenge: </b><%= validated_challenge.challenge.name %><b> Child: </b> <%= validated_challenge.child.username %>
     </li>
   <% end %>
 </ol>
@@ -47,7 +47,7 @@
 <h4>Rejected Challenges</h4>
 <ol>
   <% @rejected_challenges.each do |rejected_challenge| %>
-    <li><%= rejected_challenge.challenge.name %>
+    <li><b>Challenge: </b><%= rejected_challenge.challenge.name %><b> Child: </b> <%= rejected_challenge.child.username %>
     </li>
   <% end %>
 </ol>
@@ -55,7 +55,7 @@
 <h4>Enabled Rewards</h4>
 <ol>
   <% @enabled_rewards.each do |enabled_reward| %>
-    <li><%= enabled_reward.reward.name %>
+    <li><b>Reward: </b><%= enabled_reward.reward.name %><b> Child: </b> <%= enabled_reward.child.username %>
     </li>
   <% end %>
 </ol>

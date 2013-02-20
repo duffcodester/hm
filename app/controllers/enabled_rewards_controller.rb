@@ -11,7 +11,7 @@ class EnabledRewardsController < ApplicationController
     @enabled_reward = current_user.enabled_rewards.build(params[:enabled_reward])
     if @enabled_reward.save
       flash[:success] = "You have successfully enabled reward!"
-      redirect_to @enabled_reward
+      redirect_to @enabled_reward.parent
     else
       render 'new'
     end
