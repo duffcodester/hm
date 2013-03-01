@@ -220,10 +220,9 @@ describe "Child pages" do
     describe "rejecting challenge" do
       before { click_button "Reject" }
 
-      let(:rejected_challenge) { AssignedChallenge.find_by_id(challenge.id) }
-
-      specify { rejected_challenge.rejected?.should be_true }
-      specify { rejected_challenge.accepted?.should_not be_true }
+      it "should be deleted from the DB" do
+        expect { AssignedChallenge.find(challenge.id) }.to raise_error
+      end
 
       describe "should redirect back to child page" do
         it { should have_selector('h3', text: 'Current Points') }
@@ -268,11 +267,8 @@ describe "Child pages" do
     describe "redeeming reward" do
       before do
         click_button "Redeem"
-        enabled_reward.reload
         child.reload
       end
-
-      specify { enabled_reward.should be_redeemed }
 
       it { should have_success_message('Redeemed') }
 
@@ -286,6 +282,10 @@ describe "Child pages" do
 
       it "should still have the child signed in" do
         should_not have_link('Sign in')
+      end
+
+      it "should delete the enabled_reward from the DB" do
+        expect { EnabledReward.find(reward.id) }.to raise_error
       end
     end
   end

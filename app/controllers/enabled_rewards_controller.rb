@@ -22,12 +22,12 @@ class EnabledRewardsController < ApplicationController
     if @enabled_reward.update_attributes(params[:enabled_reward])
       if @enabled_reward.redeemed
         flash[:success] = "Reward Redeemed"
-    debugger
         child = @enabled_reward.child
         child.update_attribute(:points,
           child.points - @enabled_reward.points)
         sign_in child
         redirect_to child
+        @enabled_reward.destroy
       end
     else
       flash.now[:error] = "Error redeeming reward"

@@ -123,18 +123,10 @@ describe "Parent pages" do
     describe "validating challenge" do
       before do
         click_button "Validate" 
-        assigned_challenge.reload
         child.reload
       end
 
-      subject { assigned_challenge }
-
-      it { should be_validated }
-      it { should_not be_completed }
-      it { should_not be_rejected }
-      it { should_not be_accepted }
-
-      specify { page.should have_success_message('Validated') }
+      it { should have_success_message('Validated') }
 
       it "should redirect to parent page" do
         page.should have_h1(parent.name)
@@ -142,6 +134,10 @@ describe "Parent pages" do
 
       it "should assign the correct points to child" do
         child.points.should eq(orig_points + assigned_challenge.points)
+      end
+
+      it "should be deleted from the DB" do
+        expect { AssignedChallenge.find(challenge.id) }.to raise_error
       end
     end
   end

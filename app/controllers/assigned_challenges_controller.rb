@@ -31,6 +31,7 @@ class AssignedChallengesController < ApplicationController
       elsif @assigned_challenge.rejected
         flash[:success] = "Challenge Rejected"
         redirect_to @assigned_challenge.child
+        @assigned_challenge.destroy
       elsif @assigned_challenge.completed
         flash[:success] = "Challenge Completed"
         redirect_to @assigned_challenge.child
@@ -39,6 +40,7 @@ class AssignedChallengesController < ApplicationController
         @assigned_challenge.child.update_attribute(:points, 
           @assigned_challenge.child.points + @assigned_challenge.points)
         redirect_to @assigned_challenge.parent
+        @assigned_challenge.destroy
       end          
     else
       flash.now[:error] = "Error accepting challenge"
