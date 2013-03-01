@@ -18,8 +18,8 @@ describe Child do
   let(:parent) { FactoryGirl.create(:parent) }
   before{ @child = parent.children.build(
                              username: "Example_child",
-                             password:              "foobar",
-                             password_confirmation: "foobar") }
+                             password:              "foobar1!",
+                             password_confirmation: "foobar1!") }
 
   subject { @child }
 
@@ -102,7 +102,7 @@ describe Child do
   end
 
   describe "when password doesn't match confirmation" do
-    before { @child.password_confirmation = "mismatch" }
+    before { @child.password_confirmation = "mismatch1!" }
     it { should_not be_valid }
   end
 
@@ -112,7 +112,7 @@ describe Child do
   end
 
   describe "with a password that's too short" do
-      before { @child.password = @child.password_confirmation = "a" * 5 }
+      before { @child.password = @child.password_confirmation = "a1$" }
       it { should be_invalid }
   end
 
@@ -125,7 +125,7 @@ describe Child do
       end
 
       describe "with invalid password" do
-        let(:child_for_invalid_password) { found_child.authenticate("invalid") }
+        let(:child_for_invalid_password) { found_child.authenticate("invalid1!") }
 
         it { should_not == child_for_invalid_password }
         specify { child_for_invalid_password.should be_false }

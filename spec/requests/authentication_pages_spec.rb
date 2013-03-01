@@ -69,7 +69,7 @@ describe "Authentication" do
       describe "when attempting to visit a protected page" do
         before do
           visit edit_parent_path(parent)
-          fill_in "Email", with: parent.email
+          fill_in "Username", with: parent.email
           fill_in "Password", with: parent.password
           click_button "Sign in"
         end

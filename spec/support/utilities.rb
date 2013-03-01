@@ -1,15 +1,9 @@
 include ApplicationHelper
 
-def valid_signin(parent) # need to get rid of this in rspec tests
-  fill_in "Email",    with: parent.email
-  fill_in "Password", with: parent.password
-  click_button "Sign in"
-end
-
 def sign_in(user)
   email_username = user.class == Parent ? user.email : user.username
   visit signin_path
-  fill_in "Email or Username", with: email_username
+  fill_in "Username", with: email_username
   fill_in "Password", with: user.password
   click_button "Sign in"
   # Sign in when not using Capybara as well.

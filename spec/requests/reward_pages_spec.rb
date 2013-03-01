@@ -35,18 +35,26 @@ describe "Rewards" do
         fill_in "Description",  with: "Example Reward Description"
         check "Public?"
       end
+      let(:reward) { Reward.find_by_name('example reward') }
 
       it "should create a reward" do
         expect { click_button submit }.to change(Reward, :count).by(1)
       end
 
-      describe "after saving the reward" do
+      describe "after saving the reward it redirects to profile" do
         before { click_button submit }
-        let(:reward) { Reward.find_by_name('example reward') }
+        it { should have_success_message('You')}
+        it { should have_h1(reward.parent.name) }
+      end
+
+      describe "then the reward page has the reward" do
+        before do
+          click_button submit
+          visit reward_path(reward)
+        end
 
         it { should have_title(reward.name) }
         it { should have_h1(reward.name) }
-        it { should have_success_message('You')}
       end
     end
   end

@@ -35,18 +35,26 @@ describe "Challenges" do
         fill_in "Description",  with: "Example Challenge Description"
         check "Public?"
       end
+      let(:challenge) { Challenge.find_by_name('example challenge') }
 
       it "should create a challenge" do
         expect { click_button submit }.to change(Challenge, :count).by(1)
       end
 
-      describe "after saving the challenge" do
+      describe "after saving the challenge it redirects to profile" do
         before { click_button submit }
-        let(:challenge) { Challenge.find_by_name('example challenge') }
+        it { should have_success_message('You')}
+        it { should have_h1(challenge.parent.name) }
+      end
+
+      describe "then the challenge page has the challenge" do
+        before do
+          click_button submit
+          visit challenge_path(challenge)
+        end
 
         it { should have_title(challenge.name) }
         it { should have_h1(challenge.name) }
-        it { should have_success_message('You')}
       end
     end
   end

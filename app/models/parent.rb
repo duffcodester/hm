@@ -27,7 +27,8 @@ class Parent < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }
+  VALID_PASSWORD_REGEX = /(?=.{6,})^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\!\@\#\$\%\^\&\*\-]).*$/
+  validates :password, presence: true, length: { minimum: 6 }, format: { with: VALID_PASSWORD_REGEX }
   validates :password_confirmation, presence: true
 
   private

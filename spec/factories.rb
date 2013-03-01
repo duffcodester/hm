@@ -2,8 +2,8 @@ FactoryGirl.define do
   factory :parent do
     sequence(:name)  { |n| "Parent #{n}" }
     sequence(:email) { |n| "parent_#{n}@example.com"}   
-    password "foobar"
-    password_confirmation "foobar"
+    password "foobar1!"
+    password_confirmation "foobar1!"
 
     factory :admin do
       admin true
@@ -12,8 +12,8 @@ FactoryGirl.define do
 
   factory :child do
     sequence(:username) { |n| "Child_#{n}" }
-    password "foobar"
-    password_confirmation "foobar"
+    password "foobar1!"
+    password_confirmation "foobar1!"
     parent_id 1
     points 0
   end

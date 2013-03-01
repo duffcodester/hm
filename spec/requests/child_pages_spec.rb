@@ -135,8 +135,8 @@ describe "Child pages" do
     describe "with valid information" do
       before do
         fill_in "Username",     with: "example_child12"
-        fill_in "Password",     with: "foobar"
-        fill_in "Password Confirmation", with: "foobar"
+        fill_in "Password",     with: "foobar1!"
+        fill_in "Password Confirmation", with: "foobar1!"
       end
 
       it "should create a child" do

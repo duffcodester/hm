@@ -17,8 +17,8 @@ require 'spec_helper'
 describe Parent do
   before { @parent = Parent.new(name: "Example Parent",
                                 email: "parent@example.com",
-                                password:              "foobar",
-                                password_confirmation: "foobar") }
+                                password:              "foobar1!",
+                                password_confirmation: "foobar1!") }
 
   subject { @parent }
 
@@ -108,7 +108,7 @@ describe Parent do
   end
 
   describe "when password doesn't match confirmation" do
-    before { @parent.password_confirmation = "mismatch" }
+    before { @parent.password_confirmation = "mismatch1!" }
       it { should_not be_valid }
   end
 
@@ -118,7 +118,7 @@ describe Parent do
   end
 
   describe "with a password that's too short" do
-      before { @parent.password = @parent.password_confirmation = "a" * 5 }
+      before { @parent.password = @parent.password_confirmation = "a1$" }
       it { should be_invalid }
   end
 
@@ -131,7 +131,7 @@ describe Parent do
       end
 
       describe "with invalid password" do
-        let(:parent_for_invalid_password) { found_parent.authenticate("invalid") }
+        let(:parent_for_invalid_password) { found_parent.authenticate("invalid1!") }
 
         it { should_not == parent_for_invalid_password }
         specify { parent_for_invalid_password.should be_false }

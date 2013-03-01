@@ -62,14 +62,15 @@ describe "Parent pages" do
 
   describe "profile page" do
     let(:parent) { FactoryGirl.create(:parent) }
+    let(:child) { FactoryGirl.create(:child, parent_id: parent.id) }
 
     let(:challenge) { FactoryGirl.create(:challenge) }
     let(:reward) { FactoryGirl.create(:reward) }
-    let!(:assigned_challenge) { FactoryGirl.create(:assigned_challenge, parent_id: parent.id, challenge_id: challenge.id) }
-    let!(:accepted_challenge) { FactoryGirl.create(:assigned_challenge, parent_id: parent.id, challenge_id: challenge.id, accepted: true) }
-    let!(:rejected_challenge) { FactoryGirl.create(:assigned_challenge, parent_id: parent.id, challenge_id: challenge.id, rejected: true) }
-    let!(:completed_challenge) { FactoryGirl.create(:assigned_challenge, parent_id: parent.id, challenge_id: challenge.id, completed: true) }
-    let!(:enabled_reward) { FactoryGirl.create(:enabled_reward, parent_id: parent.id, reward_id: reward.id) }
+    let!(:assigned_challenge) { FactoryGirl.create(:assigned_challenge, parent_id: parent.id, child_id: child.id, challenge_id: challenge.id) }
+    let!(:accepted_challenge) { FactoryGirl.create(:assigned_challenge, parent_id: parent.id, child_id: child.id, challenge_id: challenge.id, accepted: true) }
+    let!(:rejected_challenge) { FactoryGirl.create(:assigned_challenge, parent_id: parent.id, child_id: child.id, challenge_id: challenge.id, rejected: true) }
+    let!(:completed_challenge) { FactoryGirl.create(:assigned_challenge, parent_id: parent.id, child_id: child.id, challenge_id: challenge.id, completed: true) }
+    let!(:enabled_reward) { FactoryGirl.create(:enabled_reward, parent_id: parent.id, child_id: child.id, reward_id: reward.id) }
 
     before { visit parent_path(parent) }
 
@@ -161,8 +162,8 @@ describe "Parent pages" do
       before do
         fill_in "Name",         with: "Example Parent"
         fill_in "Email",        with: "parent@example.com"
-        fill_in "Password",     with: "foobar"
-        fill_in "Confirmation", with: "foobar"
+        fill_in "Password",     with: "foobar1!"
+        fill_in "Confirmation", with: "foobar1!"
       end
 
       it "should create a parent" do

@@ -57,10 +57,7 @@ describe "Enabling a Reward" do
           before { click_button submit }
           let(:enabled_reward) { EnabledReward.find_by_reward_id(reward.id) }
   
-          it { should have_title(reward.name) }
-          it { should have_selector('h4', text: reward.name) }
-          it { should have_selector('h4', int: enabled_reward.points) }
-          it { should have_selector('h4', text: "points.") }
+          it { should have_h1(parent.name) }
           it { should have_success_message('You')}
         end
       end 

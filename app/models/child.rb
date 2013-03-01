@@ -26,7 +26,8 @@ class Child < ActiveRecord::Base
   #only accept usernames with letters, underscores, and numbers
   VALID_USERNAME_REGEX = /^[a-z0-9_]{3,16}$/i
   validates :username, presence: true, format: { with: VALID_USERNAME_REGEX }, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 16 }
-  validates :password, presence: true, length: { minimum: 6 }
+  VALID_PASSWORD_REGEX = /(?=.{6,})^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\!\@\#\$\%\^\&\*\-]).*$/
+  validates :password, presence: true, length: { minimum: 6 }, format: { with: VALID_PASSWORD_REGEX }
   validates :password_confirmation, presence: true
   validates :parent_id, presence: true
   validates :points, presence: true
