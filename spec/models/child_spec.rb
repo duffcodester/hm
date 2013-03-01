@@ -9,7 +9,8 @@
 #  remember_token  :string(255)
 #  parent_id       :integer
 #  username        :string(255)
-#  points          :integer
+#  points          :integer          default(0)
+#  age_group       :string(255)
 #
 
 require 'spec_helper'
