@@ -13,7 +13,7 @@
 #
 
 class Child < ActiveRecord::Base
-  attr_accessible :username, :password, :password_confirmation, :points
+  attr_accessible :username, :password, :password_confirmation, :points, :age_group
 
   has_secure_password
   belongs_to :parent
@@ -31,6 +31,8 @@ class Child < ActiveRecord::Base
   validates :password_confirmation, presence: true
   validates :parent_id, presence: true
   validates :points, presence: true
+  VALID_AGE_GROUPS = %w{6-8 8-10 10-12+}
+  validates :age_group, presence: true, inclusion: { in: VALID_AGE_GROUPS }
 
 
   private

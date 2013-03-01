@@ -16,6 +16,7 @@ FactoryGirl.define do
     password_confirmation "foobar1!"
     parent_id 1
     points 0
+    age_group "6-8"
   end
 
   factory :challenge do

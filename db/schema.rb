@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212212741) do
+ActiveRecord::Schema.define(:version => 20130301164356) do
 
   create_table "assigned_challenges", :force => true do |t|
     t.integer  "parent_id"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20130212212741) do
     t.integer  "parent_id"
     t.string   "username"
     t.integer  "points",          :default => 0
+    t.string   "age_group"
   end
 
   add_index "children", ["remember_token"], :name => "index_children_on_remember_token"

@@ -18,6 +18,7 @@ describe Child do
   let(:parent) { FactoryGirl.create(:parent) }
   before{ @child = parent.children.build(
                              username: "Example_child",
+                             age_group: "6-8",
                              password:              "foobar1!",
                              password_confirmation: "foobar1!") }
 
@@ -33,6 +34,8 @@ describe Child do
   it { should respond_to(:authenticate) }
   it { should respond_to(:assigned_challenges) }
   it { should respond_to(:points) }
+  #6-8, 8-10, 10-12+, All
+  it { should respond_to(:age_group) }
   it { should respond_to(:parent_id) }
   it { should respond_to(:parent) }
   its(:parent) { should == parent } 
@@ -130,6 +133,16 @@ describe Child do
         it { should_not == child_for_invalid_password }
         specify { child_for_invalid_password.should be_false }
       end
+  end
+
+  describe "when age group is not present" do
+    before { @child.age_group = " " }
+    it { should_not be_valid }
+  end
+
+  describe "when age group is not one of the ranges" do
+    before { @child.age_group = "1-10" }
+    it { should_not be_valid }
   end
 
   describe "remember token" do

@@ -56,6 +56,7 @@ describe "Child pages" do
 
     it { should have_h1('Sign up a child') }
     it { should have_title(full_title('Child Signup')) }
+    it { has_select?("child_age_group") }
   end
 
   describe "child profile page" do
@@ -72,6 +73,7 @@ describe "Child pages" do
 
     it { should have_h1(child.username) }
     it { should have_title(child.username) }
+    it { should have_content(child.age_group) }
 
     describe "should display points" do
       it { should have_selector('h3', text: "Current Points:") }
@@ -137,6 +139,7 @@ describe "Child pages" do
         fill_in "Username",     with: "example_child12"
         fill_in "Password",     with: "foobar1!"
         fill_in "Password Confirmation", with: "foobar1!"
+        select "6-8", from: 'child[age_group]'
       end
 
       it "should create a child" do
@@ -178,6 +181,7 @@ describe "Child pages" do
         fill_in "Username",         with: new_username
         fill_in "Password",         with: child.password
         fill_in "Confirm Password", with: child.password
+        select "6-8", from: 'child[age_group]'
         click_button "Save changes"
       end
 

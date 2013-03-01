@@ -15,6 +15,9 @@
       <%= f.label :password_confirmation, "Password Confirmation" %>
       <%= f.password_field :password_confirmation %>
 
+      <%= f.label :age_group, "Age Group" %>
+      <%= select(:child, :age_group, age_groups) %>
+
       <%= f.submit "Create child account", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>

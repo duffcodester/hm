@@ -1,4 +1,9 @@
 module SessionsHelper
+  # needs to be moved elsewhere
+  def age_groups
+    %w{6-8 8-10 10-12+}
+  end
+  
   def sign_in(user)
     cookies.permanent[:remember_token] = user.remember_token
     self.current_user = user
