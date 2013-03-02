@@ -16,15 +16,17 @@ require 'spec_helper'
 
 describe Challenge do  
   let(:parent) { FactoryGirl.create(:parent) }
-  before { @challenge = parent.challenges.build(name: "Example Challenge", description: "This provides a very in depth description of the Example Challenge") }
+  before { @challenge = parent.challenges.build(name: "Example Challenge", description: "This provides a very in depth description of the Example Challenge"), category: "Example Category" }
 
   subject { @challenge }
 
   it { should respond_to(:name) }
   it { should respond_to(:description) }
+  it { should respond_to(:category_id) }
   it { should respond_to(:parent_id) }
   it { should respond_to(:parent) }
   it { should respond_to(:public) }
+  its(:category) { should == category }
   its(:parent) { should == parent }
 
   it { should be_valid }

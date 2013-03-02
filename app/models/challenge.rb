@@ -14,4 +14,5 @@
 
 class Challenge < Resource
   has_many :assigned_challenges
+  belongs_to :category
 end
