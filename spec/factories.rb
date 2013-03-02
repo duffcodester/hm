@@ -36,6 +36,9 @@ FactoryGirl.define do
   factory :assigned_challenge do
     points       100
     accepted     false
+    rejected     false
+    completed    false
+    validated    false
     parent_id    1
     child_id     1
     challenge_id 1

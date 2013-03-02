@@ -34,7 +34,6 @@ describe EnabledReward do
   its(:reward) { should == reward }
 
   it { should be_valid }
-  it { should_not be_redeemed }
 
   describe "enabled_reward points is an int/fixnum" do
     before { @enabled_reward.points = '10' }

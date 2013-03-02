@@ -27,6 +27,7 @@ describe AssignedChallenge do
 
   it { should respond_to(:points) }
   it { should respond_to(:accepted) }
+  it { should respond_to(:completed) }
   it { should respond_to(:parent_id) }
   it { should respond_to(:parent) }
   it { should respond_to(:child_id) }
@@ -39,6 +40,7 @@ describe AssignedChallenge do
 
   it { should be_valid }
   it { should_not be_accepted }
+  it { should_not be_completed }
 
   describe "assigned_challenge points is an int/fixnum" do
     before { @assigned_challenge.points = '10' }
