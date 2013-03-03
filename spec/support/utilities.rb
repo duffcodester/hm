@@ -10,12 +10,12 @@ def sign_in(user)
   cookies[:remember_token] = user.remember_token
 end
 
-#def validate_presence(object, attribute)
- # describe "when #{attribute.to_s} is not present" do
-  #  before { object.send(attribute) = " " } # or = nil
-   # specify { object.should be_valid }
-  #end
-#end
+RSpec::Matchers.define :be_created_with_category do |category|
+  match do |challenge|
+    challenge.should be_valid
+    challenge.category.should eq(category)
+  end
+end
 
 RSpec::Matchers.define :have_error_message do |message|
   match do |page|

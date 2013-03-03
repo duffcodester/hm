@@ -22,7 +22,8 @@ FactoryGirl.define do
   factory :challenge do
     sequence(:name)        { |n| "Challenge #{n}" }
     sequence(:description) { |n| "Challenge Description #{n}" }
-    parent_id 1
+    parent_id   1
+    category_id 1
     public false
   end
 
@@ -50,5 +51,9 @@ FactoryGirl.define do
     parent_id    1
     child_id     1
     reward_id    1
+  end
+
+  factory :category do
+    name "Nutrition"
   end
 end

@@ -1,8 +1,11 @@
 require 'spec_helper'
 
-describe "Challenges" do
+describe "Challenge pages" do
 
   subject { page }
+
+  let(:submit) { "Create Challenge" }
+  let(:parent) { FactoryGirl.create(:parent) }
 
   describe "challenge creation page" do 
     before { visit new_challenge_path }
@@ -15,13 +18,10 @@ describe "Challenges" do
   end
 
   describe "creation" do
-    let(:parent) { FactoryGirl.create(:parent) }
     before do
-      sign_in(parent)
+      sign_in parent
       visit new_challenge_path
     end
-
-    let(:submit) { "Create Challenge" }
 
     describe "with invalid information" do
       it "should not create a challenge" do
@@ -35,6 +35,7 @@ describe "Challenges" do
         fill_in "Description",  with: "Example Challenge Description"
         check "Public?"
       end
+
       let(:challenge) { Challenge.find_by_name('example challenge') }
 
       it "should create a challenge" do
@@ -58,16 +59,15 @@ describe "Challenges" do
       end
     end
   end
-end
-
-describe "Challenges view" do
-  subject { page }
 
   let(:parent) { FactoryGirl.create(:parent) }
   let(:public_challenge) { FactoryGirl.create(:challenge, parent_id: parent.id, public: true) }
   let(:private_challenge) { FactoryGirl.create(:challenge, parent_id: parent.id, public: false) }
-  before { public_challenge.save }
-  before { private_challenge.save }
+
+  before do 
+    public_challenge.save
+    private_challenge.save
+  end
 
   describe "Community Pool" do
     before { visit challenges_community_pool_path }
@@ -107,5 +107,47 @@ describe "Challenges view" do
     it { should have_h1('Your challenges') }
     it { should have_content(private_challenge.name) }
     it { should have_content(public_challenge.name) }
+  end
+
+  describe "Creating Challenges with Categories" do
+    before(:each) do
+      sign_in parent
+      visit new_challenge_path
+
+      fill_in "Name",         with: "Example Challenge"
+      fill_in "Description",  with: "Example Challenge Description"
+      check "Public?"
+      click_button submit
+    end
+
+    let(:challenge) { Challenge.find_by_name('example challenge') }
+    subject { challenge }
+
+    context "without choosing a category" do
+      it "should test below"
+      #it { should be_created_with_category("The Arts") }
+      
+      # it should redirect to creation page
+      # it should show error message
+      # the challenge should not be in the DB
+    end
+
+    context "when one category was chosen" do
+      it "should test below"
+      #it { should_not be_created_with_category }
+
+      #specify { expect to increase it{}.by(1) }
+      # it should redirect to ?
+      # it should show success message
+      # the challenge should be in the DB
+      # it should have the category
+    end
+
+    context "when multiple categories are chosen" do
+      # it should redirect to ?
+      # it should show success message
+      # the challenge should be in the DB
+      # it should have the category
+    end
   end
 end

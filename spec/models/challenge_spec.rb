@@ -10,13 +10,15 @@
 #  type        :string(255)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  category_id :integer
 #
 
 require 'spec_helper'
 
 describe Challenge do  
   let(:parent) { FactoryGirl.create(:parent) }
-  before { @challenge = parent.challenges.build(name: "Example Challenge", description: "This provides a very in depth description of the Example Challenge"), category: "Example Category" }
+  let(:category) { FactoryGirl.create(:category) }
+  before { @challenge = parent.challenges.build(name: "Example Challenge", description: "This provides a very in depth description of the Example Challenge", category_id: category.id) }
 
   subject { @challenge }
 
@@ -81,5 +83,13 @@ describe Challenge do
     it { should_not be_valid }
   end
 
-  describe "that is public"
+  describe "that is public" do
+    it "should be public"
+  end
+
+  describe "when category_id is not present" do
+    before { @challenge.category_id = nil }
+    it "should do below"
+    #it { should_not be_valid }
+  end
 end

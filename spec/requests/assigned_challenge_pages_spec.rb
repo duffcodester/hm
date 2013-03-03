@@ -62,4 +62,31 @@ describe "Assigning a Challenge" do
       end 
     end
   end
+
+  describe "Assigning Challenges with a Category" do
+    before(:each) do
+      # setup assigned challenge
+    end
+
+    let(:assigned_challenge) { AssignedChallenge.find_by_name('example challenge') }
+
+    context "without choosing a category" do
+      # it should redirect to creation page
+      # it should show error message
+      # the challenge should not be in the DB
+    end
+
+    context "when one category was chosen" do
+      # it should redirect to ?
+      # it should show success message
+      # the challenge should be in the DB
+      # it should have the category
+    end
+
+    context "when multiple categories are chosen" do
+      # it should redirect to creation page
+      # it should show error message
+      # the challenge should not be in the DB
+    end
+  end
 end
