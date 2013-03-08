@@ -5,20 +5,25 @@
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
-    <%= render 'layouts/shim' %>    
+    <%= render 'layouts/shim' %>
+    <%= render 'layouts/slideshow' %> 
+    <%= render 'layouts/google_analytics' %>  
   </head>
   <body>
-    <%= render 'layouts/header' %>
-    <div class="container">
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-      <% end %>
-      <%= yield %>
-      <%= render 'layouts/footer' %>
-      <%= debug(params) if Rails.env.development? %>
-      <% YAML::ENGINE.yamler= 'syck' %>
-      <%= debug(@enabled_reward) if @enabled_reward && Rails.env.development? %>
-      <%= debug(@enabled_reward.child) if @enabled_reward && Rails.env.development? %>
+    <div class="wrap">
+      <%= render 'layouts/header' %>
+      <!--<div class="container">-->
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: " alertalert-#{key}") %>
+        <% end %>
+        <%= yield %>
+    </div><!--end #wrap-->
+    <div id="spacer" ></div> <!--end #spacer-->
+        <%= render 'layouts/footer' %>
+        <%= debug(params) if Rails.env.development? %>
+        <% YAML::ENGINE.yamler= 'syck' %>
+        <%= debug(@enabled_reward) if @enabled_rewar&&     Rails.env.development? %>
+        <%= debug(@enabled_reward.child) if @enabled_reward && Rails.env.development? %>
     </div>
   </body>
 </html>

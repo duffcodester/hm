@@ -1,0 +1,300 @@
+* {margin:0;padding:0}
+body {font:10pt Verdana, Arial, sans serif; line-height:1.5em;}
+html, body {height: 100%}
+body {
+  background: #e99723 url(backgrounds/white_center.png) repeat-y 50% 0;
+  font: Verdana, Arial, Helvetica, sans-serif;  
+  text-align: center; 
+  color: #000000; }
+
+#wrap {min-height: 100%; width:100%; padding: 0 auto;}
+#main, #home {overflow:auto;padding-bottom: 30px} 
+#footer {position: relative;margin-top: -30px;height: 30px;clear:both; text-align: center: width:960px; padding: 0 auto;} 
+body:before {content:"";height:100%; width:0;margin-top:-32767px}
+
+a img {border:none}
+img.left {float:left;margin: 10px 10px 10px 1px}
+img.right {float:right;margin: 10px 1px 10px 10px}
+a {text-decoration: none;}
+a:visited {color: #000000;}
+
+p {margin:10px 0 5px 0}
+ul {list-style: inside; list-style-position: inside;}
+h1, h2, h3, h4 {font-family: Verdana, Arial, Helvetica, sans-serif}
+h1 {color: #000000;font-size:16px; margin:0 0 10px 0}
+h2 {color:#8D0602;font-size:14pt;margin:25px 0 10px 0}
+h2.locations {color:#705B35;font-size:10pt;margin:0 0 10px 0}
+h2.home {margin:30px 0 10px 0}
+#content h2 {clear:left}
+#content h3 {margin:10px 0 15px 10px; text-align: left;}
+
+#header {min-height: 100px; text-align: center;}
+#header, #content1, #foot, #flash, #main {width:960px;margin:0 auto}
+
+#logo  {float:left; width: 960px;}
+#logo .logo {float:left; padding-top: 10px; padding-left: 40px;}
+#signreg {
+  padding-top: 10px;
+  width: 350px;
+  padding-left: 670px;
+  font-famiy: inherit;
+  font-size:10px;
+  font-weight: 500;
+  color:#999999;
+     }
+#signreg a {color:#999999;
+  font-weight: 500;}
+#signreg a:hover {color:#728b4a; }
+#signreg a:visited {color:inherit; text-decoration: none;}
+     
+
+#powerfields {
+  float: right;
+  clear:left;
+  margin-right: 37px;
+  padding-top:5px;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 500;
+  color: #333333;
+  clear:right;}
+  
+#powerbutton {
+  padding-left: 2px;
+  padding bottom: 2px;}
+  
+#headernav {
+  float: right;
+  clear:left;
+  margin-right: 50px;
+  margin-top:17px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  clear:right;}
+} 
+
+#headernav a {color: #000000; text-decoration: none;}   
+
+#headernav a:hover { color: #728b4a; text-decoration: none;}
+
+#headernav a:active { color: #E99723; }
+
+#headernav a:visted {color: #000000; text-decoration: none;}
+
+.gold {color: #e99723;}
+
+.active {color: #E99723;}
+
+
+.pf_tab {
+  width: 330px;
+}
+
+#horizdiv {text-align: center;}
+#horizdiv img {padding-top:5px; }
+
+.align_rt {
+  text-align: right;
+  }
+  
+.align_lt {
+  text-align: left;
+  }
+
+.float_rt {
+  float: right;
+  clear: left;
+  }
+
+
+
+#home {padding-top:20px}
+#feature {background-color: auto; 
+  height:240px; padding-top:10px; padding-bottom: 10px; text-align:center;}
+
+
+
+#contact {text-align:center;width:400px;float:right;margin:10px 0 0 0}
+
+
+
+
+#content {
+  padding: 25px 10px 20px 10px;
+  width: 960px; 
+  min-height: 275px;
+  margin:0 auto; 
+  text-align: center;
+    }
+    
+
+/*--------------------------------------------------------------*/
+
+
+#avatarbase {
+  text-align:center;
+  margin-left: 470px;
+  width: 4px;
+  height: 5px;
+  }
+
+
+
+
+#lower_right { float: right; 
+  width: 265px; 
+  margin-right: 175px; }
+  
+#lower_right p { font-size:12px; text-align: left; margin: 0 5px 15px 10px; line-height: 1.4em; }
+
+#lower_left { 
+  float: right; 
+  margin-right: 33px; 
+  clear:left; 
+  width: 265px; }
+
+
+
+
+#left_img { position: relative; top: -25px; left: -590px; width: 355px; z-index: -1; }
+#left_img img {width: 99%;}
+
+#right_img { position: relative; top: -360px; left: 285px; width: 280px; z-index: -1; }
+#right_img img {width: 99%;}
+
+
+#badgeroll {color: #000000; font-size: 9px;}
+
+/*--------------------------------------------------------------*/
+
+
+
+/*-----------------------------CONTACT PAGE---------------------------------*/
+
+
+#avatarbase_contact {
+  text-align:center;
+  margin-left: 470px;
+  width: 4px;
+  height: 5px;
+  }
+
+#left_img_contact { position: relative; top: 95px; left: 250px; width: 355px; z-index: -1; }
+#left_img_contact img {width: 75%;}
+
+#right_img_contact { position: relative; top: -360px; left: 285px; width: 280px; z-index: -1; }
+#right_img_contact img {width: 99%;}
+
+/*--------------------------------------------------------------*/
+
+
+
+/*-----------------------------REGISTRATION PAGE---------------------------------*/
+
+
+#avatarbase_reg {
+  text-align:center;
+  margin-left: 470px;
+  width: 4px;
+  height: 5px;
+  }
+
+#left_img_reg { position: relative; top: 5px; left: 330px; width: 355px; z-index: -1; }
+#left_img_reg img {width: 85%;}
+
+#right_img_reg { position: relative; top: -360px; left: 285px; width: 280px; z-index: -1; }
+#right_img_reg img {width: 99%;}
+
+/*--------------------------------------------------------------*/
+
+
+
+
+
+    
+
+#spacer {height: 15px;}
+
+#footer {
+  width: 960px;
+  margin:0 auto; 
+  text-align:left;
+  border-top: none;
+  font-size: 11px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+#foot { text-align:center; padding-top: 10px; padding-bottom: 10px;}
+#foot .left {float: left;}
+#foot .right {
+    padding-left: 500px;}
+
+#foot a:link {  color: #000000; text-decoration: none;}   
+#foot a:hover { color: #728b4a;}
+#foot a:active { color: #a9c374; }
+
+
+#forty_left {margin-left: 40px; margin-right: 40px; text-align:left;}
+#forty_left ul {list-style: inside;}
+
+
+/*---WIDE LEFT COLUMN/NARROW RIGHT COLUMN---*/
+
+#WideLeftCol {
+  width: 618px;
+  margin-left: 40px;
+  float: left;
+  text-align: left;
+    }
+  
+#WideLeftContent {
+  text-align: left;
+  }
+
+#NarrowRightCol {
+  width: 250px;
+  margin-right: 40px;
+  padding-left: 10px;
+  float: right;
+  text-align: left;
+  border-left: none;
+  background-color: none;
+    }
+
+#NarrowRightCol ul {
+    list-style: inside;
+  }
+
+
+
+
+
+/* Registration Page */
+
+#reg_table {font-family: Verdana, Arial, Helvetica, sans-serif; color: #000000;}
+.rowheight {min-height: 40px;}
+.labels {text-align: right; padding-right: 1px; font-weight: 600; font-size: 8pt; min-height: 40px;}
+.fields {text-align: left; padding-left: 1px; font-size: 8pt; min-height: 40px;}
+.reg_inst {text-align: left; padding-right: 3px; font-weight: 600; font-size: 8pt; line-height: 110%; min-height: 40px;}
+
+.hidden {visibility:hidden;}
+
+
+
+
+
+
+
+/* CLEAR FIX*/
+.clearfix:after {content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden}
+.clearfix {display: inline-block}
+/* Hides from IE-mac \*/
+* html .clearfix { height: 1%}
+.clearfix {display: block}
+/* End hide from IE-mac */
