@@ -1,10 +1,88 @@
-<div class="center hero-unit">
-  <%= link_to image_tag("banner.png", alt: "HealthMonsterBanner"), 'http://healthmonster.herokuapp.com' %>
-  <h1>Welcome to HealthMonster</h1>
-
-  <h3>
-    Once you register as a parent, you can register your child.
-  </h3>
-
-  <%= link_to "Register as a Parent", signup_path, class: "btn btn-large btn-primary" %>
+<div id="feature" align="center">
+  <%= image_tag("home_slideshow/soccer_ban2.png", alt: "Soccer Banner") %>
 </div>
+
+<div id="content">
+
+<div id="avatarbase">
+  <div id="left_img">
+    <%= image_tag("avatars/hm_hero_home.png", alt: "HM hero") %>
+  </div>
+  <div id="right_img">
+    <%= image_tag("avatars/theif_home.png", alt: "The Thief") %>
+  </div>
+</div><!--end #avatarbase-->
+
+<div id="lower_right">
+  <h3>Preparing to Launch</h3>
+  <p>The HealthMonster team is working hard making sure all systems are ready for launch! </p>
+
+  <p>Are you as excited as we are? </p>   
+  <p>If so, sign up to receive the latest<br />
+  news and updates as we gear up<br />
+  for our big day!</p>
+</div><!--end #lower-right-->
+
+<div id="lower_left">
+<h3>The Latest</h3><!-- start badgeroll -->
+
+  <table width="242" border="0" cellpadding="1" id="badgeroll">
+    <tr>
+      <td width="204" scope="col" class="align_rt">Steve just joined HealthMonster.</td>
+      <td width="30" scope="col">
+        <%= image_tag("badges/hm_joined.png", size: "25x28") %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <%= image_tag("badges/badgeroll_div.png", size: "246x3") %>
+      </td>
+    </tr>
+    <tr>
+      <td class="align_rt">Raj just joined HealthMonster.</td>
+      <td>
+        <%= image_tag("badges/hm_joined.png", size: "25x28") %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <%= image_tag("badges/badgeroll_div.png", size: "246x3") %>
+      </td>
+    </tr>
+    <tr>
+      <td class="align_rt">Julie just joined HealthMonster.</td>
+      <td>
+        <%= image_tag("badges/hm_joined.png", size: "25x28") %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <%= image_tag("badges/badgeroll_div.png", size: "246x3") %>
+      </td>
+    </tr>
+    <tr>
+      <td class="align_rt">Rich just joined HealthMonster.</td>
+      <td>
+        <%= image_tag("badges/hm_joined.png", size: "25x28") %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <%= image_tag("badges/badgeroll_div.png", size: "246x3") %>
+      </td>
+    </tr>
+    <tr>
+      <td class="align_rt">Amanda just joined HealthMonster.</td>
+      <td>
+        <%= image_tag("badges/hm_joined.png", size: "25x28") %>
+      </td>
+    </tr>
+  </table>
+
+<%= link_to "Register as a Parent", signup_path, class: "btn btn-large btn-primary" %>
+
+<!-- end badgeroll -->
+
+</div><!--end #lower-left-->
+
+</div><!--end #content-->

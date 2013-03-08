@@ -1,21 +1,49 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="navbar-inner">
-    <div class="container">
-      <%= link_to image_tag("http://d3nf22m6d68s6c.cloudfront.net/622637/958174/1341028381/50.png", alt: "HealthMonsterLogo"), root_path %>
-      <nav>
-        <ul class="nav pull-right">
-          <li><%= link_to "Home", root_path %></li>
-          <% if signed_in? %>
-            <% if signed_in_as_parent? %>
-              <%= render 'layouts/header_parent' %>
-            <% elsif signed_in_as_child? %>
-              <%= render 'layouts/header_child' %>
-            <% end %>
-          <% else %>
-            <li><%= link_to "Sign in", signin_path %></li>
-          <% end %>
-        </ul>
-      </nav>
+<div id="header">
+  <div id="logo">
+    <%= link_to image_tag("HM_logo250w.png", alt: " HealthMonster", size: "250x91", class: "logo"),  root_path %>
+  
+    <div id="signreg">
+      <% if signed_in? %>
+        <%= link_to "sign out |", signout_path, method: "delete" %>
+      <% else %>
+        <%= link_to "sign in |", signin_path %>
+      <% end %>
+      <%= link_to "register", signup_path %>
     </div>
-  </div>
-</header>
+  
+    <div id="powerfields">
+  
+      <table width="275px" border="0" cellpadding="0"   cellspacing="2"><form action="submit.php" method="  post">
+        <tr>
+        <td width="120" class="fields" /><input name="name  " id="textfield" type="text" /></td>
+        <td width="120" class="fields" /><input type="text  " name="email" id="textfield2" /></td>
+        <td><%= link_to image_tag("power.png", alt: " Submit"), signin_path %></td>
+      </tr>
+      </form>
+      </table>
+    </div>
+  
+    <!--end #powerfields-->
+  
+    <div id="headernav">
+      <%= link_to "home |", root_path %>
+      <% if signed_in? %>
+        <% if signed_in_as_parent? %>
+          <%= render 'layouts/header_parent' %>
+        <% elsif signed_in_as_child? %>
+          <%= render 'layouts/header_child' %>
+        <% end %>
+      <% else %>
+        <%= link_to "Sign in", signin_path %></li>
+      <% end %>
+    </div> <!--End #headernav-->
+  </div> <!--End #logo -->
+  
+  <div id="horizdiv">
+    <%= image_tag("horiz_div958w.png") %>
+  </div> <!--end #horizdiv-->
+</div> <!--end #header-->
+
+
+
+
