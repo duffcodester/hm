@@ -25,6 +25,8 @@ describe AssignedChallenge do
 
   subject { @assigned_challenge }
 
+  it "should have one category"
+
   it { should respond_to(:points) }
   it { should respond_to(:accepted) }
   it { should respond_to(:completed) }

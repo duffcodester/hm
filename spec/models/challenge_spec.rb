@@ -33,8 +33,6 @@ describe Challenge do
 
   it { should be_valid }
 
-  #validate_presence(@challenge, :name)
-
   describe "when challenge name is not present" do
     before { @challenge.name = " " }
     it { should_not be_valid }
@@ -92,4 +90,6 @@ describe Challenge do
     it "should do below"
     #it { should_not be_valid }
   end
+
+  it "should have and belong to many categories"
 end
