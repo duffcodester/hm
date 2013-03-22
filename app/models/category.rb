@@ -16,9 +16,10 @@ class Category < ActiveRecord::Base
                         "Other"]
                         
   attr_accessible :name
-  has_many :challenges
+  has_and_belongs_to_many :challenges
+  has_many :assigned_challenges
 
-  before_validation { |category| category.name = name.downcase.split(' ').map(&:capitalize).join(' ') }
+  before_validation { |category| category.name = name.to_s.downcase.split(' ').map(&:capitalize).join(' ') }
 
   validates :name, presence: true, inclusion: APROVED_CATEGORIES, uniqueness: { case_sensitive: false }
 end

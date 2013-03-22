@@ -14,6 +14,8 @@ describe Category do
   subject { @category }
 
   it { should respond_to(:name) }
+  it { should respond_to(:challenges) }
+  it { should respond_to(:assigned_challenges) }
 
   it { should be_valid }
 

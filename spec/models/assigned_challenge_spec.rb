@@ -21,11 +21,11 @@ describe AssignedChallenge do
   let(:parent)    { FactoryGirl.create(:parent) }
   let(:child)     { FactoryGirl.create(:child, parent_id: parent.id) }
   let(:challenge) { FactoryGirl.create(:challenge, parent_id: parent.id) }
-  before { @assigned_challenge = parent.assigned_challenges.build(child_id: child.id, challenge_id: challenge.id, points: 100) }
+  let(:category)  { FactoryGirl.create(:category) }
+
+  before { @assigned_challenge = parent.assigned_challenges.build(child_id: child.id, challenge_id: challenge.id, category_id: category.id, points: 100) }
 
   subject { @assigned_challenge }
-
-  it "should have one category"
 
   it { should respond_to(:points) }
   it { should respond_to(:accepted) }
@@ -36,9 +36,12 @@ describe AssignedChallenge do
   it { should respond_to(:child) }
   it { should respond_to(:challenge_id) }
   it { should respond_to(:challenge) }
+  it { should respond_to(:category_id) }
+  it { should respond_to(:category) }
   its(:parent)    { should == parent }
   its(:child)     { should == child }
   its(:challenge) { should == challenge }
+  its(:category)  { should == category }
 
   it { should be_valid }
   it { should_not be_accepted }
@@ -99,5 +102,10 @@ describe AssignedChallenge do
     it "should make a valid AssignedChallenge" do
       FactoryGirl.build(:assigned_challenge).should be_valid
     end
+  end
+
+  context "when category_id is not present" do
+    before { @assigned_challenge.category_id = nil }
+    it { should_not be_valid }
   end
 end
