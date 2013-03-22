@@ -1,5 +1,5 @@
 * {margin:0;padding:0}
-body {font:10pt Verdana, Arial, sans serif; line-height:1.5em;}
+body {font:8pt Verdana, Arial, sans serif; line-height:1.5em;}
 html, body {height: 100%}
 body {
   background: #e99723 url(backgrounds/white_center.png) repeat-y 50% 0;
@@ -69,7 +69,7 @@ h2.home {margin:30px 0 10px 0}
   margin-right: 50px;
   margin-top:17px;
   font-family: inherit;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
   color: #000000;
   clear:right;
@@ -280,6 +280,54 @@ h2.home {margin:30px 0 10px 0}
 .reg_inst {text-align: left; padding-right: 3px; font-weight: 600; font-size: 8pt; line-height: 110%; min-height: 40px;}
 
 .hidden {visibility:hidden;}
+
+
+
+
+
+
+/*-----------------------------PARENT DASHBOARD PAGES---------------------------------*/
+
+
+#par_content {
+  padding: 10px 10px 20px 10px;
+  width: 960px; 
+  min-height: 275px;
+  margin:0 auto; 
+  text-align: center;
+    }
+
+.par_mod_header {font-family:Verdana, Arial, Helvetica, sans-serif; color: #e99723; font-weight:bold; font-size: 12pt; text-align:left}
+.par_player {font-weight: bold; color:#000000; font-size: 10pt; text-align:left;}
+.date {font-weight: 200; color:#000000; font-size: 8pt; text-align:right;}
+.desc {font-weight: 200; color:#000000; font-size: 8pt; text-align:left; line-height:130%;}
+.par_player_2 {font-weight: bold; color:#000000; font-size: 13pt; text-align:centers;}
+
+.avatarlist {padding-right: 5px;}
+
+.player_left {text-align: right;  font-weight: 600; font-size: 8pt; }
+.player_right {text-align: left;  font-weight: 600; font-size: 8pt; }
+
+#joinhmgsignreg {
+  padding-top: 2px;
+  width: 350px;
+  padding-left: 625px;
+  font-famiy: inherit;
+  font-size:10px;
+  font-weight: 500;
+  color:#999999;
+     }
+#joinghmgsignreg a {color:#999999; font-weight: 500;}
+#joinghmgsignreg a:hover {color:#728b4a; }
+#joinghmgsignreg a:visited {color:inherit; text-decoration: none;}
+
+#parmessageboard {font-family:Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: 450; vertical-align:top;}
+#parmessageboard .mbdate {float: left; padding-right: 5px; text-align:right; line-height: 130%; vertical-align: top; }
+#parmessageboard .mbmessage {clear: right; text-align: left; line-height: 130%; vertical-align: top;}
+
+.parmbsend {float:right; padding-top: 2px; padding-right: 13px;}
+.parmbpt {padding-top: 9px;}
+.parmbpb {padding-bottom: 11px;}
 
 
 

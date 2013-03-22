@@ -26,14 +26,16 @@
     <!--end #powerfields-->
   
     <div id="headernav">
-      <%= link_to "home |", root_path %>
       <% if signed_in? %>
         <% if signed_in_as_parent? %>
+          <%= link_to "home |", parent_dash_path %>
           <%= render 'layouts/header_parent' %>
         <% elsif signed_in_as_child? %>
+          <%= link_to "home |", root_path %>
           <%= render 'layouts/header_child' %>
         <% end %>
       <% else %>
+        <%= link_to "home |", root_path %>
         <%= link_to "Sign in", signin_path %></li>
       <% end %>
     </div> <!--End #headernav-->

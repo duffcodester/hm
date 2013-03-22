@@ -20,7 +20,7 @@ class AssignedChallengesController < ApplicationController
     
     if @assigned_challenge.save
       flash[:success] = "You have successfully assigned challenge!"
-      redirect_to @assigned_challenge.parent
+      redirect_to parent_dash_path
     else
       render 'new'
     end
@@ -43,7 +43,7 @@ class AssignedChallengesController < ApplicationController
         flash[:success] = "Challenge Validated"
         @assigned_challenge.child.update_attribute(:points, 
           @assigned_challenge.child.points + @assigned_challenge.points)
-        redirect_to @assigned_challenge.parent
+        redirect_to parent_dash_path
         @assigned_challenge.destroy
       end          
     else

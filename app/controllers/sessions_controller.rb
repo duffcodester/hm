@@ -11,7 +11,12 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:session][:password])
       sign_in user
-      redirect_back_or user
+
+      if user.class == Parent
+        redirect_to parent_dash_path
+      else
+        redirect_back_or user
+      end
     else
       flash.now[:error] = 'Invalid email or username/password combination' 
       render 'new'

@@ -18,6 +18,7 @@ Hm::Application.routes.draw do
   match '/rewards_your',              to: 'rewards#your'
   match '/rewards_community_pool',    to: 'rewards#community_pool'
   match '/children_your',             to: 'children#your'
+  match '/parent_dash',               to: 'parents#dash'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
