@@ -14,6 +14,10 @@ class AssignedChallengesController < ApplicationController
     @challenges = current_user.challenges + Challenge.where("public = ?", true).where("parent_id != ?", current_user.id)
     @children = current_user.children
     @assigned_challenge = current_user.assigned_challenges.build(params[:assigned_challenge])
+
+    challenge = Challenge.find(params[:assigned_challenge][:challenge_id])
+    @assigned_challenge.category_id = challenge.category_id
+    
     if @assigned_challenge.save
       flash[:success] = "You have successfully assigned challenge!"
       redirect_to @assigned_challenge.parent
