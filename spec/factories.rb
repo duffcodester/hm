@@ -23,7 +23,6 @@ FactoryGirl.define do
     sequence(:name)        { |n| "Challenge #{n}" }
     sequence(:description) { |n| "Challenge Description #{n}" }
     parent_id   1
-    category_id 1
     public false
   end
 
@@ -43,6 +42,7 @@ FactoryGirl.define do
     parent_id    1
     child_id     1
     challenge_id 1
+    category_id  1
   end
 
   factory :enabled_reward do
