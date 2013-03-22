@@ -16,7 +16,7 @@ class Category < ActiveRecord::Base
                         "Other"]
                         
   attr_accessible :name
-  has_and_belongs_to_many :challenges
+  has_many :challenges
   has_many :assigned_challenges
 
   before_validation { |category| category.name = name.to_s.downcase.split(' ').map(&:capitalize).join(' ') }

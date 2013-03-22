@@ -14,8 +14,10 @@
 #
 
 class Challenge < Resource
+  attr_accessible :category_id
+  
   has_many :assigned_challenges
-  has_and_belongs_to_many :categories
+  belongs_to :category
 
-  #validates :category_id, presence: true
+  validates :category_id, presence: true
 end

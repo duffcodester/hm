@@ -11,6 +11,12 @@
       <%= f.label :description %>
       <%= f.text_field :description %>
 
+      <% if @resource.type == "Challenge" %>
+        <label>Category</label>
+        <%= options_from_collection_for_select(@categories, :id, :name) %>
+        <%= collection_select(:challenge, :category_id, @categories, :id, :name) %>
+      <% end %>
+
       <%= f.label :public, "Public?" %>
       <%= f.check_box :public %>
 

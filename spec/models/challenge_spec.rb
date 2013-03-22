@@ -18,7 +18,7 @@ require 'spec_helper'
 describe Challenge do  
   let(:parent) { FactoryGirl.create(:parent) }
   let(:category) { FactoryGirl.create(:category) }
-  before { @challenge = parent.challenges.build(name: "Example Challenge", description: "This provides a very in depth description of the Example Challenge") }
+  before { @challenge = parent.challenges.build(name: "Example Challenge", description: "This provides a very in depth description of the Example Challenge", category_id: category.id) }
 
   subject { @challenge }
 
@@ -28,11 +28,11 @@ describe Challenge do
   it { should respond_to(:parent) }
   it { should respond_to(:public) }
   it { should respond_to(:assigned_challenges) }
-  it { should respond_to(:categories) }
-  it { should_not respond_to(:category) }
-  it { should_not respond_to(:category_id) }
+  it { should_not respond_to(:categories) }
+  it { should respond_to(:category) }
+  it { should respond_to(:category_id) }
   its(:parent) { should == parent }
-  its(:categories) { should == [] }
+  its(:category) { should == category }
 
   it { should be_valid }
   it { should_not be_public }
@@ -85,23 +85,8 @@ describe Challenge do
     it { should_not be_valid }
   end
 
-  #describe "when there are no categories" do
-  #  before { @challenge.categories = [] }
-  #  it { should_not be_valid }
-  #end
-
-  context "when using categories" do
-    let(:categories) { %w{Nutrition Exercise Academics} }
-    before do
-      categories.each do |category|
-        @challenge.categories << Category.new(name: category)
-      end
-      @challenge.save
-      @challenge.reload
-    end
-
-    it "should have and belong to many categories" do
-      @challenge.categories.map{|c| c.name}.should eq(categories)
-    end
+  describe "when category_id is not present" do
+    before { @challenge.category = nil }
+    it { should_not be_valid }
   end
 end

@@ -23,6 +23,7 @@ FactoryGirl.define do
     sequence(:name)        { |n| "Challenge #{n}" }
     sequence(:description) { |n| "Challenge Description #{n}" }
     parent_id   1
+    category_id 1
     public false
   end
 

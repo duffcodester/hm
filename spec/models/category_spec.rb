@@ -61,4 +61,9 @@ describe Category do
       it { should be_valid }
     end
   end
+
+  describe "the factory should work" do
+    let(:category) { FactoryGirl.create(:category) }
+    specify { category.should be_valid }
+  end
 end

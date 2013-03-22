@@ -11,6 +11,10 @@
       <%= f.label :description %>
       <%= f.text_field :description %>
 
+      <h4>Select at least one category</h4>
+      <%= options_from_collection_for_select(@categories, :id, :name) %>
+      <%= collection_select(:challenge, :category_id, @categories, :id, :name) %>
+
       <%= f.label :public, "Public?" %>
       <%= f.check_box :public %>
 

@@ -1,6 +1,7 @@
 class ResourcesController < ApplicationController
   def new
     @resource = resource_type.new
+    @categories = Category.all if resource_type == Challenge
   end
 
   def index
@@ -26,7 +27,7 @@ class ResourcesController < ApplicationController
     # 2) make parent_id accessible
     #@resource = resource_type.new(params[:resource])
     @resource = resource_type.new(params[params[:type].downcase.to_sym])
-    @resource.parent_id = current_user.id # this should not work since parent_id is not accessible, right?
+    @resource.parent_id = current_user.id 
     # 3) no change elsewhere
     #if params[:type] == "Challenge"
     #  @resource = current_user.challenges.build(params[:resource])
@@ -35,7 +36,7 @@ class ResourcesController < ApplicationController
     #end
 
     if @resource.save
-      flash[:success] = "You successfully created a resource!"
+      flash[:success] = "You successfully created a #{params[:type].downcase}!"
       redirect_to @resource.parent
     else
       render 'new'

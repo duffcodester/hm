@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322141021) do
+ActiveRecord::Schema.define(:version => 20130322150727) do
 
   create_table "assigned_challenges", :force => true do |t|
     t.integer  "parent_id"
@@ -29,11 +29,6 @@ ActiveRecord::Schema.define(:version => 20130322141021) do
 
   create_table "categories", :force => true do |t|
     t.string "name"
-  end
-
-  create_table "categories_challenges", :id => false, :force => true do |t|
-    t.integer "category_id"
-    t.integer "challenge_id"
   end
 
   create_table "children", :force => true do |t|
@@ -81,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20130322141021) do
     t.string   "type"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "category_id"
   end
 
 end

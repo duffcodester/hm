@@ -4,8 +4,9 @@ describe "Challenge pages" do
 
   subject { page }
 
-  let(:submit) { "Create Challenge" }
-  let(:parent) { FactoryGirl.create(:parent) }
+  let(:submit)   { "Create Challenge" }
+  let(:parent)   { FactoryGirl.create(:parent) }
+  let!(:category) { FactoryGirl.create(:category) }
 
   describe "challenge creation page" do 
     before { visit new_challenge_path }
@@ -14,6 +15,7 @@ describe "Challenge pages" do
     it { should have_title('Create a Challenge') }
     it { should have_label("Name") }
     it { should have_label("Description") }
+    it { should have_label("Category") }
     it { should have_label("Public?") }
   end
 
@@ -33,6 +35,7 @@ describe "Challenge pages" do
       before(:each) do
         fill_in "Name",         with: "Example Challenge"
         fill_in "Description",  with: "Example Challenge Description"
+        select category.name, from: 'challenge[category_id]'
         check "Public?"
       end
 
