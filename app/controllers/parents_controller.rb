@@ -39,7 +39,7 @@ class ParentsController < ApplicationController
     if @parent.update_attributes(params[:parent])
       flash[:success] = "Profile updated!"
       sign_in @parent
-      redirect_to @parent
+      redirect_to parent_dash_path
     else
       render 'edit'
     end
@@ -50,7 +50,7 @@ class ParentsController < ApplicationController
     if @parent.save
       sign_in @parent
       flash[:success] = "Welcome to HealthMonster! You have successfully created your account"
-      redirect_to @parent
+      redirect_to parent_dash_path
     else
       render 'new'
     end

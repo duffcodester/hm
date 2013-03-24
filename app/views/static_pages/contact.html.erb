@@ -1,0 +1,53 @@
+<div id="content">
+
+<div id="avatarbase_contact">
+  <div id="left_img_contact"><%= image_tag("avatars/ninjagirl_rt2.png", alt: "Ninja Girl") %></div>
+</div><!--end #avatarbase-->
+
+<div id="forty_left" class="align_lt">
+ <form id="form1" name="form1" method="post" action="contactus.htm">
+    <h1>Have questions? Comments? We want to hear from you!</h1>
+    <p>&nbsp;</p>
+    <div align="center" >
+      <table width="auto" border="0" cellspacing="12" cellpadding="0" id="reg_table">
+        <tr class="rowheight">
+          <td width="135" height="40" class="labels">First Name: </td>
+            <td width="278" height="40" class="fields"><input name="FName2" type="text" id="FName2" size="40" maxlength="40" /></td>
+            <td width="155" class="labels">Last Name: </td>
+            <td width="242" class="fields"><input name="LName" type="text" size="40" maxlength="40" /></td>
+          </tr>
+        <tr class="rowheight" >
+          <td class="labels" height="40">E-mail:</td>
+            <td class="fields"><input type="text" id="useremail" size="40" /></td>
+            <td class="labels">&nbsp;</td>
+            <td class="fields">&nbsp;</td>
+          </tr>
+        <tr class="rowheight">
+          <td class="labels" height="40" valign="top"><p>Comment/Question(s):</p>
+            </td>
+            <td colspan="3" class="fields"><p><textarea name="contents" id="contents" cols="70" rows="5"></textarea>
+              </p>
+            </td>
+        </tr>
+        <tr class="rowheight">
+          <td colspan="4" class="labels"><div align="center">            <br />
+            <%= image_tag("send.png", name: "send", alt: "Send to HealthMonster", id: "send") %>
+          </div></td>
+          </tr>
+      </table>
+    </div>
+ </form>
+
+
+
+
+
+
+ <p>
+  <!--end #forty_left-->
+  <%= image_tag("spacer.gif", height: "150px") %></p>
+ <p>&nbsp;</p>
+ <p>&nbsp;</p>
+ <p>&nbsp;</p>
+ <p>&nbsp; </p>
+</div> <!--end #content-->
