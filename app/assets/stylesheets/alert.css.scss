@@ -1,0 +1,82 @@
+//
+// Alerts
+// --------------------------------------------------
+
+
+
+
+// Base styles
+// -------------------------
+
+.alert {
+  display: inline-block;
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 40px;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  background-color: brown;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.alert,
+.alert h4 {
+  // Specified for the h4 to prevent conflicts of changing @headingsColor
+  color: brown;
+}
+.alert h4 {
+  margin: 0;
+}
+
+// Adjust close link position
+.alert .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  line-height: 40px;
+}
+
+
+// Alternate styles
+// -------------------------
+
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+}
+.alert-success h4 {
+  color: black;
+}
+.alert-danger,
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
+.alert-danger h4,
+.alert-error h4 {
+  color: black;
+}
+.alert-info {
+  background-color: yellow;
+  border-color: black;
+  color: black;
+}
+.alert-info h4 {
+  color: black;
+}
+
+
+// Block alerts
+// -------------------------
+
+.alert-block {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.alert-block > p,
+.alert-block > ul {
+  margin-bottom: 0;
+}
+.alert-block p + p {
+  margin-top: 5px;
+}
