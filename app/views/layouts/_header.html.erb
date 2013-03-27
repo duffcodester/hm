@@ -18,23 +18,18 @@
       <table width="275px" border="0" cellpadding="0"   cellspacing="2">
         <%= form_for(:session, url: sessions_path) do |f| %>
           <tr>
-            <td width="120" class="fields"/>
+            <td width="80" class="fields"/>
               <% unless signed_in? %>
-                  <%= f.text_field :email_username, id: "textfield" %>
+                  <%= f.text_field :email_username, id: "textfield", placeholder: "Username" %>
                 </td>
-                <td width="120" class="fields"/>
-                  <%= f.password_field :password, id: "textfield2" %>
+                <td width="80" class="fields"/>
+                  <%= f.password_field :password, id: "textfield2", placeholder: "Password" %>
                 </td>
                 <td>
                   <%= image_submit_tag("power.png", name: "commit", alt: "Submit") %>
                 </td>
               </tr>
               <tr>
-                <td width="120" class="fields"/>
-                  <%= f.label :email_username, "Username", id: "textfield" %>  
-                </td>
-                <td width="120" class="fields"/>
-                  <%= f.label :password, width: "120", class: "fields", id: "textfield2" %>
               <% else %>
                 <%= image_tag("spacer.gif") %>
               <% end %>
