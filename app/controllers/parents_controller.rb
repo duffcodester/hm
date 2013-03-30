@@ -7,7 +7,7 @@ class ParentsController < ApplicationController
     @parent = Parent.new
   end
 
-  def show
+  def show # no longer used
     @parent = Parent.find(params[:id])
     @assigned_challenges = @parent.assigned_challenges.where("parent_id =?", @parent.id).where("accepted =?", false).where("rejected =?", false).where("completed =?", false).where("validated =?", false)
     @accepted_challenges = @parent.assigned_challenges.where("parent_id =?", @parent.id).where("accepted =?", true)

@@ -16,10 +16,20 @@ before_filter :admin_parent, only: :destroy
     @child = Child.find(params[:id])
     @assigned_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("accepted =?", false).where("rejected =?", false).where("completed =?", false).where("validated =?", false)
     @accepted_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("accepted =?", true)
+    @enabled_rewards = @child.enabled_rewards.where("child_id =?", @child.id).where("redeemed =?", false)
+  end
+
+  def show_old # no longer used
+    @child = Child.find(params[:id])
+    @assigned_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("accepted =?", false).where("rejected =?", false).where("completed =?", false).where("validated =?", false)
+    @accepted_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("accepted =?", true)
     @rejected_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("rejected =?", true)
     @completed_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("completed =?", true)
     @enabled_rewards = @child.enabled_rewards.where("child_id =?", @child.id).where("redeemed =?", false)
     @validated_challenges = @child.assigned_challenges.where("validated =?", true)
+  end
+
+  def dash
   end
 
   def edit

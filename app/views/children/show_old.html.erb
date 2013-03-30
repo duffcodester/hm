@@ -1,0 +1,81 @@
+<% provide(:title, @child.username) %>
+<h1>
+  <%= @child.username %>
+</h1>
+<h3>
+  <%= "Child age group: #{@child.age_group}" %>
+</h3>
+
+<h3>Current Points: <%= @child.points %> points.</h3>
+<br>
+<h4>Assigned Challenges</h4>
+<ol>
+  <% @assigned_challenges.each do |assigned_challenge| %>
+    <li><%= assigned_challenge.challenge.name %>: <%= assigned_challenge.points %>
+      <%= form_for assigned_challenge, :method => "put" do |f| %>
+      <%= f.hidden_field :accepted, :value => true %>
+      <%= f.submit "Accept" %>
+      <% end %>
+
+      <%= form_for assigned_challenge, :method => "put" do |f| %>
+      <%= f.hidden_field :rejected, :value => true %>
+      <%= f.submit "Reject" %>
+      <% end %>
+    </li>
+  <% end %>
+</ol>
+<br>
+<h4>Accepted Challenges</h4>
+<ol>
+  <% @accepted_challenges.each do |accepted_challenge| %>
+    <li><%= accepted_challenge.challenge.name %>: <%= accepted_challenge.points %>
+      <%= form_for accepted_challenge, :method => "put" do |f| %>
+      <%= f.hidden_field :completed, :value => true %>
+      <%= f.hidden_field :accepted, :value => false %>
+      <%= f.submit "Complete" %>
+      <% end %>
+    </li>
+  <% end %>
+</ol>
+<br>
+<h4>Enabled Rewards</h4>
+<ol>
+  <% @enabled_rewards.each do |enabled_reward| %>
+    <li><%= enabled_reward.reward.name %>: <%= enabled_reward.points %>
+      <%= form_for enabled_reward, :method => "put" do |f| %>
+
+        <%= f.hidden_field :redeemed, value: true %>
+
+        <%= f.submit "Redeem" %>
+      <% end %>
+    </li>
+  <% end %>
+</ol>
+<br>
+<h4>Completed Challenges</h4>
+<ol>
+  <% @completed_challenges.each do |completed_challenge| %>
+    <li><%= completed_challenge.challenge.name %>: <%= completed_challenge.points %>
+    </li>
+  <% end %>
+</ol>
+<br>
+<h4>Validated Challenges</h4>
+<ol>
+  <% @validated_challenges.each do |validated_challenge| %>
+    <li><%= validated_challenge.challenge.name %>: <%= validated_challenge.points %>
+    </li>
+  <% end %>
+</ol>
+<br>
+<h4>Rejected Challenges</h4>
+<ol>
+  <% @rejected_challenges.each do |rejected_challenge| %>
+    <li><%= rejected_challenge.challenge.name %>
+    </li>
+  <% end %>
+</ol>
+
+
+
+

@@ -1,81 +1,110 @@
-<% provide(:title, @child.username) %>
-<h1>
-  <%= @child.username %>
-</h1>
-<h3>
-  <%= "Child age group: #{@child.age_group}" %>
-</h3>
+<div id="par_content">
+  <p align="center">&nbsp;</p>
+  <p align="center"><%= image_tag("pardash/Player-Stats-Bar_01.png", alt: "Player Stats", size: "873x28", border: "0") %><%= link_to(image_tag("pardash/Action-Items-Bar_02.png", alt: "", size: "28x28", border: "0"), '#') %></p>
+  <div align="center">
+    <table width="90%" border="0" cellspacing="10" cellpadding="0">
+        <tr>
+          <td width="30%" valign="top">
+          <div align="left"><%= image_tag("spacer.gif") %><span class="par_mod_header"><%= @child.username.capitalize %></span></div>        
+          <hr color="#e99723" align="left" width="95%"/>
+          <div align="center" class="par_player_2">
+            <p>&nbsp;</p>
+            <p><img src="" alt="Avatar" name="PlayerAvatar" width="200" height="300" id="PlayerAvatar" style="background-color: #CC3300" /></p>
+            <table width="90%" border="0" cellspacing="10" cellpadding="0">
+              <tr>
+                <td class="player_left"><span class="player_left">Experience Points:</span></td>
+                <td class="player_right"><span class="player_right"><%= @child.points %></span></td>
+              </tr>
+              <tr>
+                <td class="player_left">Badges:</td>
+                <td class="player_right"><span class="player_right">&lt;&lt;##&gt;&gt;</span></td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+          </div></td>
+          <td width="33%" valign="top"><div align="left"><%= image_tag("spacer.gif") %><span class="par_mod_header">Health Meter</span>
+          </div>        
+          <hr color="#e99723" align="left" width="95%"/>
+          <p align="center">&nbsp;</p>
+          <p align="center"><%= image_tag("piechart.png", size: "167x167") %></p>
+          <div align="center">
+            <p>&nbsp;</p>
+            <table width="auto" border="0" align="center" cellpadding="0" cellspacing="5">
+              <tr>
+                <td class="player_left">Exercise</td>
+                <td><%= image_tag("pie_green.png", alt: "physical exercise", width: "13", height: "13") %></td>
+                <td class="player_right">&lt;&lt;25%&gt;&gt;</td>
+              </tr>
+              <tr>
+                <td class="player_left">Nutrition</td>
+                <td><%= image_tag("pie_red.png", alt: "nutrition", width: "13", height: "13") %></td>
+                <td class="player_right">&lt;&lt;15%&gt;&gt;</td>
+              </tr>
+              <tr>
+                <td class="player_left">Academic</td>
+                <td><%= image_tag("pie_orange.png", alt: "academic", width: "13", height: "13") %></td>
+                <td class="player_right">&lt;&lt;40%&gt;&gt;</td>
+              </tr>
+              <tr>
+                <td class="player_left">Community</td>
+                <td><%= image_tag("pie_blue.png", alt: "community", width: "13", height: "13") %></td>
+                <td class="player_right">&lt;&lt;3%&gt;&gt;</td>
+              </tr>
+              <tr>
+                <td class="player_left">Music/Art</td>
+                <td><%= image_tag("pie_yellow.png", alt: "the arts", width: "13", height: "13") %></td>
+                <td class="player_right">&lt;&lt;7%&gt;&gt;</td>
+              </tr>
+              <tr>
+                <td class="player_left">Other</td>
+                <td><%= image_tag("pie_navy.png", alt: "other", width: "13", height: "13") %></td>
+                <td class="player_right">&lt;&lt;10%&gt;&gt;</td>
+              </tr>
+            </table>
+          </div>
+          <p align="center">&nbsp;</p>
+          <p align="center">&nbsp;</p></td>
+          <td width="37%" valign="top"><div align="left"><%= image_tag("spacer.gif") %><span class="par_mod_header">Quests</span>
+          </div>
+            <hr color="#e99723" align="left" width="95%"/>
+            <div align="center">
+              <p>&nbsp;</p>
+              <table width="90%" border="0" cellspacing="10" cellpadding="0">
+                  <% for assigned_challenge in @assigned_challenges do %>
+                    <tr>
+                      <td class="desc"><%= "#{assigned_challenge.challenge.name.capitalize} for #{assigned_challenge.points} points" %></td>
+                      <td><%= image_tag("check.png", alt: "accept", width: "15", height: "16") %></td>
+                      <td><%= image_tag("x.png", alt: "decline", width: "17", height: "17") %></td>
+                    </tr>
+                  <% end %>
+              </table>
+              <p><%= image_tag("navarrow_left.jpg", alt: "previous", size: "21x35") %><%= image_tag("navarrow_right.jpg", alt: "next", size: "21x35") %></p>
+              <div align="left">
+                <%= image_tag("spacer.gif", width: "7px") %><span class="par_mod_header">Rewards</span>
+          </div>
+            <hr color="#e99723" align="left" width="95%"/>
+            <div align="center">
+           
+                <p>&nbsp;</p>
+                <table width="90%" border="0" cellspacing="10" cellpadding="0">
+                  <% for enabled_reward in @enabled_rewards do %>
+                    <tr>
+                      <td class="desc"><%= "#{enabled_reward.reward.name.capitalize} for #{enabled_reward.points} points" %></td>
+                      <td><%= image_tag("check.png", alt: "accept", width: "15", height: "16") %></td>
+                      <td><%= image_tag("x.png", alt: "decline", width: "17", height: "17") %></td>
+                    </tr>
+                  <% end %>
+                </table>
+                <p><%= image_tag("navarrow_left.jpg", alt: "previous", size: "21x35") %><%= image_tag("navarrow_right.jpg", alt: "next", size: "21x35") %></p>
+                <p></p>
+              </div>
+              <p>&nbsp;</p>
+            </div></td>
+        </tr>
+      </table>
+  </div>
+  <p align="center">&nbsp;</p>
+</div>
+<!--end #feature-->
 
-<h3>Current Points: <%= @child.points %> points.</h3>
-<br>
-<h4>Assigned Challenges</h4>
-<ol>
-  <% @assigned_challenges.each do |assigned_challenge| %>
-    <li><%= assigned_challenge.challenge.name %>: <%= assigned_challenge.points %>
-      <%= form_for assigned_challenge, :method => "put" do |f| %>
-      <%= f.hidden_field :accepted, :value => true %>
-      <%= f.submit "Accept" %>
-      <% end %>
-
-      <%= form_for assigned_challenge, :method => "put" do |f| %>
-      <%= f.hidden_field :rejected, :value => true %>
-      <%= f.submit "Reject" %>
-      <% end %>
-    </li>
-  <% end %>
-</ol>
-<br>
-<h4>Accepted Challenges</h4>
-<ol>
-  <% @accepted_challenges.each do |accepted_challenge| %>
-    <li><%= accepted_challenge.challenge.name %>: <%= accepted_challenge.points %>
-      <%= form_for accepted_challenge, :method => "put" do |f| %>
-      <%= f.hidden_field :completed, :value => true %>
-      <%= f.hidden_field :accepted, :value => false %>
-      <%= f.submit "Complete" %>
-      <% end %>
-    </li>
-  <% end %>
-</ol>
-<br>
-<h4>Enabled Rewards</h4>
-<ol>
-  <% @enabled_rewards.each do |enabled_reward| %>
-    <li><%= enabled_reward.reward.name %>: <%= enabled_reward.points %>
-      <%= form_for enabled_reward, :method => "put" do |f| %>
-
-        <%= f.hidden_field :redeemed, value: true %>
-
-        <%= f.submit "Redeem" %>
-      <% end %>
-    </li>
-  <% end %>
-</ol>
-<br>
-<h4>Completed Challenges</h4>
-<ol>
-  <% @completed_challenges.each do |completed_challenge| %>
-    <li><%= completed_challenge.challenge.name %>: <%= completed_challenge.points %>
-    </li>
-  <% end %>
-</ol>
-<br>
-<h4>Validated Challenges</h4>
-<ol>
-  <% @validated_challenges.each do |validated_challenge| %>
-    <li><%= validated_challenge.challenge.name %>: <%= validated_challenge.points %>
-    </li>
-  <% end %>
-</ol>
-<br>
-<h4>Rejected Challenges</h4>
-<ol>
-  <% @rejected_challenges.each do |rejected_challenge| %>
-    <li><%= rejected_challenge.challenge.name %>
-    </li>
-  <% end %>
-</ol>
-
-
-
-
+ <!--end #content-->
