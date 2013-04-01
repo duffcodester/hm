@@ -70,9 +70,9 @@
             <div align="center">
               <p>&nbsp;</p>
               <table width="90%" border="0" cellspacing="10" cellpadding="0">
-                  <% for assigned_challenge in @assigned_challenges do %>
+                  <% for completed_challenge in @completed_challenges do %>
                     <tr>
-                      <td class="desc"><%= "#{assigned_challenge.challenge.name.capitalize} for #{assigned_challenge.points} points" %></td>
+                      <td class="desc"><%= "#{completed_challenge.challenge.name.capitalize} for #{completed_challenge.points} points" %></td>
                       <td><%= image_tag("check.png", alt: "accept", width: "15", height: "16") %></td>
                       <td><%= image_tag("x.png", alt: "decline", width: "17", height: "17") %></td>
                     </tr>
@@ -87,9 +87,10 @@
            
                 <p>&nbsp;</p>
                 <table width="90%" border="0" cellspacing="10" cellpadding="0">
-                  <% for enabled_reward in @enabled_rewards do %>
+                  <!-- should be suggested rewards from child -->
+                  <% for suggested_reward in @suggested_rewards do %>
                     <tr>
-                      <td class="desc"><%= "#{enabled_reward.reward.name.capitalize} for #{enabled_reward.points} points" %></td>
+                      <td class="desc"><%= "#{suggested_reward.reward.name.capitalize} for #{suggested_reward.points} points" %></td>
                       <td><%= image_tag("check.png", alt: "accept", width: "15", height: "16") %></td>
                       <td><%= image_tag("x.png", alt: "decline", width: "17", height: "17") %></td>
                     </tr>
