@@ -15,7 +15,7 @@
 <h4>Accepted Challenges</h4>
 <ol>
   <% @accepted_challenges.each do |accepted_challenge| %>
-    <li><b>Challenge: </b><%= accepted_challenge.challenge.name %><b> Child: </b> <%= accepted_challenge.child.username %><b> Category: </b><%= accepted_challenge.category.name %>
+    <li><b>Challenge: </b><%= accepted_challenge.challenge.name %><b> Child: </b> <%= accepted_challenge.child.username %><b> Category: </b><%= accepted_challenge.category %>
     </li>
   <% end %>
 </ol>
