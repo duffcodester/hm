@@ -1,7 +1,13 @@
 class ResourcesController < ApplicationController
   def new
-    @resource = resource_type.new
-    @categories = Category.all if resource_type == Challenge
+    #@resource = resource_type.new
+    @resource = Challenge.new
+    #@categories = Category.all if resource_type == Challenge
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def index

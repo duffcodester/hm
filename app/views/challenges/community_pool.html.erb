@@ -1,17 +1,16 @@
 <% provide(:title, "Challenges Community Pool") %>
 <h1>Challenges Community Pool</h1>
 
-<%= form_tag challenges_community_pool_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
+<div ng-app>
+  <div ng-controller="ChallengesCommunityPoolCtrl">
+  <input ng-model="query">
+  <ul class="challenges" style="list-style: none;">
+    <li ng-repeat="challenge in challenges | filter:query" >
+      {{challenge.name}}
+    </li>
+  </ul>
+  </div>
+</div>
 
-<ol>
-  <% @community_pool.each do |challenge| %>
-    <li><%= challenge.name %></li>
-  <% end %>
-</ol>
 <br>
 <%= link_to "Assign a challenge", new_assigned_challenge_path %>

@@ -5,6 +5,11 @@ class ChallengesController < ApplicationController
 
   def community_pool
     @community_pool = Challenge.search(params[:search])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @community_pool }
+    end
   end
 
   def your
