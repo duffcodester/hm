@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322150727) do
+ActiveRecord::Schema.define(:version => 20130412202712) do
 
   create_table "assigned_challenges", :force => true do |t|
     t.integer  "parent_id"
@@ -53,6 +53,15 @@ ActiveRecord::Schema.define(:version => 20130322150727) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.boolean  "redeemed",   :default => false
+  end
+
+  create_table "messages", :force => true do |t|
+    t.string   "email"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   create_table "parents", :force => true do |t|

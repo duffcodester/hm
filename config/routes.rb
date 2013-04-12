@@ -6,6 +6,7 @@ Hm::Application.routes.draw do
   resources :children
   resources :assigned_challenges
   resources :enabled_rewards
+  resources :messages
 
   root to: 'static_pages#home'
 
@@ -13,7 +14,6 @@ Hm::Application.routes.draw do
   match '/signin',   to: 'sessions#new'
   match '/signout',  to: 'sessions#destroy', via: :delete
   match '/about',    to: 'static_pages#about'
-  match '/contact',  to: 'static_pages#contact'
   match '/legal',    to: 'static_pages#legal'
   match '/partners', to: 'static_pages#partners'
   
@@ -23,6 +23,9 @@ Hm::Application.routes.draw do
   match '/rewards_community_pool',    to: 'rewards#community_pool'
   match '/children_your',             to: 'children#your'
   match '/parent_dash',               to: 'parents#dash'
+
+  match '/contact' => 'contact#new', :as => 'contact', :via => :get
+  match '/contact' => 'contact#create', :as => 'contact', :via => :post
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
