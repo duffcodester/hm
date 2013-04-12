@@ -1,4 +1,5 @@
-<div id="par_content">
+<div ng-app id="par_content">
+  <div ng-controller="DashCtrl">
   <p align="center"><%= image_tag("pardash/Action-Items-Bar_01.png", size: "872x28", alt: "Action Items") %><a href="#"><%= image_tag("pardash/Action-Items-Bar_02.png", size: "28x28", border: 0) %></a></p>
   <div align="center"><br />
     <table width="880" border="0" cellspacing="5" cellpadding="10" >
@@ -6,6 +7,11 @@
           <td width="420"  align="left" valign="top"><span class="par_mod_header">Select Player</span><hr color="#e99723" align="left" width="95%"/>
             <div align="center">
               <table width="90%" border="0" cellspacing="10" cellpadding="0">
+                <tr ng-repeat="child in children">
+                  <td width="9%">{{child.username}}</td>
+                  <td width="15%">&nbsp;</td>
+                </tr>
+              <!--
                 <% for child in @children do %>
                   <tr>
                     <td width="9%"><%= link_to image_tag("blank.bmp", alt: "", name: child.username, width: "25", height: "25", id: child.username, style: "background-color: #66000"), child %></td>
@@ -13,6 +19,7 @@
                     <td width="15%">&nbsp;</td>
                   </tr>
                 <% end %>
+              -->
               </table><%= image_tag("spacer.gif") %>
             </div>
           </td>
@@ -87,6 +94,7 @@
         </table>
   </div>
   <p align="center">&nbsp;</p>
+</div>
 </div>
 <!--end #feature-->
 

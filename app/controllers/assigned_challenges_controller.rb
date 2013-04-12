@@ -69,4 +69,9 @@ class AssignedChallengesController < ApplicationController
     flash[:success] = "Challenge Rejected"
     redirect_to child
   end
+
+  def completed_challenges 
+    @completed_challenges = current_user.assigned_challenges.where("parent_id =?", @parent.id).where("completed =?", true)
+    render json: @completed_challenges
+  end
 end

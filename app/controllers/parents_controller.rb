@@ -20,12 +20,12 @@ class ParentsController < ApplicationController
   def dash
     @parent = current_user
     @children = @parent.children
-    @assigned_challenges = @parent.assigned_challenges.where("parent_id =?", @parent.id).where("accepted =?", false).where("rejected =?", false).where("completed =?", false).where("validated =?", false)
-    @accepted_challenges = @parent.assigned_challenges.where("parent_id =?", @parent.id).where("accepted =?", true)
-    @rejected_challenges = @parent.assigned_challenges.where("parent_id =?", @parent.id).where("rejected =?", true)
     @completed_challenges = @parent.assigned_challenges.where("parent_id =?", @parent.id).where("completed =?", true)
-    @validated_challenges = @parent.assigned_challenges.where("parent_id =?", @parent.id).where("validated =?", true)
-    @enabled_rewards = @parent.enabled_rewards.where("parent_id =?", @parent.id)
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def edit

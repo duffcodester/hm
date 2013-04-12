@@ -10,6 +10,11 @@ before_filter :admin_parent, only: :destroy
 
   def your
     @your_children = current_user.children
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @your_children}
+    end
   end
 
   def show
