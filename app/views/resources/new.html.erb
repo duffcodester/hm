@@ -3,6 +3,18 @@
 
 <div class="row">
   <div class="span6 offset3">
+    <!--<div ng-app>
+    <div ng-controller="RewardCtrl">
+    <form ng-submit='createReward()'>
+      <input name="reward[name]"  ng-model="reward.name" placeholder='Add name' type='text' ngMaxlength="30">
+      <input name="reward[description]" ng-model="reward.description" placeholder='Add description' type='text' ngMaxlength="30">
+      <button>Save</button>
+    </form>
+    <p>{{reward.name}}</p>
+    <p>{{reward.description}}</p>
+    <p>{{worked}}</p>
+    </div>
+    </div>-->
     <%= form_for(@resource) do |f| %>
 
       <%= f.label :name %>

@@ -14,5 +14,5 @@
 #
 
 class Reward < Resource
-  #has_many :enabled_rewards
+  has_many :enabled_rewards
 end

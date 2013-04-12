@@ -1,0 +1,19 @@
+
+HTML Post
+
+Started POST "/rewards" for 127.0.0.1 at 2013-04-12 11:36:07 -0600
+Processing by ResourcesController#create as HTML
+  Parameters: {"utf8"=>"√", "authenticity_token"=>"oXPkzKioQPPLe9OBy/D0hhQDZiQFk
+fW+NvkhLXgg3/M=", "reward"=>{"name"=>"test4", "description"=>"desc", "public"=>"
+0"}, "commit"=>"Create Reward", "type"=>"Reward"}
+
+JSON Post
+
+Started POST "/rewards" for 127.0.0.1 at 2013-04-12 11:38:44 -0600
+Processing by ResourcesController#create as JSON
+  Parameters: {"reward"=>{"name"=>"test5", "description"=>"desc"}, "type"=>"Rewa
+rd", "resource"=>{}}
+WARNING: Can't verify CSRF token authenticity
+  Parent Load (1.0ms)  SELECT "parents".* FROM "parents" WHERE "parents"."rememb
+er_token" = 'CdSnZ_hA2e-ZxKTOoIyedw' LIMIT 1
+Completed 200 OK in 9960ms (Views: 1.0ms | ActiveRecord: 1.0ms)

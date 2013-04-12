@@ -1,13 +1,7 @@
 class ResourcesController < ApplicationController
   def new
-    #@resource = resource_type.new
-    @resource = Challenge.new
-    #@categories = Category.all if resource_type == Challenge
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @resource = resource_type.new
+    @categories = Category.all if resource_type == Challenge
   end
 
   def index
@@ -20,6 +14,10 @@ class ResourcesController < ApplicationController
 
   def show
     @resource = Resource.where("type = ?", params[:type]).find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: @resource }
+    end
   end
 
   def your
@@ -27,6 +25,7 @@ class ResourcesController < ApplicationController
   end
 
   def create
+          debugger
     # different methods to do this right now
     # 1) add has_many: resources to parents and do this:
     #@resource = current_user.resources.build(params[:resource])
@@ -41,11 +40,17 @@ class ResourcesController < ApplicationController
     #  ...
     #end
 
-    if @resource.save
-      flash[:success] = "You successfully created a #{params[:type].downcase}!"
-      redirect_to @resource.parent
-    else
-      render 'new'
+    respond_to do |format|
+      format.html do
+        if @resource.save
+          flash[:success] = "You successfully created a #{params[:type].downcase}!"
+          redirect_to @resource.parent
+        else
+          render 'new'
+        end
+      end
+
+      format.json { render json: @resource}
     end
   end
 

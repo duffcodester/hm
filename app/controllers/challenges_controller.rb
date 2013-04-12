@@ -4,7 +4,7 @@ class ChallengesController < ApplicationController
   end
 
   def community_pool
-    @community_pool = Challenge.search(params[:search])
+    @community_pool = Challenge.where(type: "Challenge")
 
     respond_to do |format|
       format.html
