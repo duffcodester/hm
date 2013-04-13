@@ -64,5 +64,20 @@ module Hm
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Contact Form Settings
+    config.action_mailer.smtp_settings = {
+  :address              => "smtp.gmail.com",
+  :port                 => 587,
+  :domain               => "mymail.mines.edu",
+  :user_name            => "jduffy@mymail.mines.edu",
+  :password             => "#",
+  :authentication       => :plain,
+  :enable_starttls_auto => true
+}
+
+config.action_mailer.default_url_options = {
+  :host => "mymail.mines.edu"
+}
   end
 end
