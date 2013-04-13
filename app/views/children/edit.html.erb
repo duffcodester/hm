@@ -1,24 +1,25 @@
 <% provide(:title, "Edit child") %> 
 <h1>Update your profile</h1>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@child) do |f| %>
-      <%= render 'shared/error_messages' %>
-
-      <%= f.label :username %>
-      <%= f.text_field :username %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.label :password_confirmation, "Confirm Password" %>
-      <%= f.password_field :password_confirmation %>
-
-      <%= f.label :age_group, "Age Group" %>
-      <%= select(:child, :age_group, age_groups) %>
-
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+<div class="center">
+  <%= form_for(@child) do |f| %>
+    <%= render 'shared/error_messages' %>
+    <br>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <br>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <br>
+    <%= f.label :password_confirmation, "ConfirPassword" %>
+    <%= f.password_field :password_confirmation %>
+    <br>
+    <%= f.label :age_group, "Age Group" %>
+    <%= select(:child, :age_group, age_groups) %>
+    <br>
+    <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    
+    <%= image_tag("avatars/magika.png", :height => "200") %>
+    <%= image_tag("avatars/lion_lt.png", :height => "200") %>
     <% end %>
-  </div>
 </div>
