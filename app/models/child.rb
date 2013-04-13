@@ -14,7 +14,7 @@
 #
 
 class Child < ActiveRecord::Base
-  attr_accessible :username, :password, :password_confirmation, :points, :age_group
+  attr_accessible :username, :password, :password_confirmation, :points, :age_group, :avatar
 
   has_secure_password
   belongs_to :parent
