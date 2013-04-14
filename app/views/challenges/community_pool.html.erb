@@ -1,16 +1,36 @@
-<% provide(:title, "Challenges Community Pool") %>
-<h1>Challenges Community Pool</h1>
+<div id="par_content">
+  <div id="avatarbase_contact">
+    <div id="right_avatar_commpool"><img src="assets/avatars/cowboy.png" alt="cowboy" /></div>
+    </div><!--end #avatarbase-->
 
-<div ng-app>
-  <div ng-controller="ChallengesCommunityPoolCtrl">
-  <input ng-model="query">
-  <ul class="challenges" style="list-style: none;">
-    <li ng-repeat="challenge in challenges | filter:query" >
-      {{challenge.name}}
-    </li>
-  </ul>
+  <p align="center"><img src="assets/Community-Pool-Bar_01.png" alt="Action Items" width="872" height="28" /><a href="#"><img src="assets/Community-Pool-Bar_02.png" width="28" height="28" border="0" /></a></p>
+
+
+  <div align="center"><br />
+    <div ng-app>
+      <div ng-controller="ChallengesCommunityPoolCtrl">
+        <input ng-model="query">      
+          <table width="461" border="0" cellspacing="3" cellpadding="0">
+            <tbody ng-repeat="challenge in challenges | filter:query" >
+              <tr>
+                <td width="400">{{challenge.name}}</td>
+                <td wdith="27"><img src="assets/check.png" alt="accept" width="15" height="16" /></td>
+                <td width="27"><img src="assets/x.png" alt="decline" width="17" height="17" /></td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
   </div>
-</div>
 
-<br>
-<%= link_to "Assign a challenge", new_assigned_challenge_path %>
+  <p align="center">&nbsp;</p>
+  <p align="center">&nbsp;</p>
+</div><!--end #feature-->
+
+ <!--end #content-->
+</div> <!--end #wrap-->
+
+<div id="spacer" ></div> <!--end #spacer-->
+
+</body>
+</html>
