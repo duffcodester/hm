@@ -25,7 +25,7 @@ class ResourcesController < ApplicationController
   end
 
   def create
-          debugger
+
     # different methods to do this right now
     # 1) add has_many: resources to parents and do this:
     #@resource = current_user.resources.build(params[:resource])
