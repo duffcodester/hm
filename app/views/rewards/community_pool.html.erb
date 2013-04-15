@@ -1,17 +1,42 @@
-<% provide(:title, "Rewards Community Pool") %>
-<h1>Rewards Community Pool</h1>
+<div id="par_content">
+  <div id="avatarbase_contact">
+    <div id="right_avatar_commpool"><img src="assets/avatars/cowboy.png" alt="cowboy" /></div>
+    </div><!--end #avatarbase-->
 
-<%= form_tag rewards_community_pool_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
+  <p align="center"><img src="assets/Community-Pool-Bar_01.png" alt="Action Items" width="872" height="28" /><a href="#"><img src="assets/Community-Pool-Bar_02.png" width="28" height="28" border="0" /></a></p>
 
-<ol>
-  <% @rewards.each do |reward| %>
-    <li><%= reward.name %></li>
-  <% end %>
-</ol>
-<br>
-<%= link_to "Enable a reward", new_enabled_reward_path %>
+
+  <div align="center"><br />
+    <div ng-app>
+      <div ng-controller="RewardsCommunityPoolCtrl">
+        <input ng-model="query">      
+          <table width="824" border="0" cellspacing="5" cellpadding="10" >
+            <tr>
+              <td width="794"  align="left" valign="top"><span class="par_mod_header">Rewards</span>
+              <hr color="#e99723" align="left" width="95%"/>
+              </td>
+            </tr>
+            <table width="461" border="0" cellspacing="3" cellpadding="0">
+              <tbody ng-repeat="reward in rewards | filter:query" >
+                <tr>
+                  <td width="400">{{reward.name}}</td>
+                  <td wdith="27"><img src="assets/check.png" alt="accept" width="15" height="16" /></td>
+                  <td width="27"><img src="assets/x.png" alt="decline" width="17" height="17" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+  <p align="center">&nbsp;</p>
+  <p align="center">&nbsp;</p>
+</div><!--end #feature-->
+</div> <!--end #wrap-->
+
+<div id="spacer" ></div> <!--end #spacer-->
+
+</body>
+</html>

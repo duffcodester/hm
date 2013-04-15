@@ -1,0 +1,17 @@
+<% provide(:title, "Rewards Community Pool") %>
+<h1>Rewards Community Pool</h1>
+
+<%= form_tag rewards_community_pool_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<ol>
+  <% @rewards.each do |reward| %>
+    <li><%= reward.name %></li>
+  <% end %>
+</ol>
+<br>
+<%= link_to "Enable a reward", new_enabled_reward_path %>

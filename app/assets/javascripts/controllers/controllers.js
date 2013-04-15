@@ -4,6 +4,12 @@ function ChallengesCommunityPoolCtrl($scope, $http) {
   });
 }
 
+function RewardsCommunityPoolCtrl($scope, $http) {
+  $http.get('/rewards_community_pool.json').success(function(data) {
+    $scope.rewards = data;
+  });
+}
+
 /*function RewardCtrl($scope, $http) {
   $http.post('rewards/create').success();
 }*/

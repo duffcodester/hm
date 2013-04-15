@@ -10,7 +10,13 @@
     <div ng-app>
       <div ng-controller="ChallengesCommunityPoolCtrl">
         <input ng-model="query">      
-          <table width="461" border="0" cellspacing="3" cellpadding="0">
+          <table width="824" border="0" cellspacing="5" cellpadding="10" >
+            <tr>
+              <td width="794"  align="left" valign="top"><span class="par_mod_header">Challenges</span>
+            <hr color="#e99723" align="left" width="95%"/>
+          </td>
+        </tr>
+            <table width="461" border="0" cellspacing="3" cellpadding="0">
             <tbody ng-repeat="challenge in challenges | filter:query" >
               <tr>
                 <td width="400">{{challenge.name}}</td>
@@ -18,7 +24,9 @@
                 <td width="27"><img src="assets/x.png" alt="decline" width="17" height="17" /></td>
               </tr>
             </tbody>
+            </table>
           </table>
+
       </div>
     </div>
   </div>
@@ -26,8 +34,6 @@
   <p align="center">&nbsp;</p>
   <p align="center">&nbsp;</p>
 </div><!--end #feature-->
-
- <!--end #content-->
 </div> <!--end #wrap-->
 
 <div id="spacer" ></div> <!--end #spacer-->
