@@ -1,7 +1,16 @@
-<% provide(:title, "Edit parent") %> 
-<h1>Update your profile</h1>
+<div id="par_content">
+  <div id="avatarbase_contact">
+    <div id="right_avatar_acct">
+      <%= image_tag("avatars/techguy_lt.png", :size => "267x355") %>
+    </div>
+  </div><!--end #avatarbase-->
 
-<div align="center">
+
+  <p align="center">
+    <%= image_tag("AccountSettings_01.png", :size => "873x28") %><a href="#"><%= image_tag("AccountSettings_02.png", :size => "28x28") %></a></p>
+<br />
+    
+   <div align="left">
    <%= form_for(@parent) do |f| %>
      <%= render 'shared/error_messages' %>
      <%= f.label :name %>
@@ -21,6 +30,62 @@
    <br>
    <h3><%= link_to "Sign up a child", new_child_path %></h3>
    <br>
-   <%= gravatar_for @parent %>
-   <a href="http://gravatar.com/emails">change</a>
-</div>
+ </div>
+
+     <form id="AccountSettings" name="AccountSettings" method="post" action="">
+<table width="auto" border="0" cellspacing="10" cellpadding="0" id="acct_tab">
+  <tr>
+    <td width="15%"><div align="right">Email: </div></td>
+    <td width="85%"><div align="left">
+      <input type="text" name="Email" id="Email" />
+    </div></td>
+  </tr>
+  <tr>
+    <td><div align="right">Password: </div></td>
+    <td><div align="left">
+      <input type="password" name="Password" id="Password" />
+    </div></td>
+  </tr>
+  <tr>
+    <td><div align="right">Zip Code:</div></td>
+    <td><div align="left">
+      <input type="text" name="ZipCode" id="ZipCode" />
+    </div></td>
+  </tr>
+  <tr>
+    <td><div align="right">Player 1: </div></td>
+    <td><label>
+      <div align="left">
+        <input type="text" name="Player1" id="Player1" />
+        </div>
+    </label></td>
+  </tr>
+  <tr>
+    <td><div align="right">Player 2: </div></td>
+    <td><label>
+      <div align="left">
+        <input type="text" name="Player2" id="Player2" />
+        </div>
+    </label></td>
+  </tr>
+  <tr>
+    <td><div align="right">Player 3: </div></td>
+    <td><label>
+      <div align="left">
+        <input type="text" name="Player3" id="Player3" />
+        </div>
+    </label></td>
+  </tr>
+</table>
+
+  <p align="center">&nbsp;</p>
+  <p align="center">&nbsp;</p>
+     </form>
+  </div>
+<!--end #feature-->
+
+ <!--end #content-->
+
+
+
+</div> <!--end #wrap-->
