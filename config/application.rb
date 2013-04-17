@@ -71,7 +71,7 @@ module Hm
   :port                 => 587,
   :domain               => "mymail.mines.edu",
   :user_name            => "jduffy@mymail.mines.edu",
-  :password             => "#",
+  :password             => "Coppermtn7",
   :authentication       => :plain,
   :enable_starttls_auto => true
 }

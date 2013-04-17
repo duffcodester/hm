@@ -6,4 +6,9 @@ class NotificationsMailer < ActionMailer::Base
     @message = message
     mail(:subject => "Example Subject")
   end
+
+  def report_abuse_message(message)
+    @message = message
+    mail(:subject => "Report Abuse Test")
+  end
 end

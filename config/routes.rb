@@ -27,6 +27,9 @@ Hm::Application.routes.draw do
   match '/contact' => 'contact#new', :as => 'contact', :via => :get
   match '/contact' => 'contact#create', :as => 'contact', :via => :post
 
+  match '/report_abuse' => 'report_abuse#new', :as => 'report_abuse', :via => :get
+  match '/report_abuse' => 'report_abuse#create', :as => 'report_abuse', :via => :post
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
