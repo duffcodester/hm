@@ -16,6 +16,8 @@ group :development, :test do
   gem 'guard-spork', '1.2.0'
   gem 'spork', '0.9.2'
 
+  gem "jasminerice", :git => 'https://github.com/bradphelan/jasminerice.git'
+
   platforms :mswin, :mingw do
     gem 'wdm', '~> 0.0.3'
   end

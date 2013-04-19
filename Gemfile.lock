@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/bradphelan/jasminerice.git
+  revision: f404da53bb05d0f0f01976182cbc95e918d4cf70
+  specs:
+    jasminerice (0.1.0)
+      coffee-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -234,6 +241,7 @@ DEPENDENCIES
   growl (= 1.0.3)
   guard-rspec (= 1.2.1)
   guard-spork (= 1.2.0)
+  jasminerice!
   jquery-rails (= 2.0.2)
   pg (= 0.13.1)
   rails (= 3.2.9)
