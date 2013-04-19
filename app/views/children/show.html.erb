@@ -13,15 +13,14 @@
               <% avatar = "avatars/#{@child.avatar}.png" %>
               <%= image_tag(avatar, :size => "200x300") %>
           
-            <table width="90%" border="0" cellspacing="10" cellpadding="0">
+            <table width="100%" border="0" cellspacing="10" cellpadding="0">
               <tr>
-                <td class="player_left"><span class="player_left">Experience Points:</span></td>
-                <td class="player_right"><span class="player_right"><%= @child.points %></span></td>
+                <td align="left"><h4>Experience Points: <%= @child.points %></h4></td>
               </tr>
-              <tr>
+              <!--<tr>
                 <td class="player_left">Badges:</td>
                 <td class="player_right"><span class="player_right">&lt;&lt;##&gt;&gt;</span></td>
-              </tr>
+              </tr>-->
             </table>
             <p>&nbsp;</p>
           </div></td>
@@ -86,7 +85,6 @@
                       <% end %></td>
                     </tr>
                   <% end %>
-                  </ol>
                   <tr><td><h3>Accepted Challenges</h3></td>
                   <% @accepted_challenges.each do |accepted_challenge| %>
                     <tr><td width="90%" align="left"><%= accepted_challenge.challenge.name %>: <%= accepted_challenge.points %>
@@ -105,20 +103,29 @@
           </div>
             <hr color="#e99723" align="left" width="95%"/>
             <div align="center">
-           
-                <p>&nbsp;</p>
                 <table width="90%" border="0" cellspacing="10" cellpadding="0">
                   <!-- should be suggested rewards from child -->
-                  <% for suggested_reward in @suggested_rewards do %>
+                  <!--<% for suggested_reward in @suggested_rewards do %>
                     <tr>
                       <td class="desc"><%= "#{suggested_reward.reward.name.capitalize} for #{suggested_reward.points} points" %></td>
                       <td><%= image_tag("check.png", alt: "accept", width: "15", height: "16") %></td>
                       <td><%= image_tag("x.png", alt: "decline", width: "17", height: "17") %></td>
                     </tr>
+                  <% end %>-->
+                  <tr>
+                  <% @enabled_rewards.each do |enabled_reward| %>
+                    <tr><td width="90%" align="left"><%= enabled_reward.reward.name %>: <%= enabled_reward.points %>
+                        <%= form_for enabled_reward, :method => "put" do |f| %>
+                        <%= f.hidden_field :redeemed, value: true %>
+                        <td width="10%" align="right">
+                        <%= image_submit_tag("check.png", name: "commit", alt: "redeem", size: "15x16") %></td>
+                        <% end %>
+                    </td></tr>
                   <% end %>
+
+
                 </table>
-                <p><%= image_tag("navarrow_left.jpg", alt: "previous", size: "21x35") %><%= image_tag("navarrow_right.jpg", alt: "next", size: "21x35") %></p>
-                <p></p>
+                <!--<p><%= image_tag("navarrow_left.jpg", alt: "previous", size: "21x35") %><%= image_tag("navarrow_right.jpg", alt: "next", size: "21x35") %></p>-->
               </div>
               <p>&nbsp;</p>
             </div></td>
