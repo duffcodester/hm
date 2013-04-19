@@ -5,18 +5,19 @@
   <div class="span6 offset3">
     <%= form_for(@enabled_reward) do |f| %>
 
-      <h4>Select a reward</h4>
-
+      <h4>Enable a reward:</h4>
+      <% if @enabled_reward.reward %>
+      <%= @enabled_reward.reward.name %>
+      <% else %>
       <%= options_from_collection_for_select(@rewards, :id, :name) %>
       <%= collection_select(:enabled_reward, :reward_id, @rewards, :id, :name) %>
-
+      <% end %> 
+      <br><br>
       <h4>Select child</h4>
-
       <%= options_from_collection_for_select(@children, :id, :username) %>
       <%= collection_select(:enabled_reward, :child_id, @children, :id, :username) %>
-
+      <br><br>
       <h4>Assign Points (9-999)</h4>
-      
       <%= f.text_field(:points) %>
 
       <%= f.submit "Enable Reward", class: "btn btn-large btn-primary" %>

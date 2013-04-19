@@ -2,7 +2,7 @@ class EnabledRewardsController < ApplicationController
   def new
     @rewards = current_user.rewards + Reward.where("public = ?", true).where("parent_id != ?", current_user.id)
     @children = current_user.children
-    @enabled_reward = EnabledReward.new
+    @enabled_reward = EnabledReward.new(params[:enabled_reward])
   end
 
   def create

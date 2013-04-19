@@ -29,6 +29,7 @@ class ParentsController < ApplicationController
   end
 
   def edit
+    @children = @parent.children
   end
 
   def index

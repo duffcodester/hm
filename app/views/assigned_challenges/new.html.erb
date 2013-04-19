@@ -5,15 +5,19 @@
   <div class="span6 offset3">
     <%= form_for(@assigned_challenge) do |f| %>
 
-      <label>Challenge</label>
+      <h4>Challenge: </h4>
+      <% if @assigned_challenge.challenge %>
+      <%= @assigned_challenge.challenge.name %>
+      <% else %>
       <%= options_from_collection_for_select(@challenges, :id, :name) %>
       <%= collection_select(:assigned_challenge, :challenge_id, @challenges, :id, :name) %>
-
-      <label>Child</label>
+      <% end %>
+      <br><br>
+      <h4>Select Child</h4>
       <%= options_from_collection_for_select(@children, :id, :username) %>
       <%= collection_select(:assigned_challenge, :child_id, @children, :id, :username) %>
-
-      <label>Assign Points (9-999)</label>
+      <br><br>
+      <h4>Assign Points (9-999)</h4>
       <%= f.text_field(:points) %>
 
       <%= f.submit "Assign Challenge", class: "btn btn-large btn-primary" %>
