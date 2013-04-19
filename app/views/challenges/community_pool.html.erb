@@ -4,7 +4,8 @@
     </div><!--end #avatarbase-->
 
   <p align="center"><img src="assets/Community-Pool-Bar_01.png" alt="Action Items" width="872" height="28" /><a href="#"><img src="assets/Community-Pool-Bar_02.png" width="28" height="28" border="0" /></a></p>
-  <h2>"X" Reports Abuse</h2><!--For dev only-->
+  <h1>"Check" --> Assign Challenge</h1><!--For dev only-->
+  <h1>"X" Reports Abuse</h1><!--For dev only-->
 
   <div align="center"><br />
     <div ng-app>
@@ -21,7 +22,7 @@
               <tbody ng-repeat="challenge in challenges | filter:query" >
                 <tr>
                   <td width="400">{{challenge.name}}</td>
-                  <td wdith="27"><img src="assets/check.png" alt="accept" width="15" height="16" /></td>
+                  <td wdith="27"><a ng-href="assigned_challenges/new?assigned_challenge%5Bchallenge_id%5D={{challenge.id}}"><img src="assets/check.png" alt="report abuse" width="17" height="17" /></a></td>
                   <td width="27"><a ng-href="report_abuse?message%5Bsubject%5D=Report+Abuse+-+{{challenge.name}}"><img src="assets/x.png" alt="report abuse" width="17" height="17" /></a>
                   </td>
               </tr>

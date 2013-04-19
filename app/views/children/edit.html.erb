@@ -1,26 +1,48 @@
 <% provide(:title, "Edit child") %> 
+<br>
 <h1>Update your profile</h1>
 
 <div id="par_content">
-<div class="center">
-  <%= form_for(@child) do |f| %>
-    <%= render 'shared/error_messages' %>
-    <br>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-    <br>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <br>
-    <%= f.label :password_confirmation, "ConfirPassword" %>
-    <%= f.password_field :password_confirmation %>
-    <br>
-    <%= f.label :age_group, "Age Group" %>
-    <%= select(:child, :age_group, age_groups) %>
-    <br>
-    <br>
-    <h3>Select an Avatar!<h3>
-    <br>
+<%= form_for(@child) do |f| %>
+<%= render 'shared/error_messages' %>
+<div align="center">
+<table width="auto" border="0" cellspacing="10" cellpadding="0" id="acct_tab">
+  <tr>
+    <td width="50%"><div align="right">
+      <%= f.label :username %>
+    </td>
+    <td width="50%"><div align="left">
+      <%= f.text_field :username %>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%"><div align="right">
+      <%= f.label :password %>
+    </td>
+    <td width="50%"><div align="left">
+      <%= f.password_field :password %>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%"><div align="right">
+      <%= f.label :password_confirmation, "Confirm Password" %>
+    </td>
+    <td width="50%"><div align="left">
+      <%= f.password_field :password_confirmation %>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%"><div align="right">
+      <%= f.label :age_group, "Age Group" %>
+    </td>
+    <td width="50%"><div align="left">
+      <%= select(:child, :age_group, age_groups) %>
+    </td>
+  </tr>
+</table>
+
+<h3>Select an Avatar!<h3>
+<br>
     <table width="100%" border="0" cellspacing="10" cellpadding="0">
       <tr>
         <td width="20%">

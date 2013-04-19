@@ -71,17 +71,40 @@
           </div>
             <hr color="#e99723" align="left" width="95%"/>
             <div align="center">
-              <p>&nbsp;</p>
               <table width="90%" border="0" cellspacing="10" cellpadding="0">
-                  <% for completed_challenge in @completed_challenges do %>
-                    <tr>
-                      <td class="desc"><%= "#{completed_challenge.challenge.name.capitalize} for #{completed_challenge.points} points" %></td>
-                      <td><%= image_tag("check.png", alt: "accept", width: "15", height: "16") %></td>
-                      <td><%= image_tag("x.png", alt: "decline", width: "17", height: "17") %></td>
+                <tr><td><h3>Assigned Challenges</h3></td></tr>
+                  <% @assigned_challenges.each do |assigned_challenge| %>
+                    <tr><td><%= assigned_challenge.challenge.name %>: <%= assigned_challenge.points %>
+                        <%= form_for assigned_challenge, :method => "put" do |f| %>
+                        <%= f.hidden_field :accepted, :value => true %>
+                        <%= f.submit "Accept" %>
+                        <% end %>
+
+                      <%= form_for assigned_challenge, :method => "put" do |f| %>
+                        <%= f.hidden_field :rejected, :value => true %>
+                        <%= f.submit "Reject" %>
+                      <% end %></td>
                     </tr>
                   <% end %>
+                  </ol>
+                  <tr><td><h3>Accepted Challenges</h3></td>
+                  <% @accepted_challenges.each do |accepted_challenge| %>
+                    <tr><td><%= accepted_challenge.challenge.name %>: <%= accepted_challenge.points %>
+                        <%= form_for accepted_challenge, :method => "put" do |f| %>
+                        <%= f.hidden_field :completed, :value => true %>
+                        <%= f.hidden_field :accepted, :value => false %>
+                        <%= f.submit "Complete" %>
+                        <% end %>
+
+                      <%= form_for accepted_challenge, :method => "put" do |f| %>
+                        <%= f.hidden_field :rejected, :value => true %>
+
+                        <%= f.submit "Reject" %>
+                      <% end %>
+                    </td></tr>
+                  <% end %>
               </table>
-              <p><%= image_tag("navarrow_left.jpg", alt: "previous", size: "21x35") %><%= image_tag("navarrow_right.jpg", alt: "next", size: "21x35") %></p>
+              <!--<p><%= image_tag("navarrow_left.jpg", alt: "previous", size: "21x35") %><%= image_tag("navarrow_right.jpg", alt: "next", size: "21x35") %></p>-->
               <div align="left">
                 <%= image_tag("spacer.gif", width: "7px") %><span class="par_mod_header">Rewards</span>
           </div>
@@ -107,7 +130,18 @@
         </tr>
       </table>
   </div>
-  <p align="center">&nbsp;</p>
+  <div align="center">
+    <h3>Completed Challenges</h3>
+  <table>
+    <% for completed_challenge in @completed_challenges do %>
+      <tr>
+        <td class="desc"><%= "#{completed_challenge.challenge.name.capitalize} for #{completed_challenge.points} points" %></td>
+        <td><%= image_tag("check.png", alt: "accept", width: "15", height: "16") %></td>
+        </tr>
+    <% end %>
+  </table>
+</div>
+
 </div>
 <!--end #feature-->
 
