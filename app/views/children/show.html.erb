@@ -89,18 +89,13 @@
                   </ol>
                   <tr><td><h3>Accepted Challenges</h3></td>
                   <% @accepted_challenges.each do |accepted_challenge| %>
-                    <tr><td><%= accepted_challenge.challenge.name %>: <%= accepted_challenge.points %>
+                    <tr><td width="90%" align="left"><%= accepted_challenge.challenge.name %>: <%= accepted_challenge.points %>
                         <%= form_for accepted_challenge, :method => "put" do |f| %>
                         <%= f.hidden_field :completed, :value => true %>
                         <%= f.hidden_field :accepted, :value => false %>
-                        <%= f.submit "Complete" %>
+                        <td width="10%" align="right">
+                        <%= image_submit_tag("check.png", name: "commit", alt: "complete", size: "15x16") %></td>
                         <% end %>
-
-                      <%= form_for accepted_challenge, :method => "put" do |f| %>
-                        <%= f.hidden_field :rejected, :value => true %>
-
-                        <%= f.submit "Reject" %>
-                      <% end %>
                     </td></tr>
                   <% end %>
               </table>
