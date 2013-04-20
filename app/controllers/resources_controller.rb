@@ -43,7 +43,7 @@ class ResourcesController < ApplicationController
       format.html do
         if @resource.save
           flash[:success] = "You successfully created a #{params[:type].downcase}!"
-          redirect_to @resource.parent
+          redirect_to parent_dash_path
         else
           render 'new'
         end

@@ -17,6 +17,15 @@ before_filter :admin_parent, only: :destroy
     end
   end
 
+  def dash
+    @child = current_user
+    @completed_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("completed =?", true)
+    @assigned_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("accepted =?", false).where("rejected =?", false).where("completed =?", false).where("validated =?", false)
+    @accepted_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("accepted =?", true)
+    @suggested_rewards = [] # no suggested reward type yet
+    @enabled_rewards = @child.enabled_rewards.where("child_id =?", @child.id).where("redeemed =?", false)
+  end
+
   def show
     @child = Child.find(params[:id])
     @completed_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("completed =?", true)

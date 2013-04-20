@@ -8,8 +8,7 @@
             <div align="center">
               <table width="90%" border="0" cellspacing="10" cellpadding="0">
                 <tr ng-repeat="child in children">
-                  <td width="4%"><%= image_tag("linkarrow.png", size: "12x10", border: "0")%></td>
-                  <td width="95%" align="left">{{child.username}}</td>
+                  <td width="95%"><a ng-href="/children/{{child.id}}"><%= image_tag("linkarrow.png", size: "12x10", border: "0")%>  {{child.username}}</a></td>
                   <td width="15%">&nbsp;</td>
                 </tr>
               <!--
