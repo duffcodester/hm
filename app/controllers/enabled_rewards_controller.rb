@@ -11,7 +11,7 @@ class EnabledRewardsController < ApplicationController
     @enabled_reward = current_user.enabled_rewards.build(params[:enabled_reward])
     if @enabled_reward.save
       flash[:success] = "You have successfully enabled reward!"
-      redirect_to @enabled_reward.parent
+      redirect_to parent_dash_path
     else
       render 'new'
     end
@@ -19,19 +19,24 @@ class EnabledRewardsController < ApplicationController
 
   def update
     @enabled_reward = EnabledReward.find(params[:id])
-    if @enabled_reward.update_attributes(params[:enabled_reward])
-      if @enabled_reward.redeemed
+    child = @enabled_reward.child
+    if @enabled_reward.points < @enabled_reward.child.points
+      if @enabled_reward.update_attributes(params[:enabled_reward])
+        if @enabled_reward.redeemed
         flash[:success] = "Reward Redeemed"
-        child = @enabled_reward.child
         child.update_attribute(:points,
           child.points - @enabled_reward.points)
         sign_in child
         redirect_to child
         @enabled_reward.destroy
+        end
+      else
+        flash[:error] = "Error redeeming reward"
+        redirect_to child
       end
     else
-      flash.now[:error] = "Error redeeming reward"
-      render 'show'
+      flash[:error] = "Not enough points to redeem reward"
+        redirect_to child
     end
   end
 

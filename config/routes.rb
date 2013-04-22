@@ -24,6 +24,7 @@ Hm::Application.routes.draw do
   match '/children_your',             to: 'children#your'
   match '/parent_dash',               to: 'parents#dash'
   match '/completed_challenges',      to: 'assigned_challenges#completed'
+  match '/child_dash',                to: 'children#dash'
 
   match '/contact' => 'contact#new', :as => 'contact', :via => :get
   match '/contact' => 'contact#create', :as => 'contact', :via => :post

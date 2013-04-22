@@ -8,8 +8,7 @@
             <div align="center">
               <table width="90%" border="0" cellspacing="10" cellpadding="0">
                 <tr ng-repeat="child in children">
-                  <td width="4%"><%= image_tag("linkarrow.png", size: "12x10", border: "0")%></td>
-                  <td width="95%" align="left">{{child.username}}</td>
+                  <td width="95%"><a ng-href="/children/{{child.id}}"><%= image_tag("linkarrow.png", size: "12x10", border: "0")%>  {{child.username}}</a></td>
                   <td width="15%">&nbsp;</td>
                 </tr>
               <!--
@@ -28,28 +27,28 @@
           <hr color="#e99723" align="left" width="95%"/>
           <div align="center">
             <table width="100%" border="0" cellspacing="10" cellpadding="0">
-              <tr><td><h3>Completed Challenges</h3></td></tr>
               <% for completed_challenge in @completed_challenges do %>
                 
                 <tr>
-                  <td class="date"><%= completed_challenge.updated_at %></td>
-                  <td class="desc"><%= completed_challenge.challenge.name %></td>
+                  <td align="left"><b><%= completed_challenge.child.username %>: </b><%= completed_challenge.challenge.name %></td>
 
                   <td>
                   <%= form_for completed_challenge, :method => "put" do |f| %>
                     <%= f.hidden_field :validated, value: true %>
                     <%= f.hidden_field :completed, value: false %>
                     <%= f.hidden_field :accepted, value: false %>
-                    <%= image_submit_tag("check.png", name: "commit", alt: "accept", size: "15x16") %>
-                  
+                    <%= image_submit_tag("check.png", name: "commit", alt: "validate", size: "15x16") %>
+                    <% end %>
                   </td>
                   <td>
+                    <%= form_for completed_challenge, :method => "put" do |f| %>
                     <%= f.hidden_field :validated, value: false %>
                     <%= f.hidden_field :completed, value: false %>
                     <%= f.hidden_field :accepted, value: true %>
                     <%= image_submit_tag("x.png", name: "decline", alt: "decline", size: "17x17") %>
+                    <% end %>
                   </td>
-                  <% end %>
+                  
 
                   <!--<td><%= image_tag("x.png", alt: "decline", size: "17x17") %></td>-->
                 </tr>
@@ -60,11 +59,15 @@
          </div></td>
         </tr>
         <tr>
-          <td align="left" valign="top"><br/>
-            <%= image_tag("spacer.gif") %><span class="par_mod_header">Set New Challenge</span><hr color="#e99723" align="left" width="90%"/><table width="86%" border="0" align="center" cellpadding="0" cellspacing="10">
+          <td width="420" align="left" valign="top"><br/>
+          <span class="par_mod_header">Set New Challenge</span><hr color="#e99723" align="left" width="90%"/><table width="86%" border="0" align="center" cellpadding="0" cellspacing="10">
               <tr>
                 <td><div align="center"><%= link_to(image_tag("linkarrow.png", alt: "click", size: "12x10", border: "0"), new_challenge_path) %></div></td>
                 <td>Create new challenge</td>
+              </tr>
+              <tr>
+                <td><div align="center"><%= link_to(image_tag("linkarrow.png", alt: "click", size: "12x10", border: "0"), new_assigned_challenge_path) %></div></td>
+                <td>Assign challenges</td>
               </tr>
               <tr>
                 <td><div align="center"><%= link_to(image_tag("linkarrow.png", alt: "click", size: "12x10", border: "0"), challenges_community_pool_path) %></div></td>
@@ -85,6 +88,10 @@
               <tr>
                 <td><div align="center"><%= link_to(image_tag("linkarrow.png", alt: "click", size: "12x10", border: "0"), new_reward_path) %></div></td>
                <td>Create new reward</td>
+              </tr>
+              <tr>
+                <td><div align="center"><%= link_to(image_tag("linkarrow.png", alt: "click", size: "12x10", border: "0"), new_enabled_reward_path) %></div></td>
+               <td>Enable rewards</td>
               </tr>
               <tr>
                 <td><div align="center"><%= link_to(image_tag("linkarrow.png", alt: "click", size: "12x10", border: "0"), rewards_community_pool_path) %></div></td>

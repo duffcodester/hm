@@ -30,8 +30,14 @@ class AssignedChallengesController < ApplicationController
     @assigned_challenge = AssignedChallenge.find(params[:id])
     if @assigned_challenge.update_attributes(params[:assigned_challenge])
       if @assigned_challenge.accepted
-        flash[:success] = "Challenge Accepted"
-        redirect_to @assigned_challenge.child
+        if signed_in_as_child?
+          flash[:success] = "Challenge Accepted"
+          redirect_to @assigned_challenge.child
+        elsif signed_in_as_parent?
+          flash[:success] = "Challenge returned to child"
+          redirect_to parent_dash_path
+        end
+          
       elsif @assigned_challenge.rejected
         flash[:success] = "Challenge Rejected"
         redirect_to @assigned_challenge.child
