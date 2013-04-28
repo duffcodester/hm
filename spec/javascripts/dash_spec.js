@@ -1,7 +1,7 @@
 #= require jquery
 #= require ../../vendor/assets/javascripts/angular.min
 #= require helpers/angular-mocks
-#= require controllers/dash
+#= require dash/controller
 
 describe('DashCtrl', function() {
   var scope, ctrl, $httpBackend;

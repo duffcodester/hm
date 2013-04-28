@@ -10,7 +10,28 @@
   <div align="center"><br />
     <div ng-app>
       <div ng-controller="ChallengesCommunityPoolCtrl">
-        <input ng-model="query">      
+        Search:
+        <input ng-model="search">      
+
+        <!-- pull the category info from DB -->
+        Category: 
+        <select ng-model="category.category_id">
+          <option value="">All</option>
+          <option value="1">Other</option>
+          <option value="2">Nutrition</option>
+          <option value="3">Communtiy Involvement</option>
+          <option value="4">Exercise</option>
+        </select>
+
+        Items per page:
+        <select ng-model="items_per_page">
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+          <option value="200">200</option>
+        </select>
+
           <table width="824" border="0" cellspacing="5" cellpadding="10" >
             <tr>
               <td width="794"  align="left" valign="top"><span class="par_mod_header">Challenges</span>
@@ -19,7 +40,7 @@
             </tr>
             
             <table width="461" border="0" cellspacing="3" cellpadding="10">
-              <tbody ng-repeat="challenge in challenges | filter:query" >
+              <tbody ng-repeat="challenge in challenges | filter:category | filter:search | orderBy:'-updated_at' | limitTo:items_per_page " >
                 <tr>
                   <td width="400">{{challenge.name}}</td>
                   <td wdith="27"><a ng-href="assigned_challenges/new?assigned_challenge%5Bchallenge_id%5D={{challenge.id}}"><img src="assets/check.png" alt="report abuse" width="17" height="17" /></a></td>
