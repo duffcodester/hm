@@ -1,15 +1,3 @@
-function ChallengesCommunityPoolCtrl($scope, $http) {
-  $http.get('/challenges_community_pool.json').success(function(data) {
-    $scope.challenges = data;
-  });
-}
-
-function RewardsCommunityPoolCtrl($scope, $http) {
-  $http.get('/rewards_community_pool.json').success(function(data) {
-    $scope.rewards = data;
-  });
-}
-
 /*function RewardCtrl($scope, $http) {
   $http.post('rewards/create').success();
 }*/
