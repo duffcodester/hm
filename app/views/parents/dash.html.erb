@@ -1,11 +1,8 @@
 <div ng-app="dash" id="par_content">
   <div ng-controller="DashCtrl">
-
-
-  <div>
-    
-  </div>
-
+    <div>
+      {{selected.child}}
+    </div>
     <p align="center">
       <%= image_tag("pardash/Action-Items-Bar_01.png", size: "872x28", alt: "Action Items") %>
       <a href="#">
@@ -22,15 +19,21 @@
             <div align="center">
               <table width="90%" border="0" align="center" cellspacing="10" cellpadding="0">
   
-                <tr ng-repeat="child in children">
+                <tr ng-repeat="child in children" select={{child}}>
                   <td>
-                    <%= image_tag("linkarrow.png", alt: "child", size: "12x10", border: "0") %>
+                    <table>
+                      <tr>
+                        <td>
+                          <%= image_tag("linkarrow.png", alt: "child", size: "12x10", border: "0") %>
+                        </td>
+                        <td width="95%">
+                          <div>{{child.username}}</div>
+                        </td>
+                        <td><a ng-href="/children/{{child.id}}">stats</a></td>
+                        <td width="15%">&nbsp;</td>
+                      </tr>
+                    </table>
                   </td>
-                  <td width="95%">
-                    {{child.username}}
-                  </td>
-                  <td><a ng-href="/children/{{child.id}}">stats</a></td>
-                  <td width="15%">&nbsp;</td>
                 </tr>
   
               </table>

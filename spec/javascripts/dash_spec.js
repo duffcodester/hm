@@ -1,5 +1,6 @@
 #= require jquery
-#= require ../../vendor/assets/javascripts/angular.min
+#= require ../../vendor/assets/javascripts/angular
+#= require ../../vendor/assets/javascripts/angular-resource
 #= require helpers/angular-mocks
 #= require dash/controller
 
