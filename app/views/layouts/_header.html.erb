@@ -45,10 +45,10 @@
     <div id="headernav">
       <% if signed_in? %>
         <% if signed_in_as_parent? %>
-          <%= link_to "home |", parent_dash_path %>
+          <%= link_to "dashboard |", parent_dash_path %>
           <%= render 'layouts/header_parent' %>
         <% elsif signed_in_as_child? %>
-          <%= link_to "home |", child_path(current_user) %>
+          <%= link_to "dashboard |", child_path(current_user) %>
           <%= render 'layouts/header_child' %>
         <% end %>
       <% else %>
