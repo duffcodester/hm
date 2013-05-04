@@ -11,11 +11,19 @@
       <% else %>
       <%= options_from_collection_for_select(@challenges, :id, :name) %>
       <%= collection_select(:assigned_challenge, :challenge_id, @challenges, :id, :name) %>
+<<<<<<< HEAD
+=======
+
+>>>>>>> report_abuse
       <% end %>
       <br><br>
       <h4>Select Child</h4>
       <%= options_from_collection_for_select(@children, :id, :username) %>
       <%= collection_select(:assigned_challenge, :child_id, @children, :id, :username) %>
+<<<<<<< HEAD
+=======
+
+>>>>>>> report_abuse
       <br><br>
       <h4>Assign Points (9-999)</h4>
       <%= f.text_field(:points) %>

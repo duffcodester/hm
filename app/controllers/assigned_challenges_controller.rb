@@ -20,7 +20,7 @@ class AssignedChallengesController < ApplicationController
     
     if @assigned_challenge.save
       flash[:success] = "You have successfully assigned challenge!"
-      redirect_to parent_dash_path
+      redirect_to challenges_community_pool
     else
       render 'new'
     end
