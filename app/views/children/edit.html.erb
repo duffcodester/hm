@@ -3,7 +3,9 @@
 <h1>Update your profile</h1>
 
 <div id="par_content">
-<%= form_for(@child) do |f| %>
+<!--Children cannot edit their own information-->
+
+<!--<%= form_for(@child) do |f| %>
 <%= render 'shared/error_messages' %>
 <div align="center">
 <table width="auto" border="0" cellspacing="10" cellpadding="0" id="acct_tab">
@@ -40,6 +42,7 @@
     </td>
   </tr>
 </table>
+--> 
 
 <h3>Select an Avatar!<h3>
 <br>
