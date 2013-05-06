@@ -41,19 +41,21 @@ dash.directive('select', function() {
     scope: false,
     link: function(scope, element, attrs) {
       element.bind('click', function() {
-        //scope.selected = attrs.select;
-        console.log(scope.selected);
+        scope.selected.child = jQuery.parseJSON(attrs.select);
+        console.log(scope.selected.child);
   
         if (attrs.select != scope.selected) {
           other_elements = angular.element(document.querySelectorAll('tr[select]')); //probably just need [select]
           for (var i = 0; i < other_elements.length; i++) {
             elm = jQuery(other_elements[i]);
-            console.log(elm);
+            //console.log(elm);
             elm.css('background', 'none');
           }
-          console.log(element);
+          //console.log(element);
           element.css('background', '#F3E2A9');
-          $parent.child = jQuery.parseJSON(attrs.select);
+          //$parent.child = jQuery.parseJSON(attrs.select);
+          //scope.selected.child = jQuery.parseJSON(attrs.select);
+          //console.log(child);
         }
       })
     }

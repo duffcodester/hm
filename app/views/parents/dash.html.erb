@@ -1,29 +1,30 @@
 <div ng-app="dash" id="par_content">
   <div ng-controller="DashCtrl">
     <div>
-      <!--{{selected.child}}-->
+      {{selected.child}}
     </div>
     <p align="center">
       <%= image_tag("pardash/Action-Items-Bar_01.png", size: "872x28", alt: "Action Items") %>
     </p>
     <div align="center">
       <br/>
-      <table width="880" border="0" cellspacing="5" cellpadding="10" >
+      <table width="880" border="0" cellspacing="10" cellpadding="10" >
         <tr>
           <td width="420"  align="left" valign="top">
             <span class="par_mod_header">Select Player</span>
             <hr color="#e99723" align="left" width="95%"/>
-            <div align="center">
               <table width="90%" border="0" align="center" cellspacing="10" cellpadding="0">
   
                 <tr ng-repeat="child in children" select={{child}}>
                   <td>
-                    <table>
+                    <table width="86%" border="0" align="center" cellpadding="0" cellspacing="10">
                       <tr>
                         <td>
+                          <div align="center">
                           <%= image_tag("linkarrow.png", alt: "child", size: "12x10", border: "0") %>
+                          </div>
                         </td>
-                        <td width="95%">
+                        <td width="90%">
                           <div>{{child.username}}</div>
                         </td>
                         <td><a ng-href="/children/{{child.id}}">stats</a></td>
@@ -35,7 +36,6 @@
   
               </table>
               <%= image_tag("spacer.gif") %>
-            </div>
           </td>
           <td width="398"  align="left" valign="top">
             <span class="par_mod_header">Challenge Validation</span>
