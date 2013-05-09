@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       sign_in user
 
       if user.class == Parent
-        redirect_to parent_dash_path
+        redirect_back_or parent_dash_path
       else
         redirect_back_or user
       end
