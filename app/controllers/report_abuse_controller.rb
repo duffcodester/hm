@@ -1,6 +1,7 @@
 class ReportAbuseController < ApplicationController
   def new
     @message = Message.new(params[:message])
+    @parent = current_user
   end
 
   def create
