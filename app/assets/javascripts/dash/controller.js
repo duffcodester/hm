@@ -17,12 +17,13 @@ dash.controller('DashCtrl',
         alert('request failed');
     });
 
-    $scope.selected = { 'child':{} };
+    $scope.selected = { 'child':{'name':'Kelton'} };
 
 
     $scope.setSelected = function(child) {
         $scope.selected = child;
     }; 
+    console.log("hi");
 });
 
 /*dash.directive('select-child', function() {
@@ -56,6 +57,7 @@ dash.directive('select', function() {
           //$parent.child = jQuery.parseJSON(attrs.select);
           //scope.selected.child = jQuery.parseJSON(attrs.select);
           //console.log(child);
+          scope.setSelected(scope.selected.child)
         }
       })
     }
