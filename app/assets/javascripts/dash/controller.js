@@ -1,7 +1,7 @@
 var dash = angular.module('dash', ['ngResource']);
 
 dash.controller('DashCtrl', 
-  function($scope, $http, ChildrenYour, CompletedChallenges) {
+  function($scope, ChildrenYour, CompletedChallenges) {
 
     $scope.children = ChildrenYour.index(
       function(data) {
@@ -17,13 +17,7 @@ dash.controller('DashCtrl',
         alert('request failed');
     });
 
-    $scope.selected = { 'child':{'name':'Kelton'} };
-
-
-    $scope.setSelected = function(child) {
-        $scope.selected = child;
-    }; 
-    console.log("hi");
+    $scope.selected = {};
 });
 
 /*dash.directive('select-child', function() {
@@ -43,23 +37,18 @@ dash.directive('select', function() {
     link: function(scope, element, attrs) {
       element.bind('click', function() {
         scope.selected.child = jQuery.parseJSON(attrs.select);
-        console.log(scope.selected.child);
+        scope.$apply();
   
         if (attrs.select != scope.selected) {
           other_elements = angular.element(document.querySelectorAll('tr[select]')); //probably just need [select]
+
           for (var i = 0; i < other_elements.length; i++) {
-            elm = jQuery(other_elements[i]);
-            //console.log(elm);
-            elm.css('background', 'none');
+            jQuery(other_elements[i]).css('background', 'none');
           }
-          //console.log(element);
+
           element.css('background', '#F3E2A9');
-          //$parent.child = jQuery.parseJSON(attrs.select);
-          //scope.selected.child = jQuery.parseJSON(attrs.select);
-          //console.log(child);
-          scope.setSelected(scope.selected.child)
         }
-      })
+      });
     }
-  }
-})
+  };
+});
