@@ -1,7 +1,6 @@
 <div ng-app="dash" id="par_content">
   <div ng-controller="DashCtrl">
     <div>
-      {{selected.child}}
     </div>
     <p align="center">
       <%= image_tag("pardash/Action-Items-Bar_01.png", size: "872x28", alt: "Action Items") %>
@@ -11,156 +10,18 @@
       <table width="880" border="0" cellspacing="10" cellpadding="10" >
         <tr>
           <td width="420"  align="left" valign="top">
-            <span class="par_mod_header">Select Player</span>
-            <hr color="#e99723" align="left" width="95%"/>
-              <table width="90%" border="0" align="center" cellspacing="10" cellpadding="0">
-  
-                <tr ng-repeat="child in children" select={{child}}>
-                  <td>
-                    <table width="86%" border="0" align="center" cellpadding="0" cellspacing="10">
-                      <tr>
-                        <td>
-                          <div align="center">
-                          <%= image_tag("linkarrow.png", alt: "child", size: "12x10", border: "0") %>
-                          </div>
-                        </td>
-                        <td width="90%">
-                          <div>{{child.username}}</div>
-                        </td>
-                        <td><a ng-href="/children/{{child.id}}">stats</a></td>
-                        <td width="15%">&nbsp;</td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-  
-              </table>
-              <%= image_tag("spacer.gif") %>
+            <%= render 'parents/select_player' %>
           </td>
           <td width="398"  align="left" valign="top">
-            <span class="par_mod_header">Challenge Validation</span>
-            <hr color="#e99723" align="left" width="95%"/>
-            <div align="center">
-              <table width="100%" border="0" cellspacing="10" cellpadding="0">
-                <% for completed_challenge in @completed_challenges do %>
-                  <tr>
-                    <td align="left">
-                      <b><%= completed_challenge.child.username %>: </b>
-                      <%= completed_challenge.challenge.name %>
-                    </td>
-    
-                    <td>
-                      <%= form_for completed_challenge, :method => "put" do |f| %>
-                        <%= f.hidden_field :validated, value: true %>
-                        <%= f.hidden_field :completed, value: false %>
-                        <%= f.hidden_field :accepted, value: false %>
-                        <%= image_submit_tag("check.png", name: "commit", alt: "validate", size: "15x16") %>
-                      <% end %>
-                    </td>
-                    <td>
-                      <%= form_for completed_challenge, :method => "put" do |f| %>
-                        <%= f.hidden_field :validated, value: false %>
-                        <%= f.hidden_field :completed, value: false %>
-                        <%= f.hidden_field :accepted, value: true %>
-                        <%= image_submit_tag("x.png", name: "decline", alt: "decline", size: "17x17") %>
-                      <% end %>
-                    </td>
-                    <!--<td><%= image_tag("x.png", alt: "decline", size: "17x17") %></td>-->
-                  </tr>
-                <% end %>
-              </table>
-              <!--<p><%= image_tag("navarrow_left.jpg", alt: "previous", size: "21x35") %><%= image_tag("navarrow_right.jpg", alt: "next", size: "21x35") %></p>-->
-              <%= image_tag("spacer.gif") %>
-            </div>
+            <%= render 'parents/challenge_validation' %>
           </td>
         </tr>
         <tr>
           <td width="420" align="left" valign="top">
-            <br/>
-            <span class="par_mod_header">Set New Challenge</span>
-            <hr color="#e99723" align="left" width="90%"/>
-            <table width="86%" border="0" align="center" cellpadding="0" cellspacing="10">
-              <tr>
-                <td>
-                  <div align="center">
-                    <%= link_to(image_tag("linkarrow.png", alt: "click", size: "12x10", border: "0"), new_challenge_path) %>
-                  </div>
-                </td>
-                <td>Create new challenge</td>
-              </tr>
-              <tr>
-                <td>
-                  <div align="center">
-                    <%= link_to(image_tag("linkarrow.png", alt: "click", size: "12x10", border: "0"), new_assigned_challenge_path) %>
-                  </div>
-                </td>
-                <td>Assign challenges</td>
-              </tr>
-              <tr>
-                <td>
-                  <div align="center">
-                    <%= link_to(image_tag("linkarrow.png", alt: "click", size: "12x10", border: "0"), challenges_community_pool_path) %>
-                  </div>
-                </td>
-                <td>Search community challenges for ideas</td>
-              </tr>
-              <tr>
-                <td>
-                  <div align="center">
-                    <%= link_to(image_tag("HMGold.png", alt: "click", size: "19x23", border: "0"), '#') %>
-                  </div>
-                </td>
-                <td class="hmgold_grey">Create repeating challenge</td>
-              </tr>
-              <tr>
-                <td>
-                  <div align="center">
-                    <%= link_to(image_tag("HMGold.png", alt: "click", size: "19x23", border: "0"), '#') %>
-                  </div>
-                </td>
-                <td class="hmgold_grey">HealthMonster Recommends</td>
-              </tr>
-            </table>
+            <%= render 'parents/set_new_challenge' %>
           </td>
           <td align="left" valign="top">
-            <br/>
-            <%= image_tag("spacer.gif") %>
-            <span class="par_mod_header">Offer Reward</span>
-            <hr color="#e99723" align="left" width="95%"/>
-            <table width="86%" border="0" align="center" cellpadding="0" cellspacing="10">
-              <tr>
-                <td>
-                  <div align="center">
-                    <%= link_to(image_tag("linkarrow.png", alt: "click", size: "12x10", border: "0"), new_reward_path) %>
-                  </div>
-                </td>
-                <td>Create new reward</td>
-              </tr>
-              <tr>
-                <td>
-                  <div align="center">
-                    <%= link_to(image_tag("linkarrow.png", alt: "click", size: "12x10", border: "0"), new_enabled_reward_path) %>
-                  </div>
-                </td>
-                <td>Enable rewards</td>
-              </tr>
-              <tr>
-                <td>
-                  <div align="center">
-                    <%= link_to(image_tag("linkarrow.png", alt: "click", size: "12x10", border: "0"), rewards_community_pool_path) %>
-                  </div>
-                </td>
-                <td>Search community rewards for ideas</td>
-              </tr>
-              <tr>
-                <td><div align="center"><%= link_to(image_tag("HMGold.png", alt: "click", size: "19x23", border: "0"), '#') %></div></td>
-                <td class="hmgold_grey">Create repeating reward</td>
-              </tr>
-              <tr>
-                <td><div align="center"><%= link_to(image_tag("HMGold.png", alt: "click", size: "19x23", border: "0"), '#') %></div></td>
-                <td class="hmgold_grey">HealthMonster Recommends</td>
-              </tr>
-            </table>
+            <%= render 'parents/offer_reward' %>
           </td>
         </tr>
       </table>
