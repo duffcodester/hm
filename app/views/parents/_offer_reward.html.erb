@@ -3,29 +3,16 @@
 <span class="par_mod_header">Offer Reward</span>
 <hr color="#e99723" align="left" width="95%"/>
 <table width="86%" border="0" align="center" cellpadding="0" cellspacing="10">
-  <tr>
-    <td>
-      <div align="center">
-        <%= link_to(image_tag("linkarrow.png", alt: "click", size: "12x10", border: "0"), new_reward_path) %>
-      </div>
-    </td>
-    <td>Create new reward</td>
-  </tr>
-  <tr>
-    <td>
-      <div align="center">
-        <%= link_to(image_tag("linkarrow.png", alt: "click", size: "12x10", border: "0"), new_enabled_reward_path) %>
-      </div>
-    </td>
-    <td>Enable rewards</td>
-  </tr>
+  <%= render 'parents/create_new_reward' %>
   <tr>
     <td>
       <div align="center">
         <%= link_to(image_tag("linkarrow.png", alt: "click", size: "12x10", border: "0"), rewards_community_pool_path) %>
       </div>
     </td>
-    <td>Search community rewards for ideas</td>
+    <td>
+      <%= link_to("Search community rewards for ideas", rewards_community_pool_path) %>
+    </td>
   </tr>
   <tr>
     <td>

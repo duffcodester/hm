@@ -2,50 +2,16 @@
 <span class="par_mod_header">Set New Challenge</span>
 <hr color="#e99723" align="left" width="90%"/>
 <table width="86%" border="0" align="center" cellpadding="0" cellspacing="10">
-  <tr>
-    <td>
-      <div align="center">
-        <%= link_to(image_tag("linkarrow.png", alt: "click", size: "12x10", border: "0"), new_challenge_path) %>
-      </div>
-    </td>
-  <td>Create new challenge
-</tr>
-<tr>
-  <td>
-    <div align="center">
-      <%= image_tag("linkarrow_down.png", alt: "form", size: "12x10", border: "0") %>
-    </div>
-  </td>
-    <td>Create new challenge</td>
-  </tr>
-  <tr>
-    <td>
-    <%= image_tag("spacer.gif") %>
-  </td>
-  <td>
-    <table>
-      <tr><td>name:</td><td><input ng-model="challenge.name"></td></tr>
-      <tr><td>description:</td><td><input ng-model="challenge.description"></td></tr>
-      <tr><td>category:</td><td><input ng-model="challenge.category_id"></td></tr>
-      <tr><td>public?:</td><td><input type="checkbox" ng-model="challenge.public"></td></tr>
-    </table>
-  </td>
-</tr>
-<tr>
-  <td>
-      <div align="center">
-        <%= link_to(image_tag("linkarrow.png", alt: "click", size: "12x10", border: "0"), new_assigned_challenge_path) %>
-      </div>
-    </td>
-    <td>Assign challenges</td>
-  </tr>
+  <%= render 'parents/create_new_challenge' %>
   <tr>
     <td>
       <div align="center">
         <%= link_to(image_tag("linkarrow.png", alt: "click", size: "12x10", border: "0"), challenges_community_pool_path) %>
       </div>
     </td>
-    <td>Search community challenges for ideas</td>
+    <td>
+      <%= link_to("Search community challenges for ideas", challenges_community_pool_path) %>
+    </td>
   </tr>
   <tr>
     <td>

@@ -49,7 +49,13 @@ class ResourcesController < ApplicationController
         end
       end
 
-      format.json { render json: @resource}
+      format.json do
+        if @resource.save
+          render json: @resource
+        else
+          render json: {error: "problem saving resource in create method resource controller"}
+        end
+      end
     end
   end
 

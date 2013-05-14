@@ -2,11 +2,13 @@
   $http.post('rewards/create').success();
 }*/
 
+'use strict';
+
 function RewardCtrl($scope, $http) {
    console.log('I am in RewardCtrl');
 
    $scope.createReward = function(data) {  
-                   data = { reward: { name: $scope.reward.name, description: $scope.reward.description } }
+                   data = { reward: { name: $scope.reward.name, description: $scope.reward.description, public: true } }
 
                    //data = {quote: $scope.quote };
 
