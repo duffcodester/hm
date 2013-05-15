@@ -11,6 +11,7 @@
 #  username        :string(255)
 #  points          :integer          default(0)
 #  age_group       :string(255)
+#  avatar          :string(255)      default("hm_hero_home")
 #
 
 require 'spec_helper'

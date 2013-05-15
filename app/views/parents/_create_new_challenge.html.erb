@@ -18,13 +18,21 @@
   <td>
     <table>
       <tr><td>name:</td><td><input ng-model="challenge.name"></td></tr>
-      <tr><td>description:</td><td><input ng-model="challenge.description"></td></tr>
-      <tr><td>category:</td><td><input ng-model="challenge.category_id"></td></tr>
+      <tr><td>description: </td><td><input ng-model="challenge.description"></td></tr>
+      <tr><td>points:</td><td><input ng-model="assigned_challenge.points"></td></tr>
+      <tr>
+        <td>category:</td>
+        <td>
+          <select ng-model="challenge.category_id">
+            <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
+          </select>
+        </td>
+      </tr>
       <tr><td>public:</td><td><input type="checkbox" ng-model="challenge.public"></td></tr>
       <tr>
         <td colspan="2">
           <div align="center">
-            <button ng-click="createChallenge()">Assign</button>
+            <button ng-click="createAssignedChallenge()">Assign</button>
           </div>
         </td>
       </tr>

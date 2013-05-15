@@ -53,7 +53,9 @@ class ResourcesController < ApplicationController
         if @resource.save
           render json: @resource
         else
-          render json: {error: "problem saving resource in create method resource controller"}
+          render json: {error: @resource.errors, 
+            @resource.type.to_sym => @resource,
+            params: params}
         end
       end
     end

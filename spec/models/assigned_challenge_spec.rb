@@ -10,9 +10,10 @@
 #  updated_at   :datetime         not null
 #  child_id     :integer
 #  accepted     :boolean          default(FALSE)
-#  rejected     :boolean          default(FALSE)
 #  completed    :boolean          default(FALSE)
+#  rejected     :boolean          default(FALSE)
 #  validated    :boolean          default(FALSE)
+#  category_id  :integer
 #
 
 require 'spec_helper'

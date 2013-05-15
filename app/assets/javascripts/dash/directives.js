@@ -1,4 +1,4 @@
-dash.directive('selectTask', function() {
+healthmonster.directive('selectTask', function() {
   return {
     restrict: "A",
     scope: false,
@@ -16,13 +16,13 @@ dash.directive('selectTask', function() {
   }
 })
 
-dash.directive('selectChild', function() {
+healthmonster.directive('selectChild', function() {
   return {
     restrict: "A",
     scope: false,
     link: function(scope, element, attrs) {
       element.bind('click', function() {
-        scope.selected.child = attrs.selectChild;
+        scope.selected.child = jQuery.parseJSON(attrs.selectChild)
         scope.$apply();
   
         if (attrs.select != scope.selected) {

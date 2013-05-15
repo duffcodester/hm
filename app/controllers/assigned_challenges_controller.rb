@@ -11,18 +11,30 @@ class AssignedChallengesController < ApplicationController
 
   #Assigns a challenge to a child
   def create
-    @challenges = current_user.challenges + Challenge.where("public = ?", true).where("parent_id != ?", current_user.id)
-    @children = current_user.children
     @assigned_challenge = current_user.assigned_challenges.build(params[:assigned_challenge])
-
+    # could use this and get rid of logic for setting it in JS controller
     challenge = Challenge.find(params[:assigned_challenge][:challenge_id])
     @assigned_challenge.category_id = challenge.category_id
-    
-    if @assigned_challenge.save
-      flash[:success] = "You have successfully assigned challenge!"
-      redirect_to challenges_community_pool
-    else
-      render 'new'
+
+    respond_to do |format|
+      format.html do
+        if @assigned_challenge.save
+          flash[:success] = "You have successfully assigned challenge!"
+          redirect_to challenges_community_pool
+        else
+          render 'new'
+        end
+      end
+
+      format.json do
+        if @assigned_challenge.save
+          render json: @assigned_challenge
+        else
+          render json: {error: @assigned_challenge.errors, 
+            assigned_challenge: @assigned_challenge,
+            params: params}
+        end
+      end
     end
   end
 
