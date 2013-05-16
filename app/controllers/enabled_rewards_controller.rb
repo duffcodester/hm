@@ -6,14 +6,27 @@ class EnabledRewardsController < ApplicationController
   end
 
   def create
-    @rewards = current_user.rewards + Reward.where("public = ?", true).where("parent_id != ?", current_user.id)
-    @children = current_user.children
     @enabled_reward = current_user.enabled_rewards.build(params[:enabled_reward])
-    if @enabled_reward.save
-      flash[:success] = "You have successfully enabled reward!"
-      redirect_to parent_dash_path
-    else
-      render 'new'
+
+    respond_to do |format|
+      format.html do
+        if @enabled_reward.save
+          flash[:success] = "You have successfully enabled reward!"
+          redirect_to parent_dash_path
+        else
+          render 'new'
+        end
+      end
+
+      format.json do
+        if @enabled_reward.save
+          render json: @enabled_reward
+        else
+          render json: {errors: @enabled_reward.errors.full_messages,
+            enabled_reward: @enabled_reward,
+            params: params}
+        end
+      end
     end
   end
 

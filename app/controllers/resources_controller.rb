@@ -53,7 +53,7 @@ class ResourcesController < ApplicationController
         if @resource.save
           render json: @resource
         else
-          render json: {error: @resource.errors, 
+          render json: {errors: @resource.errors.full_messages, 
             @resource.type.to_sym => @resource,
             params: params}
         end

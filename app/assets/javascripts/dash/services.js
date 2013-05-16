@@ -3,6 +3,11 @@ healthmonster.factory('Challenge', function($resource) {
     { 'create': { method: 'POST'}})
 })
 
+healthmonster.factory('Reward', function($resource) {
+  return $resource('/rewards', {},
+    { 'create': { method: 'POST'}})
+})
+
 healthmonster.factory('ChildrenYour', function($resource) {
   return $resource('/children_your', {}, 
     { 'index': { method: 'GET', isArray: true}}) 
@@ -15,6 +20,11 @@ healthmonster.factory('CompletedChallenges', function($resource) {
 
 healthmonster.factory('AssignedChallenge', function($resource) {
   return $resource('/assigned_challenges', {},
+    { 'create': { method: 'POST'}})
+})
+
+healthmonster.factory('EnabledReward', function($resource) {
+  return $resource('/enabled_rewards', {},
     { 'create': { method: 'POST'}})
 })
 

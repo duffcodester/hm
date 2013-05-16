@@ -16,10 +16,19 @@
     <%= image_tag("spacer.gif") %>
   </td>
   <td>
+    <div ng-show="challenge_errors.length != 0" class="alert alert-error">
+      <strong>Errors</strong>
+      <ul>
+        <li ng-repeat="error in challenge_errors">
+          {{error}}
+        </li>
+      </ul>
+    </div>
+
     <table>
       <tr><td>name:</td><td><input ng-model="challenge.name"></td></tr>
       <tr><td>description: </td><td><input ng-model="challenge.description"></td></tr>
-      <tr><td>points:</td><td><input ng-model="assigned_challenge.points"></td></tr>
+      <tr><td>points (9-999): </td><td><input ng-model="assigned_challenge.points"></td></tr>
       <tr>
         <td>category:</td>
         <td>

@@ -12,9 +12,10 @@ class AssignedChallengesController < ApplicationController
   #Assigns a challenge to a child
   def create
     @assigned_challenge = current_user.assigned_challenges.build(params[:assigned_challenge])
-    # could use this and get rid of logic for setting it in JS controller
-    challenge = Challenge.find(params[:assigned_challenge][:challenge_id])
-    @assigned_challenge.category_id = challenge.category_id
+    if params[:assigned_challenge][:challenge_id]
+      challenge = Challenge.find(params[:assigned_challenge][:challenge_id]) 
+      @assigned_challenge.category_id = challenge.category_id
+    end
 
     respond_to do |format|
       format.html do
@@ -30,7 +31,7 @@ class AssignedChallengesController < ApplicationController
         if @assigned_challenge.save
           render json: @assigned_challenge
         else
-          render json: {error: @assigned_challenge.errors, 
+          render json: {errors: @assigned_challenge.errors.full_messages, 
             assigned_challenge: @assigned_challenge,
             params: params}
         end
