@@ -1,0 +1,42 @@
+<tr select-task="create_new_reward">
+  <td>
+    <div align="center">
+      <%= image_tag("linkarrow.png", 
+        ng_show: "selected.task != 'create_new_reward'", 
+        alt: "click", size: "12x10", border: "0") %>
+      <%= image_tag("linkarrow_down.png", 
+        ng_show: "selected.task == 'create_new_reward'", 
+        alt: "form", size: "12x10", border: "0") %>
+    </div>
+  </td>
+  <td>Create new reward</td>
+</tr>
+<tr ng-show="selected.task == 'create_new_reward'">
+  <td>
+    <%= image_tag("spacer.gif") %>
+  </td>
+  <td>
+    <div ng-show="reward_errors.length != 0" class="alert alert-error">
+      <strong>Errors</strong>
+      <ul>
+        <li ng-repeat="error in reward_errors">
+          {{error}}
+        </li>
+      </ul>
+    </div>
+
+    <table>
+      <tr><td>name:</td><td><input ng-model="reward.name"></td></tr>
+      <tr><td>description:</td><td><input ng-model="reward.description"></td></tr>
+      <tr><td>points:</td><td><input ng-model="enabled_reward.points"></td></tr>
+      <tr><td>public:</td><td><input type="checkbox" ng-model="reward.public"></td></tr>
+      <tr>
+        <td colspan="2">
+          <div align="center">
+            <button ng-click="createEnabledReward()">Enable</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>

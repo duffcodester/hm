@@ -49,7 +49,15 @@ class ResourcesController < ApplicationController
         end
       end
 
-      format.json { render json: @resource}
+      format.json do
+        if @resource.save
+          render json: @resource
+        else
+          render json: {errors: @resource.errors.full_messages, 
+            @resource.type.to_sym => @resource,
+            params: params}
+        end
+      end
     end
   end
 

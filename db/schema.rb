@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(:version => 20130419233252) do
     t.datetime "updated_at",                      :null => false
     t.integer  "child_id"
     t.boolean  "accepted",     :default => false
-    t.boolean  "rejected",     :default => false
     t.boolean  "completed",    :default => false
+    t.boolean  "rejected",     :default => false
     t.boolean  "validated",    :default => false
     t.integer  "category_id"
   end
@@ -50,10 +50,10 @@ ActiveRecord::Schema.define(:version => 20130419233252) do
     t.integer  "parent_id"
     t.integer  "reward_id"
     t.integer  "points"
-    t.boolean  "redeemed",   :default => false
     t.integer  "child_id"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+    t.boolean  "redeemed",   :default => false
   end
 
   create_table "messages", :force => true do |t|

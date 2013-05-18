@@ -1,0 +1,33 @@
+<span class="par_mod_header">Challenge Validation</span>
+<hr color="#e99723" align="left" width="95%"/>
+<div align="center">
+  <table width="100%" border="0" cellspacing="10" cellpadding="0">
+    <% for completed_challenge in @completed_challenges do %>
+      <tr>
+        <td align="left">
+          <b><%= completed_challenge.child.username %>: </b>
+          <%= completed_challenge.challenge.name %>
+        </td>
+        <td>
+          <%= form_for completed_challenge, :method => "put" do |f| %>
+            <%= f.hidden_field :validated, value: true %>
+            <%= f.hidden_field :completed, value: false %>
+            <%= f.hidden_field :accepted, value: false %>
+            <%= image_submit_tag("check.png", name: "commit", alt: "validate", size: "15x16") %>
+          <% end %>
+        </td>
+        <td>
+          <%= form_for completed_challenge, :method => "put" do |f| %>
+            <%= f.hidden_field :validated, value: false %>
+            <%= f.hidden_field :completed, value: false %>
+            <%= f.hidden_field :accepted, value: true %>
+            <%= image_submit_tag("x.png", name: "decline", alt: "decline", size: "17x17") %>
+          <% end %>
+        </td>
+        <!--<td><%= image_tag("x.png", alt: "decline", size: "17x17") %></td>-->
+      </tr>
+    <% end %>
+  </table>
+  <!--<p><%= image_tag("navarrow_left.jpg", alt: "previous", size: "21x35") %><%= image_tag("navarrow_right.jpg", alt: "next", size: "21x35") %></p>-->
+  <%= image_tag("spacer.gif") %>
+</div>

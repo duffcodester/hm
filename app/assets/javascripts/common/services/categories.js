@@ -1,4 +1,14 @@
-'use strict';
+healthmonster.factory('Categories', function($resource) {
+  return $resource('/categories', {},
+    { 'index': { method: 'GET', isArray: true}})
+})
+
+
+
+
+
+
+
  
 /*var hm = angular.module('hm');
 

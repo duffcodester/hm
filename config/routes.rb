@@ -7,6 +7,7 @@ Hm::Application.routes.draw do
   resources :assigned_challenges
   resources :enabled_rewards
   resources :messages
+  resources :categories, only: [:index]
 
   root to: 'static_pages#home'
 

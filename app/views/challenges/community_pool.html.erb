@@ -1,24 +1,20 @@
 <div id="par_content">
   <div id="avatarbase_contact">
     <div id="right_avatar_commpool"><img src="assets/avatars/martian_lt.png" alt="martian" /></div>
-    </div><!--end #avatarbase-->
+  </div><!--end #avatarbase-->
 
   <p align="center"><img src="assets/Community-Pool-Bar_01.png" alt="Action Items" width="872" height="28" /></p>
 
   <div align="center"><br />
-    <div ng-app>
+    <div ng-app="healthmonster">
       <div ng-controller="ChallengesCommunityPoolCtrl">
         Search:
         <input ng-model="search">      
 
-        <!-- pull the category info from DB -->
         Category: 
         <select ng-model="category.category_id">
           <option value="">All</option>
-          <option value="1">Other</option>
-          <option value="2">Nutrition</option>
-          <option value="3">Communtiy Involvement</option>
-          <option value="4">Exercise</option>
+          <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
         </select>
 
         Items per page:
@@ -31,20 +27,30 @@
           <option value="200">200</option>
         </select>
 
-          <table width="824" border="0" cellspacing="5" cellpadding="10" >
-            <tr>
-              <td width="794"  align="left" valign="top"><span class="par_mod_header">Challenges ({{items_per_page}}/<%= Challenge.count(:all) %>)</span>
-              <hr color="#e99723" align="left" width="95%"/>
-              </td>
-            </tr>
-            
-            <table width="461" border="0" cellspacing="3" cellpadding="10">
-              <tbody ng-repeat="challenge in challenges | filter:category | filter:search | orderBy:'-updated_at' | limitTo:items_per_page " >
-                <tr>
-                  <td width="400">{{challenge.name}}</td>
-                  <td wdith="27"><a ng-href="assigned_challenges/new?assigned_challenge%5Bchallenge_id%5D={{challenge.id}}"><img src="assets/check.png" alt="report abuse" width="17" height="17" /></a></td>
-                  <td width="27"><a ng-href="report_abuse?message%5Bsubject%5D=Report+Abuse+-+{{challenge.name}}"><img src="assets/redflag.png" alt="report abuse" width="17" height="17" /></a>
-                  </td>
+        <table width="824" border="0" cellspacing="5" cellpadding="10" >
+          <tr>
+            <td width="794"  align="left" valign="top">
+              <span class="par_mod_header">
+                Challenges ({{items_per_page}}/<%= Challenge.count(:all) %>)
+              </span>
+            <hr color="#e99723" align="left" width="95%"/>
+            </td>
+          </tr>
+          
+          <table width="461" border="0" cellspacing="3" cellpadding="10">
+            <tbody ng-repeat="challenge in challenges | filter:category | filter:search | orderBy:'-updated_at' | limitTo:items_per_page " >
+              <tr>
+                <td width="400">{{challenge.name}}</td>
+                <td wdith="27">
+                  <a ng-href="assigned_challenges/new?assigned_challenge%5Bchallenge_id%5D={{challenge.id}}">
+                    <img src="assets/check.png" alt="report abuse" width="17" height="17" />
+                  </a>
+                </td>
+                <td width="27">
+                  <a ng-href="report_abuse?message%5Bsubject%5D=Report+Abuse+-+{{challenge.name}}">
+                    <img src="assets/redflag.png" alt="report abuse" width="17" height="17" />
+                  </a>
+                </td>
               </tr>
             </tbody>
           </table>

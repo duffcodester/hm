@@ -61,56 +61,19 @@ togglerid: ""
 <h3>The Latest</h3><!-- start badgeroll -->
 
   <table width="242" border="0" cellpadding="1" id="badgeroll">
-    <tr>
-      <td width="204" scope="col" class="align_rt">Steve just joined HealthMonster.</td>
-      <td width="30" scope="col">
-        <%= image_tag("badges/hm_joined.png", size: "25x28") %>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <%= image_tag("badges/badgeroll_div.png", size: "246x3") %>
-      </td>
-    </tr>
-    <tr>
-      <td class="align_rt">Raj just joined HealthMonster.</td>
-      <td>
-        <%= image_tag("badges/hm_joined.png", size: "25x28") %>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <%= image_tag("badges/badgeroll_div.png", size: "246x3") %>
-      </td>
-    </tr>
-    <tr>
-      <td class="align_rt">Julie just joined HealthMonster.</td>
-      <td>
-        <%= image_tag("badges/hm_joined.png", size: "25x28") %>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <%= image_tag("badges/badgeroll_div.png", size: "246x3") %>
-      </td>
-    </tr>
-    <tr>
-      <td class="align_rt">Rich just joined HealthMonster.</td>
-      <td>
-        <%= image_tag("badges/hm_joined.png", size: "25x28") %>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <%= image_tag("badges/badgeroll_div.png", size: "246x3") %>
-      </td>
-    </tr>
-    <tr>
-      <td class="align_rt">Amanda just joined HealthMonster.</td>
-      <td>
-        <%= image_tag("badges/hm_joined.png", size: "25x28") %>
-      </td>
-    </tr>
+    <% for member in @latest_members %>
+      <tr>
+        <td width="204" scope="col" class="align_rt"><%= member.name.titleize %> just joined HealthMonster.</td>
+        <td width="30" scope="col">
+          <%= image_tag("badges/hm_joined.png", size: "25x28") %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <%= image_tag("badges/badgeroll_div.png", size: "246x3") %>
+        </td>
+      </tr>
+    <% end %>
   </table>
 
 <!-- end badgeroll -->

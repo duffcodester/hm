@@ -48,7 +48,7 @@
           <%= link_to "dashboard |", parent_dash_path %>
           <%= render 'layouts/header_parent' %>
         <% elsif signed_in_as_child? %>
-          <%= link_to "dashboard |", child_path(current_user) %>
+          <%= link_to "dashboard |", child_dash_path %>
           <%= render 'layouts/header_child' %>
         <% end %>
       <% else %>

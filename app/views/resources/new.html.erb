@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="span6 offset3">
-    <!--<div ng-app>
+    <div ng-app="rewards">
     <div ng-controller="RewardCtrl">
     <form ng-submit='createReward()'>
       <input name="reward[name]"  ng-model="reward.name" placeholder='Add name' type='text' ngMaxlength="30">
@@ -14,8 +14,8 @@
     <p>{{reward.description}}</p>
     <p>{{worked}}</p>
     </div>
-    </div>-->
-    <%= form_for(@resource) do |f| %>
+    </div>
+    <!--<%= form_for(@resource) do |f| %>
 
       <%= f.label :name %>
       <%= f.text_field :name %>
@@ -25,7 +25,6 @@
 
       <% if @resource.type == "Challenge" %>
         <label>Category</label>
-        <%= options_from_collection_for_select(@categories, :id, :name) %>
         <%= collection_select(:challenge, :category_id, @categories, :id, :name) %>
       <% end %>
 
@@ -33,6 +32,6 @@
       <%= f.check_box :public %>
 
       <%= f.submit "Create #{@resource.type.capitalize}", class: "btn btn-large btn-primary" %>
-    <% end %>
+    <% end %>-->
   </div>
 </div>

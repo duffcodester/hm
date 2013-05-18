@@ -1,0 +1,50 @@
+<tr select-task="create_new_challenge">
+  <td>
+    <div align="center">
+      <%= image_tag("linkarrow.png", 
+        ng_show: "selected.task != 'create_new_challenge'", 
+        alt: "click", size: "12x10", border: "0") %>
+      <%= image_tag("linkarrow_down.png", 
+        ng_show: "selected.task == 'create_new_challenge'", 
+        alt: "form", size: "12x10", border: "0") %>
+    </div>
+  </td>
+  <td>Create new challenge</td>
+</tr>
+<tr ng-show="selected.task == 'create_new_challenge'">
+  <td>
+    <%= image_tag("spacer.gif") %>
+  </td>
+  <td>
+    <div ng-show="challenge_errors.length != 0" class="alert alert-error">
+      <strong>Errors</strong>
+      <ul>
+        <li ng-repeat="error in challenge_errors">
+          {{error}}
+        </li>
+      </ul>
+    </div>
+
+    <table>
+      <tr><td>name:</td><td><input ng-model="challenge.name"></td></tr>
+      <tr><td>description: </td><td><input ng-model="challenge.description"></td></tr>
+      <tr><td>points (9-999): </td><td><input ng-model="assigned_challenge.points"></td></tr>
+      <tr>
+        <td>category:</td>
+        <td>
+          <select ng-model="challenge.category_id">
+            <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
+          </select>
+        </td>
+      </tr>
+      <tr><td>public:</td><td><input type="checkbox" ng-model="challenge.public"></td></tr>
+      <tr>
+        <td colspan="2">
+          <div align="center">
+            <button ng-click="createAssignedChallenge()">Assign</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>

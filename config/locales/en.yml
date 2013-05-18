@@ -18,5 +18,8 @@ en:
           attributes:
             password:
               invalid: "must have a letter, number, and special character"
-
+        challenge:
+          attributes:
+            category_id:
+              invalid: "must be selected"
 
