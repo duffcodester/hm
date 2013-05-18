@@ -1,11 +1,13 @@
 <% provide(:title, "Edit child") %> 
 <br>
-<h1>Update your profile</h1>
+<% if signed_in_as_parent? %>
+<h1>Update your child's information</h1>
+<% end %>
 
 <div id="par_content">
 <!--Children cannot edit their own information-->
-
-<!--<%= form_for(@child) do |f| %>
+<% if signed_in_as_parent? %>
+<%= form_for(@child) do |f| %>
 <%= render 'shared/error_messages' %>
 <div align="center">
 <table width="auto" border="0" cellspacing="10" cellpadding="0" id="acct_tab">
@@ -42,7 +44,6 @@
     </td>
   </tr>
 </table>
---> 
 
 <h3>Select an Avatar!<h3>
 <br>
@@ -140,6 +141,7 @@
     </table>
 
     <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
     <% end %>
 </div>
 </div>

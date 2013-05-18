@@ -1,6 +1,6 @@
 class ChildrenController < ApplicationController
 before_filter :signed_in_child, only: [:index, :edit, :update, :destroy]
-before_filter :correct_child, only: [:edit, :update]
+before_filter :correct_user, only: [:edit, :update]
 before_filter :admin_parent, only: :destroy
 #before_filter :admin, [:index]
 
@@ -49,6 +49,7 @@ before_filter :admin_parent, only: :destroy
   end
 
   def edit
+    @child = Child.find(params[:id])
   end
 
   def index
@@ -58,8 +59,12 @@ before_filter :admin_parent, only: :destroy
   def update
     if @child.update_attributes(params[:child])
       flash[:success] = "Profile updated"
-      sign_in @child
-      redirect_to @child
+      if signed_in_as_parent?
+        redirect_to "/parents/#{@child.parent.id}/edit"
+      else       
+        sign_in @child
+        redirect_to @child
+      end
     else
       render 'edit'
     end
@@ -90,9 +95,10 @@ before_filter :admin_parent, only: :destroy
       end
     end
 
-    def correct_child
+    def correct_user
       @child = Child.find(params[:id])
-      redirect_to(root_path) unless current_user?(@child)
+      redirect_to(root_path) unless current_user?(@child) or
+        current_user?(@child.parent)
     end
 
     def admin_parent

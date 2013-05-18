@@ -49,8 +49,9 @@
     <td width="15%" align="right" valign="top">Children
     </td>
     <td>
-      <% @children.each do |child| %>
-      <%= child.username %>
+      <% @children.each do |c| %>
+      <%= c.username %>
+      <b><%= link_to "Edit", "/children/#{c.id}/edit" %></b>
       <br>
       <% end %>
     </td>
