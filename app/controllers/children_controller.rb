@@ -45,9 +45,6 @@ before_filter :admin_parent, only: :destroy
     @completed_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("completed =?", true)
   end
 
-  def dash
-  end
-
   def edit
   end
 

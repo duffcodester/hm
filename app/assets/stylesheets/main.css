@@ -3,13 +3,13 @@ body {font:8pt Verdana, Arial, sans serif; line-height:1.5em;}
 html, body {height: 100%}
 body {
   background: #e99723 url(backgrounds/white_center.png) repeat-y 50% 0;
-  font: Verdana, Arial, Helvetica, sans-serif;  
+  font-family: Verdana, Arial, Helvetica, sans-serif;  
   text-align: center; 
   color: #000000; }
 
-#wrap {min-height: 100%; width:100%; padding: 0 auto;}
+#wrap {min-height: 100%; width:100%; padding: 0;}
 #main, #home {overflow:auto;padding-bottom: 30px} 
-#footer {position: relative;margin-top: -30px;height: 30px;clear:both; text-align: center; width:960px; padding: 0 auto;} 
+#footer {position: relative;margin-top: -30px;height: 30px;clear:both; text-align: center; width:960px; padding: 0;} 
 body:before {content:"";height:100%; width:0;margin-top:-32767px}
 
 a img {border:none}
@@ -37,7 +37,7 @@ h2.home {margin:30px 0 10px 0}
   padding-top: 10px;
   width: 350px;
   padding-left: 670px;
-  font-famiy: inherit;
+  font-family: inherit;
   font-size:10px;
   font-weight: 500;
   color:#999999;
@@ -115,7 +115,7 @@ h2.home {margin:30px 0 10px 0}
 
 
 #home {padding-top:20px}
-#feature {background-color: auto; 
+#feature {background-color: inherit; 
   height:240px; padding-top:10px; padding-bottom: 10px; text-align:center;}
 
 
@@ -264,7 +264,7 @@ h2.home {margin:30px 0 10px 0}
   float: right;
   text-align: left;
   border-left: none;
-  background-color: none;
+  background-color: transparent;
     }
 
 #NarrowRightCol ul {
@@ -280,7 +280,7 @@ h2.home {margin:30px 0 10px 0}
   font-size: 14px;
   font-weight: 500;
   color: #000000;
-  clear:right;}
+  clear:right;
 } 
 
 /*-----------------------------ACCOUNT SETTINGS PAGE---------------------------------*/
@@ -324,7 +324,7 @@ h2.home {margin:30px 0 10px 0}
 .par_player {font-weight: bold; color:#000000; font-size: 10pt; text-align:left;}
 .date {font-weight: 200; color:#000000; font-size: 8pt; text-align:right;}
 .desc {font-weight: 200; color:#000000; font-size: 8pt; text-align:left; line-height:130%;}
-.par_player_2 {font-weight: bold; color:#000000; font-size: 13pt; text-align:centers;}
+.par_player_2 {font-weight: bold; color:#000000; font-size: 13pt; text-align:center;}
 
 .avatarlist {padding-right: 5px;}
 
@@ -335,7 +335,7 @@ h2.home {margin:30px 0 10px 0}
   padding-top: 2px;
   width: 350px;
   padding-left: 625px;
-  font-famiy: inherit;
+  font-family: inherit;
   font-size:10px;
   font-weight: 500;
   color:#999999;
@@ -344,13 +344,39 @@ h2.home {margin:30px 0 10px 0}
 #joinghmgsignreg a:hover {color:#728b4a; }
 #joinghmgsignreg a:visited {color:inherit; text-decoration: none;}
 
-#parmessageboard {font-family:Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: 450; vertical-align:top;}
+#parmessageboard {font-family:Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: 400; vertical-align:top;}
 #parmessageboard .mbdate {float: left; padding-right: 5px; text-align:right; line-height: 130%; vertical-align: top; }
 #parmessageboard .mbmessage {clear: right; text-align: left; line-height: 130%; vertical-align: top;}
 
 .parmbsend {float:right; padding-top: 2px; padding-right: 13px;}
 .parmbpt {padding-top: 9px;}
 .parmbpb {padding-bottom: 11px;}
+
+/*-----------------------------PLAYER DASHBOARD PAGES---------------------------------*/
+
+.plavatar {text-align:center; vertical-align:middle; }
+
+.plname { color: black; font-family:Verdana, Arial, Helvetica, sans-serif; font-weight: bold; font-size:24px; text-align:center; padding-top: 10px; padding-bottom: 10px;}
+.plstats { font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: 600; font-size: 12px; text-align: center; padding:2px;}
+.plmodspos {vertical-align:top; text-align: left; padding-right: 10px; }
+.plfriends {font-weight: bold; color:#000000; font-size: 10px; text-align:left;}
+.plsend {float: right; padding-top: 2px; padding-right: 50px;} 
+
+
+
+/*-----------------------------COMMUNITY POOL PAGES---------------------------------*/
+
+.searchright {float: right; padding-right: 45px;}
+
+#right_avatar_commpool { position: relative; top: 45px; left: 300px; width: 355px; z-index: -1; }
+#right_avatar_commpool img {width: 80%;}
+
+
+/*-----------------------------ACCOUNT SETTINGS PAGE---------------------------------*/
+
+#right_avatar_acct { position: relative; top: 45px; left: 0px; width: 355px; z-index: -1; }
+#right_avatar_acct img {width: 75%;}
+#acct_tab {padding-left: 200px;}
 
 
 /* CLEAR FIX*/
