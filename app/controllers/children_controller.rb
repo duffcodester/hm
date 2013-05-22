@@ -24,6 +24,17 @@ before_filter :admin_parent, only: :destroy
     @accepted_challenges = @child.assigned_challenges.where("child_id =?", @child.id).where("accepted =?", true)
     @suggested_rewards = [] # no suggested reward type yet
     @enabled_rewards = @child.enabled_rewards.where("child_id =?", @child.id).where("redeemed =?", false)
+
+    respond_to do |format|
+      format.html { render 'dash' }
+
+      format.json do
+        render json: {child: @child,
+          assigned_challenges: @assigned_challenges,
+          accepted_challenges: @accepted_challenges,
+          enabled_rewards: @enabled_rewards}
+      end
+    end
   end
 
   def show
