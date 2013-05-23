@@ -49,7 +49,7 @@
     <td width="15%" align="right" valign="top">Children
     </td>
     <td>
-      <% @children.each do |child| %>
+      <% @parent.children.each do |child| %>
       <%= child.username %>
       <b><%= link_to "Edit", "/children/#{child.id}/edit" %></b>
       <b><%= link_to "Delete", child, method: :delete,
