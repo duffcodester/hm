@@ -15,7 +15,7 @@
                     <tr>
                       <td class="plavatar">
                         <% avatar = "avatars/#{@child.avatar}.png" %>
-                        <%= image_tag(avatar, style: "width: 100%; height: 100%;") %>
+                        <%= image_tag(avatar, :size => "200x300") %>
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                           <tr>
                             <td class="plname"><%= current_user.username %></td>
@@ -34,8 +34,7 @@
                   <table width="650px" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0px;">
                     <tr>
                       <td width="328" height="245" class="plmodspos" style="border-spacing: 0px;">
-                          <%= image_tag('playerdash/Quests_01.png', alt: 'Quests', size: '250x25') %>
-                          <%= image_tag('endcap.png', size: '25x25') %>
+                          <%= image_tag('challenges_bar.png', alt: 'Challenges') %>
                         <table width="275px" border="0" cellspacing="3" cellpadding="0">
                           <tr><td><h4>Assigned Challenges</h4></td></tr>
                           <% for assigned_challenge in @assigned_challenges do %>
@@ -72,8 +71,7 @@
                         </p>-->
                       </td>
                       <td width="322" height="245" class="plmodspos">
-                          <%= image_tag('playerdash/Quests_01.png', alt: 'Quests', size: '250x25') %>
-                          <%= image_tag('endcap.png', size: '25x25') %>
+                          <%= image_tag('rewards_bar.png', alt: 'Rewards') %>
                         <table width="90%" border="0" cellspacing="3" cellpadding="0">
                           <tr><td><h4>Enabled Rewards</h4></td></tr>
                           <% for enabled_reward in @enabled_rewards do %>
