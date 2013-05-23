@@ -1,4 +1,3 @@
-<!--Child can edit their own avatar only-->
 <h3>Select an Avatar!<h3>
 <br>
     <table width="100%" border="0" cellspacing="10" cellpadding="0">
@@ -10,7 +9,7 @@
           <%= image_tag("avatars/lion_lt.png", :size => "150x200") %>
         </td>        
         <td width="20%" align="center">
-          <%= image_tag("avatars/lion_rt.png", :size => "150x200") %>
+          <%= image_tag("avatars/arrow.png", :size => "150x200") %>
         </td>
         <td width="20%" align="center">
           <%= image_tag("avatars/magika.png", :size => "150x200") %>
@@ -27,7 +26,7 @@
           <%= f.radio_button :avatar, "lion_lt" %>
         </td>        
         <td width="20%" align="center">
-          <%= f.radio_button :avatar, "lion_rt" %>
+          <%= f.radio_button :avatar, "arrow.png" %>
         </td>
         <td width="20%" align="center">
           <%= f.radio_button :avatar, "magika" %>
@@ -38,10 +37,10 @@
       </tr>
       <tr>
         <td width="20%" align="center">
-          <%= image_tag("avatars/ninjagirl_lt.png", :size => "150x200") %>
+          <%= image_tag("avatars/cowboy.png", :size => "150x200") %>
         </td>
         <td width="20%" align="center">
-          <%= image_tag("avatars/ninjagirl_rt.png", :size => "150x200") %>
+          <%= image_tag("avatars/kitty_rt.png", :size => "150x200") %>
         </td>
         <td width="20%" align="center">
           <%= image_tag("avatars/ninjagirl_rt2.png", :size => "150x200") %>
@@ -50,15 +49,15 @@
           <%= image_tag("avatars/scotland_lt.png", :size => "150x200") %>
         </td>
         <td width="20%" align="center">
-          <%= image_tag("avatars/scotland_rt.png", :size => "150x200") %>
+          <%= image_tag("avatars/healthmonster_rt.png", :size => "150x200") %>
         </td>
       </tr>
       <tr>
         <td width="20%" align="center">
-          <%= f.radio_button :avatar, "ninjagirl_lt" %>
+          <%= f.radio_button :avatar, "cowboy" %>
         </td>
         <td width="20%" align="center"> 
-          <%= f.radio_button :avatar, "ninjagirl_rt" %>
+          <%= f.radio_button :avatar, "kitty_rt" %>
         </td>        
         <td width="20%" align="center">
           <%= f.radio_button :avatar, "ninjagirl_rt2" %>
@@ -67,7 +66,7 @@
           <%= f.radio_button :avatar, "scotland_lt" %>
         </td>
         <td width="20%" align="center">
-          <%= f.radio_button :avatar, "scotland_rt" %>
+          <%= f.radio_button :avatar, "healthmonster_rt" %>
         </td>
       </tr>
       <tr>
@@ -75,10 +74,13 @@
           <%= image_tag("avatars/techguy_lt.png", :size => "150x200") %>
         </td>
         <td width="20%" align="center">
-          <%= image_tag("avatars/techguy_rt.png", :size => "150x200") %>
+          <%= image_tag("avatars/martian_rt.png", :size => "150x200") %>
         </td>
         <td width="20%" align="center">
           <%= image_tag("avatars/theif_home.png", :size => "150x200") %>
+        </td>
+        <td width="20%" align="center">
+          <%= image_tag("avatars/sorcerygirl_lt.png", :size => "150x200") %>
         </td>
       </tr>
       <tr>
@@ -86,10 +88,15 @@
           <%= f.radio_button :avatar, "techguy_lt" %>
         </td>
         <td width="20%" align="center"> 
-          <%= f.radio_button :avatar, "techguy_rt" %>
+          <%= f.radio_button :avatar, "martian_rt" %>
         </td>        
         <td width="20%" align="center">
           <%= f.radio_button :avatar, "theif_home" %>
         </td>
+        <td width="20%" align="center">
+          <%= f.radio_button :avatar, "sorcerygirl_lt" %>
+        </td>
       </tr>
     </table>
+  </div>
+</div> 

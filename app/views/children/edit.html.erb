@@ -4,15 +4,14 @@
 <h1>Update your child's information</h1>
 <% end %>
 
-<div id="par_content">
 <!--Children cannot edit their own information-->
-<%= form_for(@child) do |f| %>
-<%= render 'shared/error_messages' %>
-<% if signed_in_as_parent? %><!--Parent can edit username, etc-->
-  
 
-<div align="center">
-<table width="auto" border="0" cellspacing="10" cellpadding="0" id="acct_tab">
+<%= render 'shared/error_messages' %>
+  <%= form_for(@child) do |f| %>
+  <% render partial: 'child_form', locals: { f: f } %>
+  <div id="par_content">
+  <div align="center">
+  <table width="auto" border="0" cellspacing="10" cellpadding="0" id="acct_tab">
   <tr>
     <td width="50%"><div align="right">
       <%= f.label :username %>
@@ -46,10 +45,109 @@
     </td>
   </tr>
 </table>
-<% end %>
-
-
-    <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-    <% end %>
+<h3>Select an Avatar!<h3>
+<br>
+    <table width="100%" border="0" cellspacing="10" cellpadding="0">
+      <tr>
+        <td width="20%" align="center">
+          <%= image_tag("avatars/hm_hero_home.png", :size => "150x200") %>
+        </td>
+        <td width="20%" align="center">
+          <%= image_tag("avatars/lion_lt.png", :size => "150x200") %>
+        </td>        
+        <td width="20%" align="center">
+          <%= image_tag("avatars/arrow.png", :size => "150x200") %>
+        </td>
+        <td width="20%" align="center">
+          <%= image_tag("avatars/magika.png", :size => "150x200") %>
+        </td>
+        <td width="20%" align="center">
+          <%= image_tag("avatars/mechsoldier.png", :size => "150x200") %>
+        </td>
+      </tr>
+      <tr>
+        <td width="20%" align="center">
+          <%= f.radio_button :avatar, "hm_hero_home" %>
+        </td>
+        <td width="20%" align="center"> 
+          <%= f.radio_button :avatar, "lion_lt" %>
+        </td>        
+        <td width="20%" align="center">
+          <%= f.radio_button :avatar, "arrow" %>
+        </td>
+        <td width="20%" align="center">
+          <%= f.radio_button :avatar, "magika" %>
+        </td>
+        <td width="20%" align="center">
+          <%= f.radio_button :avatar, "mechsoldier" %>
+        </td>
+      </tr>
+      <tr>
+        <td width="20%" align="center">
+          <%= image_tag("avatars/cowboy.png", :size => "150x200") %>
+        </td>
+        <td width="20%" align="center">
+          <%= image_tag("avatars/kitty_rt.png", :size => "150x200") %>
+        </td>
+        <td width="20%" align="center">
+          <%= image_tag("avatars/ninjagirl_rt2.png", :size => "150x200") %>
+        </td>
+        <td width="20%" align="center">
+          <%= image_tag("avatars/scotland_lt.png", :size => "150x200") %>
+        </td>
+        <td width="20%" align="center">
+          <%= image_tag("avatars/healthmonster_rt.png", :size => "150x200") %>
+        </td>
+      </tr>
+      <tr>
+        <td width="20%" align="center">
+          <%= f.radio_button :avatar, "cowboy" %>
+        </td>
+        <td width="20%" align="center"> 
+          <%= f.radio_button :avatar, "kitty_rt" %>
+        </td>        
+        <td width="20%" align="center">
+          <%= f.radio_button :avatar, "ninjagirl_rt2" %>
+        </td>
+        <td width="20%" align="center">
+          <%= f.radio_button :avatar, "scotland_lt" %>
+        </td>
+        <td width="20%" align="center">
+          <%= f.radio_button :avatar, "healthmonster_rt" %>
+        </td>
+      </tr>
+      <tr>
+        <td width="20%" align="center">
+          <%= image_tag("avatars/techguy_lt.png", :size => "150x200") %>
+        </td>
+        <td width="20%" align="center">
+          <%= image_tag("avatars/martian_rt.png", :size => "150x200") %>
+        </td>
+        <td width="20%" align="center">
+          <%= image_tag("avatars/theif_home.png", :size => "150x200") %>
+        </td>
+        <td width="20%" align="center">
+          <%= image_tag("avatars/sorcerygirl_lt.png", :size => "150x200") %>
+        </td>
+      </tr>
+      <tr>
+        <td width="20%" align="center">
+          <%= f.radio_button :avatar, "techguy_lt" %>
+        </td>
+        <td width="20%" align="center"> 
+          <%= f.radio_button :avatar, "martian_rt" %>
+        </td>        
+        <td width="20%" align="center">
+          <%= f.radio_button :avatar, "theif_home" %>
+        </td>
+        <td width="20%" align="center">
+          <%= f.radio_button :avatar, "sorcerygirl_lt" %>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
-</div>
+  <% render partial: 'child_avatar', locals: { f: f } %>
+  <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+  <% end %>
+
