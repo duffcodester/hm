@@ -6,14 +6,14 @@ class ReportAbuseController < ApplicationController
 
   def create
     @message = Message.new(params[:message])
-    @message.email = current_user.email
     
     if @message.valid?
       NotificationsMailer.report_abuse_message(@message).deliver
-      redirect_to(root_path, :notice => "Message was successfully sent.")
+      flash[:success] = "Message was successfully sent."
+      redirect_to parent_dash_path
     else
-      flash.now.alert = "Please fill all fields."
-      render :new
+      flash[:error] = "Please fill all fields."
+      redirect_to :back
     end
   end
 

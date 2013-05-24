@@ -9,13 +9,18 @@ class ContactController < ApplicationController
     if @message.valid?
       NotificationsMailer.new_message(@message).deliver
       if signed_in_as_parent?
-        redirect_to(parent_dash_path, :notice => "Message was successfully sent.")
-      elsif signed_in_as_child? 
-        redirect_to(root_path, :notice => "Message was successfully sent.")
+        flash[:success] = "Message was successfully sent."
+        redirect_to parent_dash_path
+      elsif signed_in_as_child?
+        flash[:success] = "Message was successfully sent."
+        redirect_to child_dash_path
+      else
+        flash[:success] = "Message was successfully sent."
+        redirect_to root_path
       end
     
     else
-      flash.now.alert = "Please fill all fields."
+      flash[:error] = "Please fill all fields."
       render :new
     end
   end

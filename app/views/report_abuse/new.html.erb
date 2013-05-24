@@ -5,27 +5,26 @@
 </div><!--end #avatarbase-->
 
 <div id="forty_left" class="align_lt">
- <%= form_for @message, :url => report_abuse_path do |form| %>
+ <%= form_for @message, :url => report_abuse_path do |f| %>
     <h1>Report Abuse</h1>
     <p>&nbsp;</p>
     <div align="center">
       <table width="auto" border="0" cellspacing="12" cellpadding="0" id="reg_table">
         <tr class="rowheight">
           <td width="135" height="40" class="labels">First Name:</td>
-            <td width="278" height="40" class="fields"><%= form.text_field :first_name %></td>
+            <td width="278" height="40" class="fields"><%= f.text_field :first_name %></td>
             <td width="155" class="labels">Last Name:</td>
-            <td width="242" class="fields"><%= form.text_field :last_name %></td>
+            <td width="242" class="fields"><%= f.text_field :last_name %></td>
           </tr>
         <tr class="rowheight", size="40">
           <td class="labels" height="40">Email:</td>
-            <td class="fields"><%= @message.email %></td>
-            <!--hidden field-->
+            <td class="fields"><%= f.text_field :email, readonly: true %></td>
             <td class="labels">&nbsp;</td>
             <td class="fields">&nbsp;</td>
           </tr>
           <tr class="rowheight", size="40">
           <td class="labels" height="40">Subject:</td>
-            <td class="fields"><%= @message.subject %></td>
+            <td class="fields"><%= f.text_field :subject, readonly: true, size: "70" %></td>
             <td class="labels">&nbsp;</td>
             <td class="fields">&nbsp;</td>
           </tr>
@@ -33,13 +32,13 @@
           <td class="labels" height="40" valign="top"><p>Comment/Question(s):</p>
             </td>
             <td colspan="3" class="fields"><p>
-              <%= form.text_area :body, :size => "70x5" %>
+              <%= f.text_area :body, :size => "70x5" %>
               </p>
             </td>
         </tr>
         <tr class="rowheight">
           <td colspan="4" class="labels"><div align="center">            <br />
-            <%= form.submit :type => :image, :src => "/assets/send.png" %>
+            <%= f.submit :type => :image, :src => "/assets/send.png" %>
           </div></td>
           </tr>
       </table>
