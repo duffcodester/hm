@@ -49,9 +49,11 @@
     <td width="15%" align="right" valign="top">Children
     </td>
     <td>
-      <% @children.each do |c| %>
-      <%= c.username %>
-      <b><%= link_to "Edit", "/children/#{c.id}/edit" %></b>
+      <% @parent.children.each do |child| %>
+      <%= child.username %>
+      <b><%= link_to "Edit", "/children/#{child.id}/edit" %></b>
+      <b><%= link_to "Delete", child, method: :delete,
+                                  data: { confirm: "Are you sure you want to permanently delete this child and all of its data? This operation is irreversible." } %></b>
       <br>
       <% end %>
     </td>

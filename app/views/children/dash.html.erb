@@ -26,11 +26,10 @@
               </td>
               <td width="74%" valign="top">
                 <div align="right">
-                  <table width="650px" border="0" cellspacing="0" cellpadding="0">
+                  <table width="650px" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0px;">
                     <tr>
-                      <td width="328" height="245" class="plmodspos">
-                        <%= image_tag('playerdash/Quests_01.png', alt: 'Quests', size: '250x25') %>
-                        <%= image_tag('endcap.png', size: '25x25') %>
+                      <td width="328" height="245" class="plmodspos" style="border-spacing: 0px;">
+                          <%= image_tag('challenges_bar.png', alt: 'Challenges') %>
                         <table width="275px" border="0" cellspacing="3" cellpadding="0">
                           <tr><td><h4>Assigned Challenges</h4></td></tr>
 
@@ -38,7 +37,9 @@
                             <td class="desc">
                               {{assigned_challenge.challenge.name}} for {{assigned_challenge.points}} points
                             </td>
-                            <td ng-click='acceptAssignedChallenge(assigned_challenge)'><%= image_tag('check.png', alt: 'accept', size: '15x16') %></td>
+                            <td ng-click='acceptAssignedChallenge(assigned_challenge)'>
+                              <%= image_tag('check.png', alt: 'accept', size: '15x16') %>
+                            </td>
                             <td><%= image_tag('x.png', alt: 'decline', size: '17x17') %></td>
                           </tr>
 
@@ -63,8 +64,7 @@
                         </p>-->
                       </td>
                       <td width="322" height="245" class="plmodspos">
-                        <%= image_tag('playerdash/Quests_01.png', alt: 'Quests', size: '250x25') %>
-                        <%= image_tag('endcap.png', size: '25x25') %>
+                          <%= image_tag('rewards_bar.png', alt: 'Rewards') %>
                         <table width="90%" border="0" cellspacing="3" cellpadding="0">
                           <tr><td><h4>Enabled Rewards</h4></td></tr>
                           <tr ng-repeat='enabled_reward in enabled_rewards'>

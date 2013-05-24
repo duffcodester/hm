@@ -82,16 +82,21 @@ before_filter :admin_parent, only: :destroy
     @child = current_user.children.build(params[:child])
     if @child.save
       flash[:success] = "You have successfully created your child's account!"
-      redirect_to @child
+      redirect_to @child.parent
     else
       render 'new'
     end
   end
 
   def destroy
-    Child.find(params[:id]).destroy
-    flash[:success] = "Child destroyed"
-    redirect_to children_url
+    parent = @child.parent
+    if @child.destroy
+      flash[:success] = "Child Deleted"
+      redirect_to parent
+    else
+      flash[:error] = "Something went wrong."
+      redirect_to parent
+    end
   end
 
   private
@@ -110,6 +115,8 @@ before_filter :admin_parent, only: :destroy
     end
 
     def admin_parent
-      redirect_to(root_path) unless current_user.admin?
+      @child = Child.find(params[:id])
+      redirect_to(root_path) unless current_user.admin? or current_user?(@child.parent)
     end
-end
+  end
+

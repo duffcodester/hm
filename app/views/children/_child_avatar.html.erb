@@ -1,52 +1,3 @@
-<% provide(:title, "Edit child") %> 
-<br>
-<% if signed_in_as_parent? %>
-<h1>Update your child's information</h1>
-<% end %>
-
-<!--Children cannot edit their own information-->
-
-<%= render 'shared/error_messages' %>
-  <%= form_for(@child) do |f| %>
-  <!--<% render partial: 'child_form', locals: { f: f } %>-->
-  <div id="par_content">
-  <div align="center">
-  <% if signed_in_as_parent? %>
-    <table width="auto" border="0" cellspacing="10" cellpadding="0" id= "acct_tab">
-      <tr>
-        <td width="50%"><div align="right">
-          <%= f.label :username %>
-        </td>
-        <td width="50%"><div align="left">
-          <%= f.text_field :username %>
-        </td>
-      </tr>
-      <tr>
-        <td width="50%"><div align="right">
-          <%= f.label :password %>
-        </td>
-        <td width="50%"><div align="left">
-          <%= f.password_field :password %>
-        </td>
-      </tr>
-      <tr>
-        <td width="50%"><div align="right">
-          <%= f.label :password_confirmation, "Confirm Password" %>
-        </td>
-        <td width="50%"><div align="left">
-          <%= f.password_field :password_confirmation %>
-        </td>
-      </tr>
-      <tr>
-        <td width="50%"><div align="right">
-          <%= f.label :age_group, "Age Group" %>
-        </td>
-        <td width="50%"><div align="left">
-          <%= select(:child, :age_group, age_groups) %>
-        </td>
-      </tr>
-    </table>
-  <% end %>
 <h3>Select an Avatar!<h3>
 <br>
     <table width="100%" border="0" cellspacing="10" cellpadding="0">
@@ -75,7 +26,7 @@
           <%= f.radio_button :avatar, "lion_lt" %>
         </td>        
         <td width="20%" align="center">
-          <%= f.radio_button :avatar, "arrow" %>
+          <%= f.radio_button :avatar, "arrow.png" %>
         </td>
         <td width="20%" align="center">
           <%= f.radio_button :avatar, "magika" %>
@@ -147,9 +98,5 @@
         </td>
       </tr>
     </table>
-    <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-    <% end %>
   </div>
-</div>
-  
-
+</div> 
