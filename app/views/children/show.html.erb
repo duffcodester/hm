@@ -26,106 +26,39 @@
             </table>
             <p>&nbsp;</p>
           </div></td>
-          <td width="33%" valign="top"><div align="left"><%= image_tag("spacer.gif") %><span class="par_mod_header">Health Meter</span>
-          </div>        
-          <hr color="#e99723" align="left" width="95%"/>
-          <p align="center">&nbsp;</p>
-          <p align="center"><%= image_tag("piechart.png", size: "167x167") %></p>
-          <div align="center">
-            <p>&nbsp;</p>
-            <table width="auto" border="0" align="center" cellpadding="0" cellspacing="5">
-              <tr>
-                <td class="player_left">Exercise</td>
-                <td><%= image_tag("pie_green.png", alt: "physical exercise", width: "13", height: "13") %></td>
-                <td class="player_right">&lt;&lt;25%&gt;&gt;</td>
-              </tr>
-              <tr>
-                <td class="player_left">Nutrition</td>
-                <td><%= image_tag("pie_red.png", alt: "nutrition", width: "13", height: "13") %></td>
-                <td class="player_right">&lt;&lt;15%&gt;&gt;</td>
-              </tr>
-              <tr>
-                <td class="player_left">Academic</td>
-                <td><%= image_tag("pie_orange.png", alt: "academic", width: "13", height: "13") %></td>
-                <td class="player_right">&lt;&lt;40%&gt;&gt;</td>
-              </tr>
-              <tr>
-                <td class="player_left">Community</td>
-                <td><%= image_tag("pie_blue.png", alt: "community", width: "13", height: "13") %></td>
-                <td class="player_right">&lt;&lt;3%&gt;&gt;</td>
-              </tr>
-              <tr>
-                <td class="player_left">Music/Art</td>
-                <td><%= image_tag("pie_yellow.png", alt: "the arts", width: "13", height: "13") %></td>
-                <td class="player_right">&lt;&lt;7%&gt;&gt;</td>
-              </tr>
-              <tr>
-                <td class="player_left">Other</td>
-                <td><%= image_tag("pie_navy.png", alt: "other", width: "13", height: "13") %></td>
-                <td class="player_right">&lt;&lt;10%&gt;&gt;</td>
-              </tr>
-            </table>
-          </div>
-          <p align="center">&nbsp;</p>
-          <p align="center">&nbsp;</p></td>
-          <td width="37%" valign="top"><div align="left"><%= image_tag("spacer.gif") %><span class="par_mod_header">Challenges</span>
-          </div>
+          <td width="33%" valign="top">
+            <div align="left"><%= image_tag("spacer.gif") %><span class="par_mod_header">Challenges</span>
+            </div>
             <hr color="#e99723" align="left" width="95%"/>
             <div align="center">
               <table width="90%" border="0" cellspacing="10" cellpadding="0">
                 <tr><td><h3>Assigned Challenges</h3></td></tr>
                   <% @assigned_challenges.each do |assigned_challenge| %>
-                    <tr><td width="90" align="left"><%= assigned_challenge.challenge.name %>: <%= assigned_challenge.points %>
-                        <%= form_for assigned_challenge, :method => "put" do |f| %>
-                        <%= f.hidden_field :accepted, :value => true %>
+                    <tr><td width="100" align="left"><%= assigned_challenge.challenge.name %>: <%= assigned_challenge.points %>
                         </td>
-                        <td width="10%" align="right">
-                        <%= image_submit_tag("check.png", name: "commit", alt: "accept", size: "15x16") %>
-                        <% end %>
-                      </td>
-
-                      <%= form_for assigned_challenge, :method => "put" do |f| %>
-                        <%= f.hidden_field :rejected, :value => true %>
-                        <td width="10%" align="right">
-                        <%= image_submit_tag("x.png", name: "commit", alt: "reject", size: "17x17") %>
-                      <% end %></td>
                     </tr>
                   <% end %>
                   <tr><td><h3>Accepted Challenges</h3></td>
                   <% @accepted_challenges.each do |accepted_challenge| %>
-                    <tr><td width="90%" align="left"><%= accepted_challenge.challenge.name %>: <%= accepted_challenge.points %>
-                        <%= form_for accepted_challenge, :method => "put" do |f| %>
-                        <%= f.hidden_field :completed, :value => true %>
-                        <%= f.hidden_field :accepted, :value => false %>
-                        <td width="10%" align="right">
-                        <%= image_submit_tag("check.png", name: "commit", alt: "complete", size: "15x16") %></td>
-                        <% end %>
+                    <tr><td width="100%" align="left"><%= accepted_challenge.challenge.name %>: <%= accepted_challenge.points %>
                     </td></tr>
                   <% end %>
               </table>
-              <!--<p><%= image_tag("navarrow_left.jpg", alt: "previous", size: "21x35") %><%= image_tag("navarrow_right.jpg", alt: "next", size: "21x35") %></p>-->
-              <div align="left">
-                <%= image_tag("spacer.gif", width: "7px") %><span class="par_mod_header">Rewards</span>
+            </div>
+
+          <!--Health Meter future feature-->
+
+          <td width="37%" valign="top">
+          
+          <div align="left">
+            <%= image_tag("spacer.gif", width: "7px") %><span class="par_mod_header">Rewards</span>
           </div>
             <hr color="#e99723" align="left" width="95%"/>
             <div align="center">
                 <table width="90%" border="0" cellspacing="10" cellpadding="0">
-                  <!-- should be suggested rewards from child -->
-                  <!--<% for suggested_reward in @suggested_rewards do %>
-                    <tr>
-                      <td class="desc"><%= "#{suggested_reward.reward.name.capitalize} for #{suggested_reward.points} points" %></td>
-                      <td><%= image_tag("check.png", alt: "accept", width: "15", height: "16") %></td>
-                      <td><%= image_tag("x.png", alt: "decline", width: "17", height: "17") %></td>
-                    </tr>
-                  <% end %>-->
-                  <tr>
+                  <tr><td><h3>Enabled Rewards</h3></td></tr>
                   <% @enabled_rewards.each do |enabled_reward| %>
-                    <tr><td width="90%" align="left"><%= enabled_reward.reward.name %>: <%= enabled_reward.points %>
-                        <%= form_for enabled_reward, :method => "put" do |f| %>
-                        <%= f.hidden_field :redeemed, value: true %>
-                        <td width="10%" align="right">
-                        <%= image_submit_tag("check.png", name: "commit", alt: "redeem", size: "15x16") %></td>
-                        <% end %>
+                    <tr><td width="100%" align="left"><%= enabled_reward.reward.name %>: <%= enabled_reward.points %>
                     </td></tr>
                   <% end %>
 
@@ -138,19 +71,6 @@
         </tr>
       </table>
   </div>
-<div align="center">
-    <h3>Completed Challenges</h3>
-  <table>
-    <% for completed_challenge in @completed_challenges do %>
-      <tr>
-        <td><%= image_tag("menu-active.png", alt: "bullet", size: "8x8") %></td>
-        <td class="desc"><%= "#{completed_challenge.challenge.name.capitalize} for #{completed_challenge.points} points" %></td>
-        
-        </tr>
-    <% end %>
-  </table>
-</div>
-
 </div>
 <!--end #feature-->
 

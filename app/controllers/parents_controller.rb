@@ -28,7 +28,6 @@ class ParentsController < ApplicationController
     end
   end
 
-  def edit
     @children = @parent.children
   end
 
@@ -49,6 +48,8 @@ class ParentsController < ApplicationController
   def create
     @parent = Parent.new(params[:parent])
     if @parent.save
+      #Send welcome email to parent upon signup
+      NotificationsMailer.welcome_email(@parent).deliver
       sign_in @parent
       flash[:success] = "Welcome to HealthMonster! You have successfully created your account"
       redirect_to parent_dash_path
