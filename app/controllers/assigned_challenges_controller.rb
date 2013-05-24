@@ -20,8 +20,8 @@ class AssignedChallengesController < ApplicationController
     respond_to do |format|
       format.html do
         if @assigned_challenge.save
-          flash[:success] = "You have successfully assigned challenge!"
-          redirect_to challenges_community_pool
+          #flash notification in javascript controller
+          redirect_to parent_dash_path
         else
           render 'new'
         end
