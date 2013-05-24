@@ -90,6 +90,14 @@ class EnabledRewardsController < ApplicationController
     end
   end
 
+  def destroy
+    EnabledReward.find(params[:id]).destroy
+    respond_to do |format|
+      format.html
+      format.json { render json: 'removed'}
+    end
+  end
+
   private
     def error_info(enabled_reward, params)
       {errors: enabled_reward.errors.full_messages, 

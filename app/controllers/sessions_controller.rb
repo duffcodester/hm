@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       if user.class == Parent
         redirect_back_or parent_dash_path
       else
-        redirect_back_or user
+        redirect_back_or child_dash_path
       end
     else
       redirect_to root_path, flash: { error: 'Invalid email or username/password combination' }

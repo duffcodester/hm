@@ -1,4 +1,5 @@
 healthmonster.controller('ChildDashCtrl',
+  ['$scope', 'ChildDash', 'AssignedChallenges', 'EnabledRewards',
   function($scope, ChildDash, AssignedChallenges, EnabledRewards) {
     var display_success = function(msg) {
       $scope.error_message = null
@@ -129,4 +130,4 @@ healthmonster.controller('ChildDashCtrl',
     /*this.something = function() {}
     return $scope.Ctrl = this*/
   }
-)
+])

@@ -1,6 +1,8 @@
 healthmonster.controller('DashCtrl', 
+  ['$scope', 'ChildrenYour', 'CompletedChallenges', 'Challenge',
+  'Categories', 'AssignedChallenge', 'Reward', 'EnabledReward',
   function($scope, ChildrenYour, CompletedChallenges, Challenge, 
-    Categories, AssignedChallenge, Reward, EnabledReward) {
+  Categories, AssignedChallenge, Reward, EnabledReward) {
 
     clearNotifications = function() {  
       $scope.challenge_errors = []
@@ -103,4 +105,4 @@ healthmonster.controller('DashCtrl',
         alert('request to /rewards failed')
       })
     }
-});
+}]);

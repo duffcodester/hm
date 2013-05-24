@@ -1,4 +1,5 @@
 healthmonster.controller('ChallengesCommunityPoolCtrl',
+  ['$scope', 'ChallengesCommunityPool', 'Categories',
   function($scope, ChallengesCommunityPool, Categories) {
 
   $scope.challenges = ChallengesCommunityPool.index()
@@ -10,4 +11,4 @@ healthmonster.controller('ChallengesCommunityPoolCtrl',
   })
 
   $scope.items_per_page = 10;
-})
+}])

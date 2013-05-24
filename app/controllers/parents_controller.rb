@@ -28,9 +28,6 @@ class ParentsController < ApplicationController
     end
   end
 
-    @children = @parent.children
-  end
-
   def index
     @parents = Parent.paginate(page: params[:page])
   end
