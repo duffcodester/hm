@@ -93,7 +93,7 @@ class AssignedChallengesController < ApplicationController
             @assigned_challenge.destroy
           end          
 
-          render json: @assigned_challenge
+          render json: @assigned_challenge.as_json(include: :challenge)
         else
           #flash.now[:error] = "Error accepting challenge"
           render json: error_info(@assigned_challenge, params)
@@ -134,10 +134,10 @@ class AssignedChallengesController < ApplicationController
   end
 
   private
-
     def error_info(assigned_challenge, params)
       {errors: assigned_challenge.errors.full_messages, 
         assigned_challenge: assigned_challenge,
         params: params}
     end
+  #priavte
 end

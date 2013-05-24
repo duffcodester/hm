@@ -390,3 +390,8 @@ h2.home {margin:30px 0 10px 0}
 * html .clearfix { height: 1%}
 .clearfix {display: block}
 /* End hide from IE-mac */
+
+[ng-click], [ng_click] { 
+  cursor: hand; 
+  cursor: pointer; 
+}
