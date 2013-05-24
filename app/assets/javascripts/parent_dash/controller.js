@@ -31,13 +31,13 @@ healthmonster.controller('DashCtrl',
     $scope.completed_challenges = CompletedChallenges.index(
       function(data) { //success callback
       }, function(err) { //error callback
-        alert('request to completed_challenges failed');
+        alert('request to /completed_challenges failed');
     });
 
     $scope.categories = Categories.index(
       function(data) {
       }, function(err) {
-        alert('request to categories failed');
+        alert('request to /categories failed');
     })
 
     $scope.createAssignedChallenge = function() {
@@ -65,10 +65,10 @@ healthmonster.controller('DashCtrl',
             resetModels()
           }
         }, function(assigned_challenge_err) {
-          alert('request to assigned_challenges failed')
+          alert('request to /assigned_challenges failed')
         })
       }, function(err) {
-        alert('request to challenges failed')
+        alert('request to /challenges failed')
       })
     }
 
@@ -97,10 +97,10 @@ healthmonster.controller('DashCtrl',
           }
 
         }, function(err) {
-          alert('request to enabled_rewards failed')
+          alert('request to /enabled_rewards failed')
         })
       }, function(err) {
-        alert('request to rewards failed')
+        alert('request to /rewards failed')
       })
     }
 });

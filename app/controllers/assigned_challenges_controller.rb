@@ -31,9 +31,7 @@ class AssignedChallengesController < ApplicationController
         if @assigned_challenge.save
           render json: @assigned_challenge
         else
-          render json: {errors: @assigned_challenge.errors.full_messages, 
-            assigned_challenge: @assigned_challenge,
-            params: params}
+          render json: error_info(@assigned_challenge, params)
         end
       end
     end
@@ -41,33 +39,66 @@ class AssignedChallengesController < ApplicationController
 
   def update
     @assigned_challenge = AssignedChallenge.find(params[:id])
-    if @assigned_challenge.update_attributes(params[:assigned_challenge])
-      if @assigned_challenge.accepted
-        if signed_in_as_child?
-          flash[:success] = "Challenge Accepted"
-          redirect_to @assigned_challenge.child
-        elsif signed_in_as_parent?
-          flash[:success] = "Challenge returned to child"
-          redirect_to parent_dash_path
+
+    respond_to do |format|
+      format.html do
+        if @assigned_challenge.update_attributes(params[:assigned_challenge])
+          if @assigned_challenge.accepted
+            if signed_in_as_child?
+              flash[:success] = "Challenge Accepted"
+              redirect_to @assigned_challenge.child
+            elsif signed_in_as_parent?
+              flash[:success] = "Challenge returned to child"
+              redirect_to parent_dash_path
+            end
+              
+          elsif @assigned_challenge.rejected
+            flash[:success] = "Challenge Rejected"
+            redirect_to @assigned_challenge.child
+            @assigned_challenge.destroy
+          elsif @assigned_challenge.completed
+            flash[:success] = "Challenge Completed"
+            redirect_to @assigned_challenge.child
+          elsif @assigned_challenge.validated
+            flash[:success] = "Challenge Validated"
+            @assigned_challenge.child.update_attribute(:points, 
+              @assigned_challenge.child.points + @assigned_challenge.points)
+            redirect_to parent_dash_path
+            @assigned_challenge.destroy
+          end          
+        else
+          flash.now[:error] = "Error accepting challenge"
+          render 'show'
         end
-          
-      elsif @assigned_challenge.rejected
-        flash[:success] = "Challenge Rejected"
-        redirect_to @assigned_challenge.child
-        @assigned_challenge.destroy
-      elsif @assigned_challenge.completed
-        flash[:success] = "Challenge Completed"
-        redirect_to @assigned_challenge.child
-      elsif @assigned_challenge.validated
-        flash[:success] = "Challenge Validated"
-        @assigned_challenge.child.update_attribute(:points, 
-          @assigned_challenge.child.points + @assigned_challenge.points)
-        redirect_to parent_dash_path
-        @assigned_challenge.destroy
-      end          
-    else
-      flash.now[:error] = "Error accepting challenge"
-      render 'show'
+      end
+
+      format.json do
+        if @assigned_challenge.update_attributes(params[:assigned_challenge])
+          if @assigned_challenge.accepted
+            if signed_in_as_child?
+              #flash[:success] = "Challenge Accepted"
+
+            elsif signed_in_as_parent?
+              #flash[:success] = "Challenge returned to child"
+            end
+          elsif @assigned_challenge.rejected
+            #flash[:success] = "Challenge Rejected"
+            @assigned_challenge.destroy
+          elsif @assigned_challenge.completed
+            #flash[:success] = "Challenge Completed"
+          elsif @assigned_challenge.validated
+            #flash[:success] = "Challenge Validated"
+            @assigned_challenge.child.update_attribute(:points, 
+              @assigned_challenge.child.points + @assigned_challenge.points)
+            @assigned_challenge.destroy
+          end          
+
+          render json: @assigned_challenge
+        else
+          #flash.now[:error] = "Error accepting challenge"
+          render json: error_info(@assigned_challenge, params)
+        end
+      end
     end
   end
 
@@ -80,6 +111,11 @@ class AssignedChallengesController < ApplicationController
 
   def show
     @assigned_challenge = AssignedChallenge.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @assigned_challenge }
+    end
   end
 
   #Child rejects challenge
@@ -96,4 +132,12 @@ class AssignedChallengesController < ApplicationController
       format.json { render json: @completed_challenges }
     end
   end
+
+  private
+
+    def error_info(assigned_challenge, params)
+      {errors: assigned_challenge.errors.full_messages, 
+        assigned_challenge: assigned_challenge,
+        params: params}
+    end
 end
