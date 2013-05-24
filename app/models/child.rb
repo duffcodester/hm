@@ -30,7 +30,9 @@ class Child < ActiveRecord::Base
   validates :username, presence: true, format: { with: VALID_USERNAME_REGEX }, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 16 }
   VALID_PASSWORD_REGEX = /(?=.{6,})^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\!\@\#\$\%\^\&\*\-]).*$/
   validates :password, presence: true, length: { minimum: 6 }, format: { with: VALID_PASSWORD_REGEX }, on: :create
+  validates :password, presence: true, length: { minimum: 6 }, format: { with: VALID_PASSWORD_REGEX }, on: :update
   validates :password_confirmation, presence: true, on: :create
+  validates :password_confirmation, presence: true, on: :update
   validates :parent_id, presence: true
   validates :points, presence: true
   VALID_AGE_GROUPS = %w{6-8 8-10 10-12+}
