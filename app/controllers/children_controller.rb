@@ -1,5 +1,5 @@
 class ChildrenController < ApplicationController
-before_filter :signed_in_child, only: [:index, :edit, :update, :destroy]
+before_filter :signed_in_child, only: [:index, :edit, :update, :destroy, :dash]
 before_filter :correct_user, only: [:edit, :update]
 before_filter :admin_parent, only: :destroy
 #before_filter :admin, [:index]
@@ -30,9 +30,9 @@ before_filter :admin_parent, only: :destroy
 
       format.json do
         render json: {child: @child,
-          assigned_challenges: @assigned_challenges.as_json(include: :challenge),
-          accepted_challenges: @accepted_challenges.as_json(include: :challenge),
-          enabled_rewards: @enabled_rewards.as_json(include: :reward)}
+          assigned_challenges: @assigned_challenges.order("updated_at").as_json(include: :challenge),
+          accepted_challenges: @accepted_challenges.order("updated_at").as_json(include: :challenge),
+          enabled_rewards: @enabled_rewards.order("updated_at").as_json(include: :reward)}
       end
     end
   end
