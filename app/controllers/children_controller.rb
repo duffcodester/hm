@@ -30,9 +30,9 @@ before_filter :admin_parent, only: :destroy
 
       format.json do
         render json: {child: @child,
-          assigned_challenges: @assigned_challenges,
-          accepted_challenges: @accepted_challenges,
-          enabled_rewards: @enabled_rewards}
+          assigned_challenges: @assigned_challenges.as_json(include: :challenge),
+          accepted_challenges: @accepted_challenges.as_json(include: :challenge),
+          enabled_rewards: @enabled_rewards.as_json(include: :reward)}
       end
     end
   end
