@@ -1,6 +1,6 @@
 'use strict';
 
-rewards.controller('RewardCtrl',
+rewards.controller('RewardCtrl', ['$scope', '$http', 'Reward',
   function($scope, $http, Reward) {
   console.log('I am in RewardCtrl');
 
@@ -22,4 +22,4 @@ rewards.controller('RewardCtrl',
       .error(function(data, status) {
         alert("Didn't work...");
     });*/
-}})
+}}])

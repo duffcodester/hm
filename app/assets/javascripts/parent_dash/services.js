@@ -3,34 +3,30 @@ healthmonster.factory('Challenge', ['$resource', function($resource) {
     { 'create': { method: 'POST'}})
 }])
 
-healthmonster.factory('Reward', function($resource) {
+healthmonster.factory('Reward', ['$resource', function($resource) {
   return $resource('/rewards', {},
     { 'create': { method: 'POST'}})
-})
+}])
 
 healthmonster.factory('ChildrenYour', ['$resource', function($resource) {
   return $resource('/children_your', {}, 
     { 'index': { method: 'GET', isArray: true}}) 
 }])
 
-healthmonster.factory('CompletedChallenges', function($resource) {
+healthmonster.factory('CompletedChallenges', ['$resource', function($resource) {
   return $resource('/completed_challenges', {},
     { 'index': { method: 'GET', isArray: true}})
-})
+}])
 
-healthmonster.factory('AssignedChallenge', function($resource) {
+healthmonster.factory('AssignedChallenge', ['$resource', function($resource) {
   return $resource('/assigned_challenges', {},
     { 'create': { method: 'POST'}})
-})
+}])
 
-healthmonster.factory('EnabledReward', function($resource) {
+healthmonster.factory('EnabledReward', ['$resource', function($resource) {
   return $resource('/enabled_rewards', {},
     { 'create': { method: 'POST'}})
-})
-
-appModule.factory('sharedApplication', ['$rootScope','$http',function($rootScope, $http) {
-
-}]);
+}])
 
 //this works
 /*$http.post('/challenges', data)

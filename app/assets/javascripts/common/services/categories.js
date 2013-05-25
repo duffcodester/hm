@@ -1,7 +1,7 @@
-healthmonster.factory('Categories', function($resource) {
+healthmonster.factory('Categories', ['$resource', function($resource) {
   return $resource('/categories', {},
     { 'index': { method: 'GET', isArray: true}})
-})
+}])
 
 
 
