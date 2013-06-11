@@ -6,12 +6,15 @@
     <%= form_for(@enabled_reward) do |f| %>
 
       <h4>Enable a reward:</h4>
+      
       <% if @enabled_reward.reward %>
-      <%= @enabled_reward.reward.name %>
+        <%= @enabled_reward.reward.name %>
+        <%= f.hidden_field :reward_id %>
       <% else %>
-      <%= options_from_collection_for_select(@rewards, :id, :name) %>
-      <%= collection_select(:enabled_reward, :reward_id, @rewards, :id, :name) %>
+        <%= options_from_collection_for_select(@rewards, :id, :name) %>
+        <%= collection_select(:enabled_reward, :reward_id, @rewards, :id, :name) %>
       <% end %> 
+
       <br><br>
       <h4>Select child</h4>
       <%= options_from_collection_for_select(@children, :id, :username) %>

@@ -22,8 +22,8 @@ describe "Assigning a Challenge" do
     end
 
     describe "should have the right field labels" do
-      it { should have_selector('h4', text: 'Select a challenge') }
-      it { should have_selector('h4', text: 'Select child')}
+      it { should have_selector('h4', text: 'Challenge') }
+      it { should have_selector('h4', text: 'Select Child')}
       it { should have_selector('h4', text: 'Assign Points (9-999)') }
     end
 
@@ -34,7 +34,6 @@ describe "Assigning a Challenge" do
     end
 
     describe "assignment" do
-
       describe "with invalid information" do
         it "should not assign a challenge" do
           expect { click_button submit }.not_to change(AssignedChallenge, :count)
@@ -56,37 +55,20 @@ describe "Assigning a Challenge" do
           before { click_button submit }
           let(:assigned_challenge) { AssignedChallenge.find_by_challenge_id(challenge.id) }
   
-          it { should have_h1(parent.name) }
-          it { should have_success_message('You')}
+          it { should have_css('img', src: "Dashboard.png") }
+          it { should have_success_message('Challenge Assigned!')}
         end
       end 
-    end
-  end
 
-  describe "Assigning Challenges with a Category" do
-    before(:each) do
-      # setup assigned challenge
-    end
+      context "from community pool" do
+        before { visit "#{new_assigned_challenge_path}?assigned_challenge%5Bchallenge_id%5D=#{challenge.id}" }
 
-    let(:assigned_challenge) { AssignedChallenge.find_by_name('example challenge') }
-
-    context "without choosing a category" do
-      # it should redirect to creation page
-      # it should show error message
-      # the challenge should not be in the DB
-    end
-
-    context "when one category was chosen" do
-      # it should redirect to ?
-      # it should show success message
-      # the challenge should be in the DB
-      # it should have the category
-    end
-
-    context "when multiple categories are chosen" do
-      # it should redirect to creation page
-      # it should show error message
-      # the challenge should not be in the DB
+        it "should have challenges listed" do
+          should have_content(challenge.name)
+          should_not have_selector('select', id: 'assigned_challenge_challenge_id')
+        end
+      end
     end
   end
 end
+

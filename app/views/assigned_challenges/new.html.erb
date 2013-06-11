@@ -6,13 +6,15 @@
     <%= form_for(@assigned_challenge) do |f| %>
 
       <h4>Challenge: </h4>
+      
       <% if @assigned_challenge.challenge %>
-      <%= @assigned_challenge.challenge.name %>
+        <%= @assigned_challenge.challenge.name %>
+        <%= f.hidden_field :challenge_id %>
       <% else %>
-      <%= options_from_collection_for_select(@challenges, :id, :name) %>
-      <%= collection_select(:assigned_challenge, :challenge_id, @challenges, :id, :name) %>
-
+        <%= options_from_collection_for_select(@challenges, :id, :name) %>
+        <%= collection_select(:assigned_challenge, :challenge_id, @challenges, :id, :name) %>
       <% end %>
+
       <br><br>
       <h4>Select Child</h4>
       <%= options_from_collection_for_select(@children, :id, :username) %>
