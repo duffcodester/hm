@@ -3,6 +3,7 @@ class AssignedChallengesController < ApplicationController
     @challenges = current_user.challenges + Challenge.where("public = ?", true).where("parent_id != ?", current_user.id)
     @children = current_user.children
     @assigned_challenge = AssignedChallenge.new(params[:assigned_challenge])
+    @assigned_challenge.challenge_id = params[:challenge_id]
   end
 
   def your

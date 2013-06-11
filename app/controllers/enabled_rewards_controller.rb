@@ -3,6 +3,7 @@ class EnabledRewardsController < ApplicationController
     @rewards = current_user.rewards + Reward.where("public = ?", true).where("parent_id != ?", current_user.id)
     @children = current_user.children
     @enabled_reward = EnabledReward.new(params[:enabled_reward])
+    @enabled_reward.reward_id = params[:reward_id]
   end
 
   def create
@@ -14,7 +15,7 @@ class EnabledRewardsController < ApplicationController
           flash[:success] = "You have successfully enabled reward!"
           redirect_to parent_dash_path
         else
-          render 'new'
+          redirect_to rewards_community_pool_path
         end
       end
 
