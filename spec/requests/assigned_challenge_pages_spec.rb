@@ -61,9 +61,12 @@ describe "Assigning a Challenge" do
       end 
 
       context "from community pool" do
-        before { visit "#{new_assigned_challenge_path}?assigned_challenge%5Bchallenge_id%5D=#{challenge.id}" }
+        let(:from_community_pool_path) {"#{new_assigned_challenge_path}?assigned_challenge%5Bchallenge_id%5D=#{challenge.id}"}
+        before { visit from_community_pool_path }
 
         it "should have challenges listed" do
+          puts page.params_hash
+          current_path.should eq from_community_pool_path
           should have_content(challenge.name)
           should_not have_selector('select', id: 'assigned_challenge_challenge_id')
         end
