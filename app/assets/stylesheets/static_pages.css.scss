@@ -1,3 +1,52 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Menu stuff
+ul#menu, ul#menu ul.sub-menu {
+  padding:0;
+  margin: 0;
+}
+ul#menu li, ul#menu ul.sub-menu li {
+  list-style-type: none;
+  display: inline-block;
+}
+ul#menu li ul.sub-menu li a {
+  text-decoration: none;
+  background: #fff;
+  display:inline-block;
+}
+ul#menu li {
+  position: relative;
+}
+ul#menu li ul.sub-menu {
+  text-align: left;
+  display:none;
+  position: absolute;
+  top: 15px;
+  left: 0px;
+  width: 170px;
+}
+
+ul#menu li:hover ul.sub-menu {
+  display:block;
+}
+
+
+// info pages
+.entry-content {
+  font-size: 14px;
+  margin: 0px auto;
+  width: 30%;
+  text-align: left;
+}
+
+.entry-title {
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1.5em;
+  padding-bottom: 0.3em;
+  padding-top: 15px;
+}
+
+

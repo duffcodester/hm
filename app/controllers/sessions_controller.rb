@@ -11,6 +11,10 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:session][:password])
       sign_in user
+    
+      Mixpanel.simple_track('Sign in', {'distinct_id' => user.id})
+      # Mixpanel.track('Sign in',
+      #   {'distinct_id' => user.id} )
 
       if user.class == Parent
         redirect_back_or parent_dash_path

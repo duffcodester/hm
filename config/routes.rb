@@ -14,9 +14,15 @@ Hm::Application.routes.draw do
   match '/signup',   to: 'parents#new'
   match '/signin',   to: 'sessions#new'
   match '/signout',  to: 'sessions#destroy', via: :delete
-  match '/about',    to: 'static_pages#about'
-  match '/legal',    to: 'static_pages#legal'
-  match '/partners', to: 'static_pages#partners'
+
+  match '/about',                   to: 'static_pages#about'
+  match '/legal',                   to: 'static_pages#legal'
+  match '/partners',                to: 'static_pages#partners'
+  match '/how_it_works',            to: 'static_pages#how_it_works'
+  match '/parent_child_connection', to: 'static_pages#parent_child_connection'
+  match '/community',               to: 'static_pages#community'
+  match '/glossary_of_terms',       to: 'static_pages#glossary_of_terms'
+  match '/challenge_categories',    to: 'static_pages#challenge_categories'
   
   match '/challenges_your',           to: 'challenges#your'
   match '/challenges_community_pool', to: 'challenges#community_pool'
