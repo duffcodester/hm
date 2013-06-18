@@ -81,6 +81,8 @@ before_filter :admin_parent, only: :destroy
   def create
     @child = current_user.children.build(params[:child])
     if @child.save
+      Mixpanel.simple_track('New child account', {'distinct_id' => current_user.id})
+
       flash[:success] = "You have successfully created your child's account!"
       redirect_to @child.parent
     else

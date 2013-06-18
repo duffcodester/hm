@@ -47,6 +47,8 @@ class ParentsController < ApplicationController
     if @parent.save
       #Send welcome email to parent upon signup
       NotificationsMailer.welcome_email(@parent).deliver
+      Mixpanel.simple_track('New parent account', {'distinct_id' => @parent.id}) # need reload?
+
       sign_in @parent
       flash[:success] = "Welcome to HealthMonster! You have successfully created your account"
       redirect_to parent_dash_path

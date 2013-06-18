@@ -23,7 +23,12 @@ module Mixpanel
     params = { 'event' => event, 'properties' => properties}
     data = Base64.strict_encode64(JSON.generate(params))
     request = URI(ENDPOINT + "?data=#{data}")
-    Net::HTTP.get(request)
+
+    begin
+      Net::HTTP.get(request)
+    rescue SocketError
+      puts 'WARN: No internet connection'
+    end
   end
 
   def self.simple_track(event, properties={})
