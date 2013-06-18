@@ -23,9 +23,9 @@ font-style: italic;
  <tr>
    <td><p><%= image_tag("http://healthmonster.net/blog/wp-content/uploads/2012/06/copy-Banner_sk2.png", alt: " HealthMonster", class: "logo") %>
    <hr /> 
-   <p class="style1">Dear <%= @parent.name %>,</p>
-   <p class="style1">Thank you for joining HealthMonster! Click here to get started: <a href="healthmonster.herokuapp.com">Healthmonster.herokuapp.com</a></p>
-   <p class="style1">Your username is <%= @parent.email %>.</p>
+   <p class="style1">Dear <%= @message.first_name %> <%= @message.last_name %>,</p>
+   <p class="style1">Thank you for reporting suspected abuse of the HealthMonster system. We take all reports very seriously and will investigate the matter immediately. Like you, we  HealthMonster to be a safe, fun and enjoyable experience for all users. </p>
+   <p class="style1">Your report has been recorded into the HealthMonster system and has been assigned to case SA-<%= Time.now %>.</p>
    <p class="style1">Sincerely,<br />
      <br />
      HealthMonster's Community Admin</p>

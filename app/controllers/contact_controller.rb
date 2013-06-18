@@ -7,7 +7,7 @@ class ContactController < ApplicationController
     @message = Message.new(params[:message])
     
     if @message.valid?
-      NotificationsMailer.new_message(@message).deliver
+      NotificationsMailer.contact_message(@message).deliver
       if signed_in_as_parent?
         flash[:success] = "Message was successfully sent."
         redirect_to parent_dash_path

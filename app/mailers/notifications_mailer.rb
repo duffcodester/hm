@@ -7,13 +7,18 @@ class NotificationsMailer < ActionMailer::Base
     mail(:subject => "Example Subject")
   end
 
+  def contact_message(message)
+    @message = message
+    mail(:subject => "HealthMonster Contact")
+  end 
+
   def report_abuse_message(message)
     @message = message
-    mail(:subject => "Report Abuse Test")
+    mail(:subject => "HealthMonster Report Abuse Notification")
   end
 
   def welcome_email(parent)
     @parent = parent
-    mail(to: @parent.email, subject: 'Welcome to HealthMonster')
+    mail(to: @parent.email, subject: 'Welcome to HealthMonster!')
   end
 end

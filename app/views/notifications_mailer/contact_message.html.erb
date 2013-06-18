@@ -10,10 +10,6 @@
 font-family: Arial, Helvetica, sans-serif;
 font-size: 12px;
 }
-.style3 {
-color: #C0C0C0;
-font-style: italic;
-}
 -->
 </style>
 </head>
@@ -21,11 +17,12 @@ font-style: italic;
 <body>
 <table width="80%" border="0" cellspacing="0" cellpadding="0">
  <tr>
-   <td><p><%= image_tag("http://healthmonster.net/blog/wp-content/uploads/2012/06/copy-Banner_sk2.png", alt: " HealthMonster", class: "logo") %>
+   <td><p><%= image_tag("http://healthmonster.net/blog/wp-content/uploads/2012/06/copy-Banner_sk2.png", alt: " HealthMonster" class: "logo") %>
    <hr /> 
-   <p class="style1">Dear <%= @parent.name %>,</p>
-   <p class="style1">Thank you for joining HealthMonster! Click here to get started: <a href="healthmonster.herokuapp.com">Healthmonster.herokuapp.com</a></p>
-   <p class="style1">Your username is <%= @parent.email %>.</p>
+   <p class="style1">Dear <%= @message.first_name %><%= @message.last_name %>,</p>
+   <p class="style1">Thank you for feedback and participation in the HealthMonster community! Like you, we care about  kids. By working together we can help HealthMonster become an increasingly useful tool that's fun and easy to use, and helps parents inspire their kids to make healthy choices.<br />
+     <br />
+   Your feedback has been recorded and your input will be shared with the HealthMonster team. </p>
    <p class="style1">Sincerely,<br />
      <br />
      HealthMonster's Community Admin</p>
