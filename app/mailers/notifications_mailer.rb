@@ -10,6 +10,7 @@ class NotificationsMailer < ActionMailer::Base
   def contact_message(message)
     @message = message
     mail(:subject => "HealthMonster Contact")
+    mail(to: "josh.m.duffy@gmail.com", subject: "Contact")
   end 
 
   def report_abuse_message(message)
