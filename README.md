@@ -7,5 +7,5 @@ App information at [HealthMonster.net](http://healthmonster.net "HealthMonster.n
   Kelton M.  
   Josh D.
 
-### waffle.io project badge ###
+### [waffle.io](http://waffle.io) project badge ###
 [![waffle.io badge](http://badge.waffle.io/duffcodester/hm.png)](http://waffle.io/duffcodester/hm)
